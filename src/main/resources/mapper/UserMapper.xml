@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.hawile.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="top.hawile.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="job_id" jdbcType="INTEGER" property="jobId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="auth_id" jdbcType="INTEGER" property="authId" />
+    <result column="enabled" jdbcType="INTEGER" property="enabled" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="first_pwd" jdbcType="INTEGER" property="firstPwd" />
+    <result column="file_query" jdbcType="VARCHAR" property="fileQuery" />
+    <result column="form_query" jdbcType="VARCHAR" property="formQuery" />
+    <result column="session_id" jdbcType="VARCHAR" property="sessionId" />
+  </resultMap>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+      id, user_name, `name`, sex, age, job_id, phone, email, qq, auth_id, enabled,
+      create_time, first_pwd, file_query, form_query, session_id
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.hawile.entity.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user (user_name, `name`, `password`, 
+      sex, age, job_id, phone, 
+      email, qq, auth_id, 
+      enabled, create_time, first_pwd, 
+      file_query, form_query, session_id
+      )
+    values (#{userName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, HEX(AES_ENCRYPT(#{password,jdbcType=VARCHAR}, 'keydom')),
+      #{sex,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{authId,jdbcType=INTEGER}, 
+      #{enabled,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{firstPwd,jdbcType=INTEGER}, 
+      #{fileQuery,jdbcType=VARCHAR}, #{formQuery,jdbcType=VARCHAR}, #{sessionId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.hawile.entity.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="authId != null">
+        auth_id,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="firstPwd != null">
+        first_pwd,
+      </if>
+      <if test="fileQuery != null">
+        file_query,
+      </if>
+      <if test="formQuery != null">
+        form_query,
+      </if>
+      <if test="sessionId != null">
+        session_id
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        HEX(AES_ENCRYPT(#{password,jdbcType=VARCHAR}, 'keydom')),
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="authId != null">
+        #{authId,jdbcType=INTEGER},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstPwd != null">
+        #{firstPwd,jdbcType=INTEGER},
+      </if>
+      <if test="fileQuery != null">
+        #{fileQuery,jdbcType=VARCHAR},
+      </if>
+      <if test="formQuery != null">
+        #{formQuery,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null">
+        #{sessionId,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.hawile.entity.User">
+    update user
+    <trim prefix="set" suffixOverrides="," suffix="where id = #{id,jdbcType=INTEGER}">
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = HEX(AES_ENCRYPT(#{password,jdbcType=VARCHAR}, 'keydom')),
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        job_id = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="authId != null">
+        auth_id = #{authId,jdbcType=INTEGER},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstPwd != null">
+        first_pwd = #{firstPwd,jdbcType=INTEGER},
+      </if>
+      <if test="fileQuery != null">
+        file_query = #{fileQuery,jdbcType=VARCHAR},
+      </if>
+      <if test="formQuery != null">
+        form_query = #{formQuery,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null">
+        session_id = #{sessionId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.hawile.entity.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `password` = HEX(AES_ENCRYPT(#{password,jdbcType=VARCHAR}, 'keydom')),
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      job_id = #{jobId,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      auth_id = #{authId,jdbcType=INTEGER},
+      enabled = #{enabled,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      first_pwd = #{firstPwd,jdbcType=INTEGER},
+      file_query = #{fileQuery,jdbcType=VARCHAR},
+      form_query = #{formQuery,jdbcType=VARCHAR},
+      session_id = #{sessionId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--  根据用户名查找用户信息-->
+  <select id="findByUserName" resultMap="BaseResultMap">
+     select
+       id, user_name, `name`, sex, age, u.job_id, phone, email, qq, u.auth_id, enabled,
+       create_time, first_pwd, file_query, form_query, session_id, a.*, j.job_name, d.dept_id, d.dept_name, d.form_no
+     from user u left join authority a on u.auth_id = a.auth_id
+     left join job j on u.job_id = j.job_id left join department d on j.dept_id = d.dept_id
+     where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+  <!--  更新用户停启用状态-->
+  <update id="updateEnabled" parameterType="top.hawile.entity.User">
+    update user set enabled = #{enabled,jdbcType=VARCHAR} where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--  更新用户sessionId-->
+  <update id="updateSessionId" parameterType="top.hawile.entity.User">
+    update user set session_id = #{sessionId,jdbcType=VARCHAR} where user_name = #{userName,jdbcType=VARCHAR}
+  </update>
+  <!--  更新用户firstPwdId-->
+  <update id="updateFirstPwd" parameterType="top.hawile.entity.User">
+    update user set first_pwd = #{firstPwd,jdbcType=INTEGER} where user_name = #{userName,jdbcType=VARCHAR}
+  </update>
+  <!--  更新用户密码-->
+  <update id="changePwd" parameterType="top.hawile.entity.User">
+    update user set `password` = HEX(AES_ENCRYPT(#{password,jdbcType=VARCHAR}, 'keydom'))
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </update>
+  <select id="find" resultMap="BaseResultMap">
+    select id, user_name, `name`, sex, age, job_id, phone, email, qq, auth_id,
+           enabled, create_time, first_pwd, file_query, form_query, session_id
+    from user where ${field} = #{values} ;
+  </select>
+  <!--  查询特定用户名的用户数量-->
+  <select id="userCount" resultType="java.lang.Integer">
+    select count(id) from user where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+  <!--  查询特定用户密码一致的用户数量-->
+  <select id="pwdCount" resultType="java.lang.Integer">
+    select count(id) from user where user_name = #{userName,jdbcType=VARCHAR} and
+    `password` = HEX(AES_ENCRYPT(#{password,jdbcType=VARCHAR}, 'keydom'))
+  </select>
+  <!--  获取enabledId-->
+  <select id="enabledId" resultMap="BaseResultMap">
+    select enabled from user where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+      id, user_name, `name`, AES_DECRYPT(UNHEX(`password`),'keydom') as `password`, sex, age, u.job_id, phone, email, qq, u.auth_id, enabled,
+      create_time, first_pwd, file_query, form_query, session_id, a.auth_name as auth_name, j.job_name, d.dept_id, d.dept_name
+    from user u left join job j on u.job_id = j.job_id left join department d on j.dept_id = d.dept_id left join authority a on u.auth_id = a.auth_id
+  </select>
+</mapper>
