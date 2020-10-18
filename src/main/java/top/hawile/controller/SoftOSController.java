@@ -43,7 +43,7 @@ public class SoftOSController {
         //将登录用户信息传入request
         request.setAttribute("user",session.getAttribute("user"));
         logService.log("查看[ 系统下载 ]列表","成功");
-        return "soft_os";
+        return "page/soft_os";
     }
 
     @ResponseBody

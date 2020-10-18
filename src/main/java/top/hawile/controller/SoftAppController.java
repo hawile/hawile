@@ -43,7 +43,7 @@ public class SoftAppController {
         //将登录用户信息传入request
         request.setAttribute("user",session.getAttribute("user"));
         logService.log("查看[ 应用软件 ]列表","成功");
-        return "soft_app";
+        return "page/soft_app";
     }
 
     @ResponseBody

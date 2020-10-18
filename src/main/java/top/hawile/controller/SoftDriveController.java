@@ -43,7 +43,7 @@ public class SoftDriveController {
         //将登录用户信息传入request
         request.setAttribute("user",session.getAttribute("user"));
         logService.log("查看[ 驱动下载 ]列表","成功");
-        return "soft_drive";
+        return "page/soft_drive";
     }
 
     @ResponseBody

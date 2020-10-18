@@ -44,7 +44,7 @@ public class FileController {
         request.setAttribute("deptList",deptService.list());
         //将操作写入日志
         logService.log("查看[ 文件信息 ] 列表","成功");
-        return "file";
+        return "page/file";
     }
 
     @ResponseBody

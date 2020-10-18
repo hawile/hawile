@@ -46,7 +46,7 @@ public class JobController {
         request.setAttribute("deptList",deptService.list());
         //将操作写入日志
         logService.log("查看[ 职位列表 ]","成功");
-        return "job";
+        return "page/job";
     }
 
     @ResponseBody

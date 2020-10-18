@@ -41,7 +41,7 @@ public class WorkController {
         request.setAttribute("user",session.getAttribute("user"));
         //将操作写入日志
         logService.log("查看[ 工作报表 ]","成功");
-        return "work";
+        return "page/work";
     }
 
     @ResponseBody

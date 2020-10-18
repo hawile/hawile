@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
     <meta charset="utf-8">
     <title>layui</title>
@@ -64,20 +64,19 @@
 <script src="../../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
     layui.use(['form'], function () {
-        var form = layui.form,
-            layer = layui.layer,
-            $ = layui.$;
+        let form = layui.form,
+            layer = layui.layer;
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            var index = layer.alert(JSON.stringify(data.field), {
+            let index = layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             }, function () {
 
                 // 关闭弹出层
                 layer.close(index);
 
-                var iframeIndex = parent.layer.getFrameIndex(window.name);
+                let iframeIndex = parent.layer.getFrameIndex(window.name);
                 parent.layer.close(iframeIndex);
 
             });

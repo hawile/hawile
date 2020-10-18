@@ -1,0 +1,241 @@
+@CHARSET "UTF-8";
+
+.IndexGuestButtonBorder {
+	width: 100px;
+	height: 35px;
+	background-color: #FFC125;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.IndexGuestButton {
+	width: 90px;
+	height: 27px;
+	background-color: #FFC125;
+	border: 0;
+	color: #FFFFFF;
+	margin-top: 4px;
+	text-align: center;
+}
+
+.IndexGuestButton:HOVER {
+	background-color: #FFA500;
+}
+
+.OperationButton {
+	width: 40px;
+	height: 27px;
+	float: left;
+	border-radius: 5px;
+	margin: 3px 3px 3px 3px;
+}
+
+.OperationButton:HOVER {
+	background-color: #CDCDB4;
+}
+
+.OB-Edit {
+	background-color: #C6E2FF;
+}
+
+.OB-DL {
+	background-color: #90EE90;
+}
+
+.OB-Del {
+	background-color: #FF8C69;
+}
+
+.OB-Pic {
+	width: 20px;
+	margin-top: 3px;
+}
+
+.Upload-File0 {
+	width: 150px;
+	height: 30px;
+	position: absolute;
+	left: -75px;
+	top: 0;
+	z-index: 1;
+	-moz-opacity: 0;
+	-ms-opacity: 0;
+	-webkit-opacity: 0;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+.Upload-File {
+	float: left;
+	width: 75px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	background-color: #FFC125;
+	color: #FFFFFF;
+	border-radius: 5px;
+}
+
+.Check-True {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+}
+
+.AddButton {
+	border: 1px none #ccc;
+	border-bottom-style: solid;
+}
+
+.FileMenu {
+	float: left;
+	width: 120px;
+	text-align: center;
+	margin-left: 10px;
+}
+
+.IframeMenu {
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin-left: 10px;
+	height: 650px;
+	overflow: hidden;
+}
+
+.FileMain {
+	float: right;
+	width: 91%;
+	margin-left: 10px;
+	border: 1px none #ccc;
+	border-left-style: solid;
+	padding-left: 5px;
+}
+
+.IframeFileMain {
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin-left: 10px;
+	height: 650px;
+	overflow: hidden;
+}
+
+.BodyClass {
+	background-color: #D1EEEE;
+}
+
+.OrderShowListTime {
+	position: absolute;
+	display: block;
+	height: 200px;
+	width: 30%;
+	font-size: 25px;
+	text-align: left;
+	margin-left: 70%;
+	padding-top: 150px;
+	background-color: #D1EEEE;
+}
+
+.OrderShowListTittle {
+	position: absolute;
+	display: block;
+	height: 200px;
+	width: 40%;
+	margin-left: 30%;
+	text-align: center;
+	background-color: #D1EEEE;
+}
+
+.OrderShowListTable {
+	position: absolute;
+	display: block;
+	width: 100%;
+	text-align: center;
+	background-color: #D1EEEE;
+}
+
+.OrderShowListTables {
+	position: absolute;
+	display: block;
+	width: 100%;
+	margin-top: 200px;
+	padding-left: 10%;
+	padding-right: 10%;
+	text-align: center;
+}
+
+.OrderShowTable {
+	border: 1px solid #000000;
+	width: 100%;
+}
+
+.OrderEdit {
+	float: right;
+	width: 100px;
+	height: 35px;
+	background-color: #8968CD;
+	border-radius: 5px;
+	font-size: 15px;
+	text-align: center;
+	margin-right: 50px;
+}
+
+.OrderEditButton {
+	background-color: #8968CD;
+	color: #8968CD;
+}
+
+.ImportExcel {
+	float: left;
+}
+
+.TextFont {
+	font-family: serif;
+	font-size: 15px;
+}
+
+.CheckboxFont {
+	font-family: serif;
+	font-size: 15px;
+}
+
+.hiddenBorder{
+	border: 0;
+}
+
+.display-0 {
+	display: none;
+}
+
+.display-1 {
+	display: inline;
+}
+
+.file-query-auth {
+	float: left;
+	width: 45%;
+	margin-left: 10px;
+	background-color: #DDDDDD;
+
+}
+.readonly {
+	background-color: white;
+	border: none;
+}
+.submit_btn {
+	margin: 20px auto 20px auto;
+	text-align: center;
+}
+.float-right {
+	float: right;
+}
+.float-left {
+	float: left;
+}
+.input-note {
+	padding-left: 10px;
+	color: red;
+	font-size: 10px
+}

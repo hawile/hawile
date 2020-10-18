@@ -40,7 +40,7 @@ public class FormInputController {
         model.addAttribute("user",session.getAttribute("user"));
         //传入部门列表
         model.addAttribute("deptList",deptService.list());
-        return "form_input";
+        return "page/form_input";
     }
 
     @ResponseBody

@@ -49,7 +49,7 @@ public class AtmController {
         request.setAttribute("goodsList",goodsService.list());
         //将操作写入日志
         logService.log("查看[ 售货机订单信息列表 ]","成功");
-        return "atm";
+        return "page/atm";
     }
 
     @RequestMapping("/goods")
@@ -61,7 +61,7 @@ public class AtmController {
         request.setAttribute("goodsList",goodsService.list());
         //将操作写入日志
         logService.log("查看[ 售货机商品信息列表 ]","成功");
-        return "goods";
+        return "page/goods";
     }
 
     @ResponseBody
@@ -111,7 +111,7 @@ public class AtmController {
         request.setAttribute("atm",atmService.selectById(id));
         //将特定售货机订单商品信息列表传入request
         request.setAttribute("atmGoodsList",atmGoodsService.selectByOrderId(id));
-        return "atm_order";
+        return "page/atm_order";
     }
 
     @ResponseBody

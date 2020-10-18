@@ -39,7 +39,7 @@ public class AuthController {
         request.setAttribute("authList",authService.list());
         //将操作写入日志
         logService.log("查看[ 权限列表 ]","成功");
-        return "authority";
+        return "page/authority";
     }
 
     @ResponseBody

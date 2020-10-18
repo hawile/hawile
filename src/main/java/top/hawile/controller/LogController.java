@@ -27,7 +27,7 @@ public class LogController {
     public String log(HttpServletRequest request, HttpSession session) {
         //将当前用户对象传入request
         request.setAttribute("user",session.getAttribute("user"));
-        return "log";
+        return "page/log";
     }
 
     @ResponseBody
@@ -54,6 +54,6 @@ public class LogController {
     public String log(String month, HttpServletRequest request) {
         //将系统日志列表传入request
         request.setAttribute("syslogList", logService.logMonth(month));
-        return "log";
+        return "page/log";
     }
 }

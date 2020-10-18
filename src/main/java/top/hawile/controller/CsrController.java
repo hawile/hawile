@@ -34,7 +34,7 @@ public class CsrController {
         request.setAttribute("user",session.getAttribute("user"));
         //将操作写入日志
         logService.log("查看[ 客户账号信息列表 ]","成功");
-        return "csr";
+        return "page/csr";
     }
 
     @ResponseBody

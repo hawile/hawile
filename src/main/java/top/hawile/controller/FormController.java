@@ -44,7 +44,7 @@ public class FormController {
         request.setAttribute("deptList",deptService.list());
         //将操作写入日志
         logService.log("查看[ 表单信息 ] 列表","成功");
-        return "form";
+        return "page/form";
     }
 
     @ResponseBody

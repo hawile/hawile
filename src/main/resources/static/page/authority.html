@@ -1,0 +1,800 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/css/ace.min.css" />
+    <link rel="stylesheet" href="/css/my.css" />
+    <script src="/layui/layui.js" type="text/javascript"></script>
+    <script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="/js/page/authority.js" type="text/javascript"></script>
+    <title>权限列表</title>
+</head>
+<body>
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            <button th:if="${user.qxlbAdd == 1}" class="layui-btn layui-btn-warm"
+                    lay-event="insert">添加权限组</button>
+        </div>
+    </script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs"
+           th:if="${user.qxlbUp == 1}" lay-event="edit" >编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs"
+           th:if="${user.qxlbDel == 1}" lay-event="delete">删除</a>
+    </script>
+    <script type="text/html" id="xxglState">
+        {{# if (d.xxgl == 1) { }}
+            <span class="layui-badge layui-bg-green">启用</span>
+        {{# } else { }}
+            <span class="layui-badge">禁止</span>
+        {{# } }}
+    </script>
+    <script type="text/html" id="wjglState">
+        {{# if (d.wjgl == 1) { }}
+        <span class="layui-badge layui-bg-green">启用</span>
+        {{# } else { }}
+        <span class="layui-badge">禁止</span>
+        {{# } }}
+    </script>
+    <script type="text/html" id="rjxtState">
+        {{# if (d.rjxt == 1) { }}
+        <span class="layui-badge layui-bg-green">启用</span>
+        {{# } else { }}
+        <span class="layui-badge">禁止</span>
+        {{# } }}
+    </script>
+    <script type="text/html" id="xtglState">
+        {{# if (d.xtgl == 1) { }}
+        <span class="layui-badge layui-bg-green">启用</span>
+        {{# } else { }}
+        <span class="layui-badge">禁止</span>
+        {{# } }}
+    </script>
+    <script type="text/html" id="yhglState">
+        {{# if (d.yhgl == 1) { }}
+        <span class="layui-badge layui-bg-green">启用</span>
+        {{# } else { }}
+        <span class="layui-badge">禁止</span>
+        {{# } }}
+    </script>
+    <table class="layui-hide" id="table" lay-filter="table"></table>
+
+<!--添加权限组-->
+<div id="add_authority" class="display-0">
+    <form id="FormAdd" class="layui-form" method="post" action="">
+        <div class="layui-form-item width-95" style="padding-top: 10px">
+            <label class="layui-form-label width-35"><span style="color: red; ">*</span>权限组名:</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" id="authName"
+                       name="authName" lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="xxgl" type="checkbox" lay-filter="firstCheckBox" id="xxgl" name="xxgl"
+                       value="1" title="信息管理"/>
+            </div>
+        </div>
+        <div name="xxglDiv" class="layui-anim layui-anim-fadein display-0">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="csxx" name="csxx"
+                               value="1" title="厂商信息"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="csxxAdd" name="csxxAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="csxxUp" name="csxxUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="csxxDel" name="csxxDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="zhxx" name="zhxx"
+                               value="1" title="账号信息"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="zhxxAdd" name="zhxxAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="zhxxUp" name="zhxxUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="zhxxDel" name="zhxxDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="itgdzcxx" name="itgdzcxx"
+                               value="1" title="IT固定资产信息"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="itgdzcxxAdd" name="itgdzcxxAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="itgdzcxxUp" name="itgdzcxxUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="itgdzcxxDel" name="itgdzcxxDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="txl" name="txl"
+                               value="1" title="公司通讯录"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="txlAdd" name="txlAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="txlUp" name="txlUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="txlDel" name="txlDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="ddxx" name="ddxx"
+                               value="1" title="订单信息"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="ddxxAdd" name="ddxxAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="ddxxUp" name="ddxxUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="ddxxDel" name="ddxxDel" value="1" title="删除"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="ddxxGl" name="ddxxGl" value="1" title="管理"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="khzh" name="khzh"
+                               value="1" title="客户账号"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="khzhAdd" name="khzhAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="khzhUp" name="khzhUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="khzhDel" name="khzhDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="atm" name="atm"
+                               value="1" title="售货机订单信息"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="atmAdd" name="atmAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="atmGoodsUp" name="atmGoodsUp" value="1" title="商品修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="atmDel" name="atmDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="work" name="work"
+                               value="1" title="工作报表"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="workAdd" name="workAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="workUp" name="workUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="workDel" name="workDel" value="1" title="删除"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="wjgl" type="checkbox" lay-filter="firstCheckBox" id="wjgl" name="wjgl"
+                       value="1" title="文件管理"/>
+            </div>
+        </div>
+        <div name="wjglDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="wjgl" type="checkbox" lay-filter="secondCheckBox" id="bdxx" name="bdxx"
+                               value="1" title="表单信息"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="bdxxAdd" name="bdxxAdd" value="1" title="增加"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="bdxxUp" name="bdxxUp" value="1" title="修改"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="bdxxDel" name="bdxxDel" value="1" title="删除"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="bdxxDl" name="bdxxDl" value="1" title="下载"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="wjgl" type="checkbox" lay-filter="secondCheckBox" id="skwj" name="wj"
+                               value="1" title="受控文件"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="skwjAdd" name="wjAdd" value="1" title="增加"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="skwjUp" name="wjUp" value="1" title="修改"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="skwjDel" name="wjDel" value="1" title="删除"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="skwjDl" name="wjDl" value="1" title="下载"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="rjxt" type="checkbox" lay-filter="firstCheckBox" id="rjxt" name="rjxt"
+                       value="1" title="软件系统"/>
+            </div>
+        </div>
+        <div name="rjxtDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="rjxt" type="checkbox" lay-filter="secondCheckBox" id="yyrj" name="yyrj"
+                               value="1" title="应用软件"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="yyrjAdd" name="yyrjAdd" value="1" title="增加"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="yyrjUp" name="yyrjUp" value="1" title="修改"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="yyrjDel" name="yyrjDel" value="1" title="删除"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="yyrjDl" name="yyrjDl" value="1" title="下载"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="rjxt" type="checkbox" lay-filter="secondCheckBox" id="xtxz" name="xtxz"
+                               value="1" title="系统下载"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="xtxzAdd" name="xtxzAdd" value="1" title="增加"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="xtxzUp" name="xtxzUp" value="1" title="修改"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="xtxzDel" name="xtxzDel" value="1" title="删除"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="xtxzDl" name="xtxzDl" value="1" title="下载"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="rjxt" type="checkbox" lay-filter="secondCheckBox" id="qdxz" name="qdxz"
+                               value="1" title="驱动下载"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="qdxzAdd" name="qdxzAdd" value="1" title="增加"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="qdxzUp" name="qdxzUp" value="1" title="修改"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="qdxzDel" name="qdxzDel" value="1" title="删除"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="qdxzDl" name="qdxzDl" value="1" title="下载"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="xtgl" type="checkbox" lay-filter="firstCheckBox" id="xtgl" name="xtgl"
+                       value="1" title="系统管理"/>
+            </div>
+        </div>
+        <div name="xtglDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xtgl" type="checkbox" lay-filter="secondCheckBox" id="xtrz" name="xtrz"
+                               value="1" title="系统日志"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="yhgl" type="checkbox" lay-filter="firstCheckBox" id="yhgl" name="yhgl"
+                       value="1" title="用户管理"/>
+            </div>
+        </div>
+        <div name="yhglDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" lay-filter="secondCheckBox" id="qxlb" name="qxlb"
+                               value="1" title="权限列表"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="qxlbAdd" name="qxlbAdd" value="1" title="增加"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="qxlbUp" name="qxlbUp" value="1" title="修改"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="qxlbDel" name="qxlbDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" lay-filter="secondCheckBox" id="bmlb" name="bmlb"
+                               value="1" title="职位列表"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="bmlbZwAdd" name="zwlbAdd" value="1" title="增加"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="bmlbZwUp" name="zwlbUp" value="1" title="修改"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="bmlbZwDel" name="zwlbDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" disabled checked title="部门列表"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="bmlbAdd" name="bmlbAdd" value="1" title="增加"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="bmlbUp" name="bmlbUp" value="1" title="修改"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="bmlbDel" name="bmlbDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" lay-filter="secondCheckBox" id="yhlb" name="yhlb"
+                               value="1" title="用户列表"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="yhlbAdd" name="yhlbAdd" value="1" title="增加"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="yhlbUp" name="yhlbUp" value="1" title="修改"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="yhlbDel" name="yhlbDel" value="1" title="删除"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="yhlbEn" name="yhlbEn" value="1" title="停启用"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" lay-filter="secondCheckBox" id="grxx" name="grxx"
+                               value="1" title="个人信息"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="grxxPwd" name="grxxPwd" value="1" title="改密"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="grxxInfo" name="grxxInfo" value="1" title="修改"/>
+                </div>
+            </div>
+        </div>
+        <div class="submit_btn">
+            <button type="button" lay-submit="" lay-filter="subInsert"
+                    class="layui-btn layui-btn-normal">提交
+            </button>
+            <button type="button" onclick="layer.closeAll()"
+                    class="layui-btn layui-btn-danger">关闭
+            </button>
+        </div>
+    </form>
+</div>
+
+<!--更新权限组-->
+<div id="up_authority" class="display-0">
+    <form id="FormUp" class="layui-form" method="post" action="">
+        <input type="hidden" id="authId" name="authId">
+        <div class="layui-form-item width-95" style="padding-top: 10px">
+            <label class="layui-form-label width-35"><span style="color: red; ">*</span>权限组名:</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" id="up_authName"
+                       name="authName" lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="xxgl" type="checkbox" lay-filter="firstCheckBox" id="up_xxgl" name="xxgl"
+                       value="1" title="信息管理"/>
+            </div>
+        </div>
+        <div name="xxglDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="up_csxx" name="csxx"
+                               value="1" title="厂商信息"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_csxxAdd" name="csxxAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_csxxUp" name="csxxUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_csxxDel" name="csxxDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="up_zhxx" name="zhxx"
+                               value="1" title="账号信息"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_zhxxAdd" name="zhxxAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_zhxxUp" name="zhxxUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_zhxxDel" name="zhxxDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="up_itgdzcxx" name="itgdzcxx"
+                               value="1" title="IT固定资产信息"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_itgdzcxxAdd" name="itgdzcxxAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_itgdzcxxUp" name="itgdzcxxUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_itgdzcxxDel" name="itgdzcxxDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="up_txl" name="txl"
+                               value="1" title="公司通讯录"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_txlAdd" name="txlAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_txlUp" name="txlUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_txlDel" name="txlDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="up_ddxx" name="ddxx"
+                               value="1" title="订单信息"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_ddxxAdd" name="ddxxAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_ddxxUp" name="ddxxUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_ddxxDel" name="ddxxDel" value="1" title="删除"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_ddxxGl" name="ddxxGl" value="1" title="管理"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="up_khzh" name="khzh"
+                               value="1" title="客户账号"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_khzhAdd" name="khzhAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_khzhUp" name="khzhUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_khzhDel" name="khzhDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="up_atm" name="atm"
+                               value="1" title="售货机订单信息"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_atmAdd" name="atmAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_atmGoodsUp" name="atmGoodsUp" value="1" title="商品修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_atmDel" name="atmDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95" style="padding-top: 10px">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xxgl" type="checkbox" lay-filter="secondCheckBox" id="up_work" name="work"
+                               value="1" title="工作报表"/>
+                    </div>
+                </div>
+                <div class="layui-input-inline width-60">
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_workAdd" name="workAdd" value="1" title="增加"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_workUp" name="workUp" value="1" title="修改"/>
+                    <input class="xxgl" type="checkbox" lay-skin="primary"
+                           id="up_workDel" name="workDel" value="1" title="删除"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="wjgl" type="checkbox" lay-filter="firstCheckBox" id="up_wjgl" name="wjgl"
+                       value="1" title="文件管理"/>
+            </div>
+        </div>
+        <div name="wjglDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="wjgl" type="checkbox" lay-filter="secondCheckBox" id="up_bdxx" name="bdxx"
+                               value="1" title="表单信息"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="up_bdxxAdd" name="bdxxAdd" value="1" title="增加"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="up_bdxxUp" name="bdxxUp" value="1" title="修改"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="up_bdxxDel" name="bdxxDel" value="1" title="删除"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="up_bdxxDl" name="bdxxDl" value="1" title="下载"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="wjgl" type="checkbox" lay-filter="secondCheckBox" id="up_skwj" name="wj"
+                               value="1" title="受控文件"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="up_skwjAdd" name="wjAdd" value="1" title="增加"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="up_skwjUp" name="wjUp" value="1" title="修改"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="up_skwjDel" name="wjDel" value="1" title="删除"/>
+                    <input class="wjgl" type="checkbox" lay-skin="primary"
+                           id="up_skwjDl" name="wjDl" value="1" title="下载"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="rjxt" type="checkbox" lay-filter="firstCheckBox" id="up_rjxt" name="rjxt"
+                       value="1" title="软件系统"/>
+            </div>
+        </div>
+        <div name="rjxtDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="rjxt" type="checkbox" lay-filter="secondCheckBox" id="up_yyrj" name="yyrj"
+                               value="1" title="应用软件"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_yyrjAdd" name="yyrjAdd" value="1" title="增加"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_yyrjUp" name="yyrjUp" value="1" title="修改"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_yyrjDel" name="yyrjDel" value="1" title="删除"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_yyrjDl" name="yyrjDl" value="1" title="下载"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="rjxt" type="checkbox" lay-filter="secondCheckBox" id="up_xtxz" name="xtxz"
+                               value="1" title="系统下载"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_xtxzAdd" name="xtxzAdd" value="1" title="增加"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_xtxzUp" name="xtxzUp" value="1" title="修改"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_xtxzDel" name="xtxzDel" value="1" title="删除"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_xtxzDl" name="xtxzDl" value="1" title="下载"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="rjxt" type="checkbox" lay-filter="secondCheckBox" id="up_qdxz" name="qdxz"
+                               value="1" title="驱动下载"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_qdxzAdd" name="qdxzAdd" value="1" title="增加"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_qdxzUp" name="qdxzUp" value="1" title="修改"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_qdxzDel" name="qdxzDel" value="1" title="删除"/>
+                    <input class="rjxt" type="checkbox" lay-skin="primary"
+                           id="up_qdxzDl" name="qdxzDl" value="1" title="下载"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="xtgl" type="checkbox" lay-filter="firstCheckBox" id="up_xtgl" name="xtgl"
+                       value="1" title="系统管理"/>
+            </div>
+        </div>
+        <div name="xtglDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="xtgl" type="checkbox" lay-filter="secondCheckBox" id="up_xtrz" name="xtrz"
+                               value="1" title="系统日志"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-95">
+            <div class="submit_btn">
+                <input class="yhgl" type="checkbox" lay-filter="firstCheckBox" id="up_yhgl" name="yhgl"
+                       value="1" title="用户管理"/>
+            </div>
+        </div>
+        <div name="yhglDiv" style="display: none">
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" lay-filter="secondCheckBox" id="up_qxlb" name="qxlb"
+                               value="1" title="权限列表"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_qxlbAdd" name="qxlbAdd" value="1" title="增加"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_qxlbUp" name="qxlbUp" value="1" title="修改"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_qxlbDel" name="qxlbDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" lay-filter="secondCheckBox" id="up_bmlb" name="bmlb"
+                               value="1" title="职位列表"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_bmlbZwAdd" name="zwlbAdd" value="1" title="增加"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_bmlbZwUp" name="zwlbUp" value="1" title="修改"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_bmlbZwDel" name="zwlbDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" disabled checked title="部门列表"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_bmlbAdd" name="bmlbAdd" value="1" title="增加"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_bmlbUp" name="bmlbUp" value="1" title="修改"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_bmlbDel" name="bmlbDel" value="1" title="删除"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" lay-filter="secondCheckBox" id="up_yhlb" name="yhlb"
+                               value="1" title="用户列表"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_yhlbAdd" name="yhlbAdd" value="1" title="增加"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_yhlbUp" name="yhlbUp" value="1" title="修改"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_yhlbDel" name="yhlbDel" value="1" title="删除"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_yhlbEn" name="yhlbEn" value="1" title="停启用"/>
+                </div>
+            </div>
+            <div class="layui-form-item width-95">
+                <div class="float-left width-35">
+                    <div class="float-right">
+                        <input class="yhgl" type="checkbox" lay-filter="secondCheckBox" id="up_grxx" name="grxx"
+                               value="1" title="个人信息"/>
+                    </div>
+                </div>
+                <div class="float-left width-60">
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_grxxPwd" name="grxxPwd" value="1" title="改密"/>
+                    <input class="yhgl" type="checkbox" lay-skin="primary"
+                           id="up_grxxInfo" name="grxxInfo" value="1" title="修改"/>
+                </div>
+            </div>
+        </div>
+        <div class="submit_btn">
+            <button type="button" lay-submit="" lay-filter="subUpdate"
+                    class="layui-btn layui-btn-normal">提交
+            </button>
+            <button type="button" onclick="layer.closeAll()"
+                    class="layui-btn layui-btn-danger">关闭
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

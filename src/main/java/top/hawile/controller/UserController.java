@@ -42,7 +42,7 @@ public class UserController {
         request.setAttribute("authList",authService.list());
         //将操作写入日志
         logService.log("查看[ 用户列表 ]","成功");
-        return "user";
+        return "page/user";
     }
 
     @ResponseBody
@@ -70,7 +70,7 @@ public class UserController {
     public String sign(HttpServletRequest request){
         //将部门列表传入request
         request.setAttribute("deptList",deptService.list());
-        return "user_apply";
+        return "page/user_apply";
     }
 
 
@@ -85,7 +85,7 @@ public class UserController {
         request.setAttribute("deptList",deptService.list());
         //将操作写入日志
         logService.log("查看[ 个人信息 ]","成功");
-        return "user_info";
+        return "page/user_info";
     }
 
     @ResponseBody

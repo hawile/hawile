@@ -1,9 +1,15 @@
 package top.hawile.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import top.hawile.entity.SysInfo;
+import top.hawile.entity.UserSign;
+import top.hawile.service.SysInfoService;
 import top.hawile.service.UserService;
+import top.hawile.service.UserSignService;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,7 +23,11 @@ public class LoginController {
     @Resource
     private HttpServletRequest request;
     @Resource
+    private SysInfoService sysInfoService;
+    @Resource
     private UserService userService;
+    @Resource
+    private UserSignService userSignService;
 
     @RequestMapping({"/","/index"})
     public String index(){
@@ -34,7 +44,11 @@ public class LoginController {
     }
 
     @RequestMapping("/welcome")
-    public String welcome(){ return "/page/welcome"; }
+    public String welcome(Model model){
+        model.addAttribute("visits",sysInfoService.selectByName("visits").getValue());
+        model.addAttribute("userSignCount",userSignService.count());
+        return "/page/welcome";
+    }
 
     @ResponseBody
     @RequestMapping("/login")

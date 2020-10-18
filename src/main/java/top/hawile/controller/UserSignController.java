@@ -43,7 +43,7 @@ public class UserSignController {
         request.setAttribute("authList",authService.list());
         //将操作写入日志
         logService.log("查看[ 申请列表 ]","成功");
-        return "user_sign";
+        return "page/user_sign";
     }
 
     @ResponseBody

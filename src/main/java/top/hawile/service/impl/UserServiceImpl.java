@@ -1,9 +1,11 @@
 package top.hawile.service.impl;
 
 import org.springframework.stereotype.Service;
+import top.hawile.entity.SysInfo;
 import top.hawile.entity.User;
 import top.hawile.mapper.UserMapper;
 import top.hawile.service.LogService;
+import top.hawile.service.SysInfoService;
 import top.hawile.service.UserService;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -23,6 +25,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Resource
     private LogService logService;
+    @Resource
+    private SysInfoService sysInfoService;
 
     @Override
     //登录请求
@@ -54,6 +58,12 @@ public class UserServiceImpl implements UserService {
             if(user.getFirstPwd() == 1){
                 return 4;
             }
+            //获取系统信息对象
+            SysInfo sysInfo = sysInfoService.selectByName("visits");
+            //点击数量加1
+            sysInfo.setValue(sysInfo.getValue()+1);
+            //记录本次点击到数据库
+            sysInfoService.update(sysInfo);
             //获取当前浏览器的SessionId
             String sessionId = session.getId();
             //将当前sessionId存入数据库
