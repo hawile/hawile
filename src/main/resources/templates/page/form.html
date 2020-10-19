@@ -13,7 +13,7 @@
 <body>
 	<script type="text/html" id="toolbarDemo">
 		<div class="layui-btn-container">
-			<button th:if="${user.bdxxAdd == 1}" class="layui-btn layui-btn-warm"
+			<button th:if="${user.bdxxAdd}" class="layui-btn layui-btn-warm"
 					lay-event="insert">添加文件</button>
 			<button class="layui-btn layui-btn-danger"
 					lay-event="input">填写表单</button>
@@ -22,11 +22,11 @@
 	<script type="text/html" id="barDemo">
 		<a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
 		<a class="layui-btn layui-btn-xs"
-		   th:if="${user.bdxxUp == 1}" lay-event="edit" >编辑</a>
+		   th:if="${user.bdxxUp}" lay-event="edit" >编辑</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs"
-		   th:if="${user.bdxxDel == 1}" lay-event="delete">删除</a>
+		   th:if="${user.bdxxDel}" lay-event="delete">删除</a>
 		<a class="layui-btn layui-btn-normal layui-btn-xs"
-		   th:if="${user.bdxxDl == 1}" lay-event="download">下载</a>
+		   th:if="${user.bdxxDl}" lay-event="download">下载</a>
 	</script>
 	<table class="layui-hide" id="table" lay-filter="table"></table>
 

@@ -157,9 +157,11 @@ $(function($) {
                         });
                     });
                     break;
+                //文件下载
                 case 'download':
                     window.location="/form/download?download="+data.download+"&name="+data.name;
                     break;
+                //文件浏览
                 case 'detail':
                     layer.open({
                         type: 2,

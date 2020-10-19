@@ -1,9 +1,3 @@
-/**
- * date:2020/02/27
- * author:Mr.Chung
- * version:2.0
- * description:layuimini 主体框架扩展
- */
 layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function (exports) {
     let $ = layui.$,
         layer = layui.layer,
@@ -227,11 +221,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
             let isIOS = (/iPhone|iPod|iPad/i).test(ua) && !isAndroid;
             let isWinPhone = (/Windows Phone|ZuneWP7/i).test(ua);
             let clientWidth = document.documentElement.clientWidth;
-            if (!isAndroid && !isIOS && !isWinPhone && clientWidth > 1024) {
-                return false;
-            } else {
-                return true;
-            }
+            return !(!isAndroid && !isIOS && !isWinPhone && clientWidth > 1024);
         },
 
         /**
@@ -249,7 +239,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                 // 判断是否清理服务端
                 let clearUrl = $(this).attr('data-href');
                 if (clearUrl != undefined && clearUrl != '' && clearUrl != null) {
-                    $.getJSON(clearUrl, function (data, status) {
+                    $.getJSON(clearUrl, function (data) {
                         layer.close(loading);
                         if (data.code != 1) {
                             return miniAdmin.error(data.msg);
@@ -281,8 +271,8 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                 if (miniAdmin.checkMobile()) {
                     return false;
                 }
-                let classInfo = $(this).attr('class'),
-                    tips = $(this).prop("innerHTML"),
+
+                let   tips = $(this).prop("innerHTML"),
                     isShow = $('.layuimini-tool i').attr('data-side-fold');
                 if (isShow == 0 && tips) {
                     tips = "<ul class='layuimini-menu-left-zoom layui-nav layui-nav-tree layui-this'><li class='layui-nav-item layui-nav-itemed'>"+tips+"</li></ul>" ;

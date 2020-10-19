@@ -6,10 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 import top.hawile.entity.*;
-import top.hawile.entity.form.Form00004;
-import top.hawile.entity.form.Form00008;
-import top.hawile.entity.form.Form00018;
-import top.hawile.entity.form.Form00203;
+import top.hawile.entity.form.*;
 import top.hawile.mapper.FormInputMapper;
 import top.hawile.service.DeptService;
 import top.hawile.service.FormInputService;
@@ -84,7 +81,7 @@ public class FormInputServiceImpl implements FormInputService {
         //给指定的sheet命名
         wb.setSheetName(0,"IT设备安装及变更申请表");
         //设置表单编码
-        CellIn(sheet,1,0,formNo(dept));
+        CellIn(sheet,1,0,formNo(4));
         //设置申请时间
         CellIn(sheet,1,5,fm.format(dt));
         //设置申请人
@@ -160,7 +157,7 @@ public class FormInputServiceImpl implements FormInputService {
         //给指定的sheet命名
         wb.setSheetName(0,"IT账号开通变更申请表");
         //设置表单编码
-        CellIn(sheet,1,0,formNo(dept));
+        CellIn(sheet,1,0,formNo(4));
         //设置申请日期
         CellIn(sheet,1,7,fm.format(dt));
         //设置姓名
@@ -237,7 +234,7 @@ public class FormInputServiceImpl implements FormInputService {
         XSSFSheet sheet=wb.getSheetAt(0);
         //给指定的sheet命名
         wb.setSheetName(0,"逻辑安全内部审计、审查报告");
-        CellIn(sheet,1,0,formNo(dept));			//设置表单编码
+        CellIn(sheet,1,0,formNo(4));			//设置表单编码
         CellIn(sheet,1,9,form.getBGH());		//设置报告号
         CellIn(sheet,1,11,form.getRQ());		//设置报告日期
         CellIn(sheet,3,9,form.getSJBM());	//设置受检部门
@@ -329,7 +326,7 @@ public class FormInputServiceImpl implements FormInputService {
         //给指定的sheet命名
         wb.setSheetName(0,"机房进出申请表");
         //设置表单编码
-        CellIn(sheet,1,0,formNo(dept));
+        CellIn(sheet,1,0,formNo(4));
         //设置申请日期
         CellIn(sheet,1,4,fm.format(dt));
         //设置申请部门
@@ -390,10 +387,143 @@ public class FormInputServiceImpl implements FormInputService {
         return fileName;
     }
 
+    @Override
+    //密钥人员任命/终止表
+    public String form00021(Form00021 form) throws Exception {
+        //获取部门信息
+        Department dept = deptService.selectId(form.getDeptId());
+        //获取当前系统时间
+        Date dt=new Date();
+        //格式化报告填写时间
+        SimpleDateFormat fm = new SimpleDateFormat("yyyy 年 MM 月 dd 日");
+        //格式化文件名时间
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");
+        //格式化当前系统时间
+        String dateTime=fmt.format(dt);
+        //创建Excel文件的输入流对象
+        FileInputStream in=new FileInputStream(root+"/Excel/Form00021.xlsx");
+        //根据模板创建excel工作簿
+        XSSFWorkbook wb=new XSSFWorkbook(in);
+        in.close();
+        //获取创建的工作簿第一页
+        XSSFSheet sheet=wb.getSheetAt(0);
+        //给指定的sheet命名
+        wb.setSheetName(0,"密钥人员任命终止表");
+        //设置表单编码
+        CellIn(sheet,1,0,formNo(4));
+        //设置姓名
+        CellIn(sheet,3,1,form.getName());
+        //设置员工编号
+        CellIn(sheet,3,3,form.getNumber());
+        //设置部门
+        CellIn(sheet,3,5,dept.getDeptName());
+        //设置职位
+        CellIn(sheet,3,7,form.getJob());
+        //设置出生年月
+        CellIn(sheet,5,1,form.getBirth());
+        //设置家庭住址
+        CellIn(sheet,5,3,form.getAddress());
+        //设置入职时间
+        CellIn(sheet,7,1,form.getJoinDate());
+        //设置邮箱
+        CellIn(sheet,7,5,form.getEmail());
+        //设置座机号
+        CellIn(sheet,9,1,form.getTelephone());
+        //设置手机号
+        CellIn(sheet,9,5,form.getMobile());
+        //设置是否有不良信用记录
+        if (form.getCreditRecord() == 1){
+            CellIn(sheet,11,4,"R");
+            CellIn(sheet,11,6,"T");
+        } else if (form.getCreditRecord() == 2) {
+            CellIn(sheet,11,4,"T");
+            CellIn(sheet,11,6,"R");
+        }
+        //设置是否有犯罪记录
+        if (form.getCriminalRecord() == 1){
+            CellIn(sheet,12,4,"R");
+            CellIn(sheet,12,6,"T");
+        } else if (form.getCriminalRecord() == 2) {
+            CellIn(sheet,12,4,"T");
+            CellIn(sheet,12,6,"R");
+        }
+        //设置是否任命
+        if (form.getAppointment() == 1){
+            CellIn(sheet,13,2,"R");
+            CellIn(sheet,13,4,"T");
+        } else if (form.getAppointment() == 2) {
+            CellIn(sheet,13,2,"T");
+            CellIn(sheet,13,4,"R");
+        }
+        //设置终止任命原因
+        if ("ZG".equals(form.getTermination())){
+            CellIn(sheet,14,2,"R");
+            CellIn(sheet,14,4,"T");
+            CellIn(sheet,14,6,"T");
+        } else if ("LZ".equals(form.getTermination())) {
+            CellIn(sheet,14,2,"T");
+            CellIn(sheet,14,4,"R");
+            CellIn(sheet,14,6,"T");
+        }else if ("QT".equals(form.getTermination())) {
+            CellIn(sheet,14,2,"T");
+            CellIn(sheet,14,4,"T");
+            CellIn(sheet,14,6,"R");
+        } else {
+            CellIn(sheet,14,2,"T");
+            CellIn(sheet,14,4,"T");
+            CellIn(sheet,14,6,"T");
+        }
+        //设置密钥组类型
+        if ("primary".equals(form.getType())){
+            CellIn(sheet,16,1,"R");
+            CellIn(sheet,16,4,"T");
+        } else if ("secondary".equals(form.getType())) {
+            CellIn(sheet,16,1,"T");
+            CellIn(sheet,16,4,"R");
+        }
+        //设置密钥组
+        if ("KC1".equals(form.getGroup())){
+            CellIn(sheet,17,1,"R");
+            CellIn(sheet,17,4,"T");
+            CellIn(sheet,18,1,"T");
+            CellIn(sheet,18,4,"T");
+        } else if ("KC2".equals(form.getGroup())) {
+            CellIn(sheet,17,1,"T");
+            CellIn(sheet,17,4,"R");
+            CellIn(sheet,18,1,"T");
+            CellIn(sheet,18,4,"T");
+        } else if ("KC3".equals(form.getGroup())) {
+            CellIn(sheet,17,1,"T");
+            CellIn(sheet,17,4,"T");
+            CellIn(sheet,18,1,"R");
+            CellIn(sheet,18,4,"T");
+        } else if ("KM".equals(form.getGroup())) {
+            CellIn(sheet,17,1,"T");
+            CellIn(sheet,17,4,"T");
+            CellIn(sheet,18,1,"T");
+            CellIn(sheet,18,4,"R");
+        }
+        //定义下载表单文件名
+        String fileName = "Form"+dateTime+".xlsx";
+        //输出Excel文件
+        File folder=new File(root,"InputForm");
+        if(!folder.exists()) {
+            folder.mkdirs();
+        }
+        OutputStream output=new FileOutputStream(new File(folder, fileName));
+        wb.write(output);
+        wb.close();
+        output.close();
+        return fileName;
+    }
+
+
     //获取文件填写编码
-    public String formNo(Department dept) {
+    public String formNo(Integer id) {
+        //获取部门对象
+        Department dept = deptService.selectId(id);
         //将部门ID转换成String类型
-        String deptId=String.valueOf(dept.getDeptId());
+        String deptId=String.valueOf(id);
         //将部门ID转换成两位数
         if(deptId.length()==1)deptId="0"+deptId;
         //获取当前时间

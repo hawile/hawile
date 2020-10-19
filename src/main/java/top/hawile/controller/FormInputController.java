@@ -6,10 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import top.hawile.entity.*;
-import top.hawile.entity.form.Form00004;
-import top.hawile.entity.form.Form00008;
-import top.hawile.entity.form.Form00018;
-import top.hawile.entity.form.Form00203;
+import top.hawile.entity.form.*;
 import top.hawile.service.*;
 
 import javax.annotation.Resource;
@@ -201,6 +198,32 @@ public class FormInputController {
         return map;
     }
 
+    @ResponseBody
+    @RequestMapping("/00021")
+    //逻辑安全内部审计、审查报告
+    public Map<String,Object> form00021(Form00021 form, HttpSession session) throws Exception {
+        //执行填写操作
+        String filePath = formInputService.form00021(form);
+        //新建对象
+        FormInput formInput = new FormInput();
+        //获取当前登录用户信息
+        User user = (User) session.getAttribute("user");
+        //设置值
+        formInput.setName(user.getName());
+        formInput.setFormName(form.getTitle());
+        formInput.setFormNo(deptService.selectId(4).getFormNo());
+        formInput.setFormPath(filePath);
+        //执行添加填写表单信息到数据库操作
+        formInputService.insert(formInput);
+        //将操作写入日志
+        logService.log("填写[ "+form.getTitle()+" ]表单","成功");
+        //新建Map对象
+        Map<String,Object> map = new HashMap<>();
+        //给map对象赋值
+        map.put("fileName",filePath);
+        map.put("name",form.getTitle());
+        return map;
+    }
 
     @ResponseBody
     @GetMapping("/download")

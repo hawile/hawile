@@ -1,10 +1,7 @@
 package top.hawile.service;
 
 import top.hawile.entity.*;
-import top.hawile.entity.form.Form00004;
-import top.hawile.entity.form.Form00008;
-import top.hawile.entity.form.Form00018;
-import top.hawile.entity.form.Form00203;
+import top.hawile.entity.form.*;
 
 import java.util.List;
 import java.util.Map;
@@ -37,6 +34,9 @@ public interface FormInputService {
 
     //机房进出申请表
     String form00203(Form00203 form) throws Exception;
+
+    //密钥人员任命/终止表
+    String form00021(Form00021 form) throws Exception;
 
     //Form00018自动填写内容
     Map<String,Object> getFrom00018Content(String type, String cfgPath) throws Exception;
