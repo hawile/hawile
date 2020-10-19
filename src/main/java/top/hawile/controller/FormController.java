@@ -4,8 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +13,6 @@ import top.hawile.entity.Form;
 import top.hawile.service.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
@@ -37,11 +36,11 @@ public class FormController {
 
     @RequestMapping
     //设置表单信息界面所需内容
-    public String form(HttpServletRequest request, HttpSession session){
-        //将当前用户对象传入request
-        request.setAttribute("user",session.getAttribute("user"));
-        //将部门列表传入request
-        request.setAttribute("deptList",deptService.list());
+    public String form(Model model, HttpSession session){
+        //将当前用户对象传入model
+        model.addAttribute("user",session.getAttribute("user"));
+        //将部门列表传入model
+        model.addAttribute("deptList",deptService.list());
         //将操作写入日志
         logService.log("查看[ 表单信息 ] 列表","成功");
         return "page/form";
@@ -84,7 +83,7 @@ public class FormController {
     }
 
     @ResponseBody
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     //添加表单
     public int insert(Form form, String exts, Integer size){
         //将当前系统时间封装进对象
@@ -113,7 +112,7 @@ public class FormController {
     }
 
     @ResponseBody
-    @PostMapping("/update")
+    @RequestMapping("/update")
     //修改表单
     public int update(Form form, String exts, Integer size){
         //将当前系统时间封装进对象
@@ -145,7 +144,7 @@ public class FormController {
     }
 
     @ResponseBody
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     @Transactional
     //删除表单
     public int delete(Integer id, String name){
@@ -162,7 +161,7 @@ public class FormController {
         return 0;
     }
 
-    @GetMapping("/download")
+    @RequestMapping("/download")
     //下载表单
     public void download(String download, String name, HttpServletResponse response) throws Exception {
         //获取当前工作根目录
@@ -174,7 +173,7 @@ public class FormController {
         logService.log("下载 ["+name+" ]文件","成功");
     }
 
-    @GetMapping("/detail")
+    @RequestMapping("/detail")
     //浏览表单
     public void detail(String path, String name, HttpServletResponse response) {
         //获取当前工作根目录

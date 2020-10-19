@@ -3,14 +3,17 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.LogLogin;
 import top.hawile.entity.User;
-import top.hawile.service.*;
+import top.hawile.service.AuthService;
+import top.hawile.service.DeptService;
+import top.hawile.service.LogService;
+import top.hawile.service.UserService;
+
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -33,13 +36,13 @@ public class UserController {
 
     @RequestMapping()
     //设置用户列表界面所需内容
-    public String userList(HttpServletRequest request, HttpSession session) {
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
-        //将部门列表传入request
-        request.setAttribute("deptList",deptService.list());
-        //将权限列表传入request
-        request.setAttribute("authList",authService.list());
+    public String userList(Model model, HttpSession session) {
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
+        //将部门列表传入model
+        model.addAttribute("deptList",deptService.list());
+        //将权限列表传入model
+        model.addAttribute("authList",authService.list());
         //将操作写入日志
         logService.log("查看[ 用户列表 ]","成功");
         return "page/user";
@@ -67,22 +70,22 @@ public class UserController {
 
     @RequestMapping("/apply")
     //用户注册界面所需内容
-    public String sign(HttpServletRequest request){
-        //将部门列表传入request
-        request.setAttribute("deptList",deptService.list());
+    public String sign(Model model){
+        //将部门列表传入model
+        model.addAttribute("deptList",deptService.list());
         return "page/user_apply";
     }
 
 
     @RequestMapping("/user_info")
     //设置个人信息列表所需内容
-    public String userInfo(HttpServletRequest request, HttpSession session) {
+    public String userInfo(Model model, HttpSession session) {
         //获取当前登录用户对象
         User user = (User) session.getAttribute("user");
-        //将登录用户信息传入request
-        request.setAttribute("user",userService.findByUserName(user.getUserName()));
-        //将部门列表传入request
-        request.setAttribute("deptList",deptService.list());
+        //将登录用户信息传入model
+        model.addAttribute("user",userService.findByUserName(user.getUserName()));
+        //将部门列表传入model
+        model.addAttribute("deptList",deptService.list());
         //将操作写入日志
         logService.log("查看[ 个人信息 ]","成功");
         return "page/user_info";
@@ -116,7 +119,7 @@ public class UserController {
 
     //添加用户操作
     @ResponseBody
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     public int insert(User user) {
             //执行添加到数据库操作
             int state = userService.insert(user);
@@ -136,7 +139,7 @@ public class UserController {
 
     //更新用户操作
     @ResponseBody
-    @PostMapping("/update")
+    @RequestMapping("/update")
     public int update(User user) {
         //执行更新到数据库操作
         int state = userService.update(user);
@@ -152,7 +155,7 @@ public class UserController {
 
     //删除用户操作
     @ResponseBody
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     public int delete(Integer id,String userName) {
         //执行删除到数据库操作
         int state = userService.delete(id);
@@ -168,7 +171,7 @@ public class UserController {
 
     //用户停启用操作
     @ResponseBody
-    @PostMapping("/enabled")
+    @RequestMapping("/enabled")
     public int enabled(Integer id, Integer enabled, String userName) {
         //更新状态
         int state = userService.updateEnabled(id,enabled);

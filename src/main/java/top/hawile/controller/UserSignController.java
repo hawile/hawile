@@ -3,6 +3,7 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.UserSign;
@@ -11,7 +12,6 @@ import top.hawile.service.DeptService;
 import top.hawile.service.LogService;
 import top.hawile.service.UserSignService;
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -34,13 +34,13 @@ public class UserSignController {
 
     @RequestMapping
     //设置申请列表所需内容
-    public String userApply(HttpServletRequest request, HttpSession session){
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
-        //将部门列表传入request
-        request.setAttribute("deptList",deptService.list());
-        //将权限列表传入request
-        request.setAttribute("authList",authService.list());
+    public String userApply(Model model, HttpSession session){
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
+        //将部门列表传入model
+        model.addAttribute("deptList",deptService.list());
+        //将权限列表传入model
+        model.addAttribute("authList",authService.list());
         //将操作写入日志
         logService.log("查看[ 申请列表 ]","成功");
         return "page/user_sign";

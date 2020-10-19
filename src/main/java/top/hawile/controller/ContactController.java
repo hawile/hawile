@@ -4,8 +4,8 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.Contact;
@@ -13,7 +13,6 @@ import top.hawile.service.ContactService;
 import top.hawile.service.LogService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -32,9 +31,9 @@ public class ContactController {
 
     @RequestMapping()
     //设置厂商联系方式列表所需内容
-    public String contact(HttpServletRequest request, HttpSession session){
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
+    public String contact(Model model, HttpSession session){
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
         //将操作写入日志
         logService.log("查看[ 厂商信息 ]","成功");
         return "/page/contact";
@@ -61,7 +60,7 @@ public class ContactController {
     }
 
     @ResponseBody
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     //添加厂商联系人信息
     public int insert(Contact contact){
         //封装当前系统时间到对象
@@ -84,7 +83,7 @@ public class ContactController {
     }
 
     @ResponseBody
-    @PostMapping("/update")
+    @RequestMapping("/update")
     //修改厂商联系人信息
     public int update(Contact contact){
         //封装当前系统时间到对象中
@@ -105,7 +104,7 @@ public class ContactController {
     }
 
     @ResponseBody
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     //删除厂商联系人信息
     public int delete(Integer id, String tradeName, String contacts){
         //执行删除厂商联系方式到数据库操作

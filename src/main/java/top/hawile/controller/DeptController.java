@@ -3,7 +3,7 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.Department;
@@ -11,7 +11,6 @@ import top.hawile.service.DeptService;
 import top.hawile.service.LogService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -31,9 +30,9 @@ public class DeptController {
 
     @RequestMapping()
     //设置部门列表所需内容
-    public String dept(HttpServletRequest request, HttpSession session) {
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
+    public String dept(Model model, HttpSession session) {
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
         //将操作写入日志
         logService.log("查看[ 部门列表 ]","成功");
         return "page/department";
@@ -60,7 +59,7 @@ public class DeptController {
     }
 
     @ResponseBody
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     //添加部门
     public int insert(Department dept) {
         //执行添加到数据库操作
@@ -77,7 +76,7 @@ public class DeptController {
     }
 
     @ResponseBody
-    @PostMapping("/update")
+    @RequestMapping("/update")
     //更新部门
     public int update(Department dept) {
         //执行更新到数据库操作
@@ -94,7 +93,7 @@ public class DeptController {
     }
 
     @ResponseBody
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     //删除部门
     public int delete(Integer deptId, String deptName) {
         //执行删除到数据库操作

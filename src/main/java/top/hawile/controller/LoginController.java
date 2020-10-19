@@ -4,14 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import top.hawile.entity.SysInfo;
-import top.hawile.entity.UserSign;
 import top.hawile.service.SysInfoService;
 import top.hawile.service.UserService;
 import top.hawile.service.UserSignService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,8 +17,6 @@ import java.util.Map;
 public class LoginController {
     @Resource
     private HttpSession session;
-    @Resource
-    private HttpServletRequest request;
     @Resource
     private SysInfoService sysInfoService;
     @Resource
@@ -37,9 +32,9 @@ public class LoginController {
     }
 
     @RequestMapping("/home")
-    public String home(){
-        //将user对象存入request
-        request.setAttribute("user", session.getAttribute("user"));
+    public String home(Model model){
+        //将user对象存入model
+        model.addAttribute("user", session.getAttribute("user"));
         return "home";
     }
 

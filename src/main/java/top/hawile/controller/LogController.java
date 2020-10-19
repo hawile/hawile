@@ -3,13 +3,13 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.Log;
 import top.hawile.service.LogService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -24,9 +24,9 @@ public class LogController {
 
     @RequestMapping()
     //获取日志列表
-    public String log(HttpServletRequest request, HttpSession session) {
-        //将当前用户对象传入request
-        request.setAttribute("user",session.getAttribute("user"));
+    public String log(Model model, HttpSession session) {
+        //将当前用户对象传入model
+        model.addAttribute("user",session.getAttribute("user"));
         return "page/log";
     }
 
@@ -51,9 +51,9 @@ public class LogController {
 
     @RequestMapping("/month")
     //获取特定月份日志列表
-    public String log(String month, HttpServletRequest request) {
-        //将系统日志列表传入request
-        request.setAttribute("syslogList", logService.logMonth(month));
+    public String log(String month, Model model) {
+        //将系统日志列表传入model
+        model.addAttribute("syslogList", logService.logMonth(month));
         return "page/log";
     }
 }

@@ -1,4 +1,4 @@
-package top.hawile.entity;
+package top.hawile.entity.form;
 
 public class Form00008 {
     private String title;

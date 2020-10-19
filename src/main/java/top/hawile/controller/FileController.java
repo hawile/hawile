@@ -4,8 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +15,6 @@ import top.hawile.service.FileService;
 import top.hawile.service.LogService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
@@ -37,11 +36,11 @@ public class FileController {
 
     @RequestMapping
     //设置文件信息界面所需内容
-    public String form(HttpServletRequest request, HttpSession session){
-        //将当前用户对象传入request
-        request.setAttribute("user",session.getAttribute("user"));
-        //将部门列表传入request
-        request.setAttribute("deptList",deptService.list());
+    public String form(Model model, HttpSession session){
+        //将当前用户对象传入model
+        model.addAttribute("user",session.getAttribute("user"));
+        //将部门列表传入model
+        model.addAttribute("deptList",deptService.list());
         //将操作写入日志
         logService.log("查看[ 文件信息 ] 列表","成功");
         return "page/file";
@@ -85,7 +84,7 @@ public class FileController {
     }
 
     @ResponseBody
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     public int insert(FileEntity fileEntity, String exts, Integer size){
         //将当前系统时间封装进对象
         fileEntity.setUpdateTime(new Timestamp(new Date().getTime()));
@@ -113,7 +112,7 @@ public class FileController {
     }
 
     @ResponseBody
-    @PostMapping("/update")
+    @RequestMapping("/update")
     public int update(FileEntity fileEntity, String exts, Integer size){
         //将当前系统时间封装进对象
         fileEntity.setUpdateTime(new Timestamp(new Date().getTime()));
@@ -144,7 +143,7 @@ public class FileController {
     }
 
     @ResponseBody
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     @Transactional
     public int delete(Integer id, String name){
         //执行删除文件到数据库操作
@@ -160,7 +159,7 @@ public class FileController {
         return 0;
     }
 
-    @GetMapping("/download")
+    @RequestMapping("/download")
     public void download(String download, String name, HttpServletResponse response) throws Exception {
         //获取当前工作根目录
         String root = System.getProperty("user.dir");
@@ -171,7 +170,7 @@ public class FileController {
         logService.log("下载 ["+name+" ]文件","成功");
     }
 
-    @GetMapping("/detail")
+    @RequestMapping("/detail")
     public void detail(String path, String name, HttpServletResponse response) {
         //获取当前工作根目录
         String root = System.getProperty("user.dir");

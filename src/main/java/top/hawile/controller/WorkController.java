@@ -3,8 +3,8 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.Work;
@@ -12,7 +12,6 @@ import top.hawile.service.LogService;
 import top.hawile.service.WorkService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -36,9 +35,9 @@ public class WorkController {
 
     @RequestMapping()
     //设置工作报表列表所需内容
-    public String work(HttpServletRequest request, HttpSession session) {
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
+    public String work(Model model, HttpSession session) {
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
         //将操作写入日志
         logService.log("查看[ 工作报表 ]","成功");
         return "page/work";
@@ -65,7 +64,7 @@ public class WorkController {
     }
 
     @ResponseBody
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     //添加工作报表
     public int insert(Work work) {
         //封装当前系统时间到work对象
@@ -83,7 +82,7 @@ public class WorkController {
     }
 
     @ResponseBody
-    @PostMapping("/update")
+    @RequestMapping("/update")
     public int update(Work work) {
         //封装当前系统时间到work对象
         work.setUpdateTime(new Timestamp(date.getTime()));
@@ -100,7 +99,7 @@ public class WorkController {
     }
 
     @ResponseBody
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     public int delete(Integer id,String name) {
         //执行增加到数据库操作
         int state = workService.delete(id);

@@ -3,6 +3,7 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,7 +13,6 @@ import top.hawile.service.LogService;
 import top.hawile.service.SoftAppService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
@@ -39,9 +39,9 @@ public class SoftAppController {
 
     @RequestMapping()
     //设置应用软件列表所需内容
-    public String softApp(HttpServletRequest request, HttpSession session){
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
+    public String softApp(Model model, HttpSession session){
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
         logService.log("查看[ 应用软件 ]列表","成功");
         return "page/soft_app";
     }

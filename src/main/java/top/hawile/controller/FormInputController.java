@@ -6,6 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import top.hawile.entity.*;
+import top.hawile.entity.form.Form00004;
+import top.hawile.entity.form.Form00008;
+import top.hawile.entity.form.Form00018;
+import top.hawile.entity.form.Form00203;
 import top.hawile.service.*;
 
 import javax.annotation.Resource;
@@ -95,7 +99,7 @@ public class FormInputController {
     }
 
     @ResponseBody
-    @PostMapping("/00004")
+    @RequestMapping("/00004")
     public Map<String,Object> form00004(Form00004 form) throws Exception {
         //执行填写操作
         String filePath = formInputService.form00004(form);
@@ -119,7 +123,7 @@ public class FormInputController {
     }
 
     @ResponseBody
-    @PostMapping("/00008")
+    @RequestMapping("/00008")
     //填写<<IT账号开通及变更申请表>>
     public Map<String,Object> form00008(Form00008 form) throws Exception {
         //执行填写操作
@@ -144,7 +148,7 @@ public class FormInputController {
     }
 
     @ResponseBody
-    @PostMapping("/00018")
+    @RequestMapping("/00018")
     //填写<<IT账号开通及变更申请表>>
     public Map<String,Object> form00018(Form00018 form, HttpSession session) throws Exception {
         //获取当前user对象
@@ -171,7 +175,7 @@ public class FormInputController {
     }
 
     @ResponseBody
-    @PostMapping("/00203")
+    @RequestMapping("/00203")
     //逻辑安全内部审计、审查报告
     public Map<String,Object> form00203(Form00203 form, HttpSession session) throws Exception {
         //执行填写操作

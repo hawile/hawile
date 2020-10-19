@@ -3,8 +3,8 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.Atm;
@@ -13,8 +13,8 @@ import top.hawile.service.AtmGoodsService;
 import top.hawile.service.AtmService;
 import top.hawile.service.GoodsService;
 import top.hawile.service.LogService;
+
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
@@ -42,11 +42,11 @@ public class AtmController {
 
     @RequestMapping
     //设置订单信息列表界面所需内容
-    public String atm(HttpServletRequest request, HttpSession session){
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
-        //将商品信息列表传入request
-        request.setAttribute("goodsList",goodsService.list());
+    public String atm(Model model, HttpSession session){
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
+        //将商品信息列表传入model
+        model.addAttribute("goodsList",goodsService.list());
         //将操作写入日志
         logService.log("查看[ 售货机订单信息列表 ]","成功");
         return "page/atm";
@@ -54,11 +54,11 @@ public class AtmController {
 
     @RequestMapping("/goods")
     //设置商品信息列表界面所需内容
-    public String goods(HttpServletRequest request, HttpSession session){
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
-        //将商品信息列表传入request
-        request.setAttribute("goodsList",goodsService.list());
+    public String goods(Model model, HttpSession session){
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
+        //将商品信息列表传入model
+        model.addAttribute("goodsList",goodsService.list());
         //将操作写入日志
         logService.log("查看[ 售货机商品信息列表 ]","成功");
         return "page/goods";
@@ -106,16 +106,16 @@ public class AtmController {
 
     @RequestMapping("/order")
     //获取特定订单详细信息
-    public String order(Integer id, HttpServletRequest request){
-        //将特定售货机订单信息传入request
-        request.setAttribute("atm",atmService.selectById(id));
-        //将特定售货机订单商品信息列表传入request
-        request.setAttribute("atmGoodsList",atmGoodsService.selectByOrderId(id));
+    public String order(Integer id, Model model){
+        //将特定售货机订单信息传入model
+        model.addAttribute("atm",atmService.selectById(id));
+        //将特定售货机订单商品信息列表传入model
+        model.addAttribute("atmGoodsList",atmGoodsService.selectByOrderId(id));
         return "page/atm_order";
     }
 
     @ResponseBody
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     //添加订单
     public int insert(Atm atm,String goodsNum, String goodsNum2){
         //封装当前系统时间到对象
@@ -134,7 +134,7 @@ public class AtmController {
     }
 
     @ResponseBody
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     //删除订单
     public int delete(Integer id, String name){
         //执行删除订单信息到数据库操作
@@ -151,7 +151,7 @@ public class AtmController {
     }
 
     @ResponseBody
-    @PostMapping("/goods/insert")
+    @RequestMapping("/goods/insert")
     //添加商品
     public int goodsInsert(Goods goods){
         //执行添加商品到数据库操作
@@ -168,7 +168,7 @@ public class AtmController {
     }
 
     @ResponseBody
-    @PostMapping("/goods/update")
+    @RequestMapping("/goods/update")
     //修改商品
     public int goodsUpdate(Goods goods){
         //执行添加商品到数据库操作
@@ -185,7 +185,7 @@ public class AtmController {
     }
 
     @ResponseBody
-    @PostMapping("/goods/delete")
+    @RequestMapping("/goods/delete")
     //删除商品
     public int goodsDelete(Integer id,String name){
         //执行添加商品到数据库操作

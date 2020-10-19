@@ -3,14 +3,14 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.Csr;
 import top.hawile.service.CsrService;
 import top.hawile.service.LogService;
+
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -29,9 +29,9 @@ public class CsrController {
 
     @RequestMapping
     //设置客户账号信息列表所需内容
-    public String csr(HttpServletRequest request, HttpSession session){
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
+    public String csr(Model model, HttpSession session){
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
         //将操作写入日志
         logService.log("查看[ 客户账号信息列表 ]","成功");
         return "page/csr";
@@ -58,7 +58,7 @@ public class CsrController {
     }
 
     @ResponseBody
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     public int insert(Csr csr){
         //封装当前系统时间到对象
         csr.setUpdateTime(new Timestamp(new Date().getTime()));
@@ -74,7 +74,7 @@ public class CsrController {
     }
 
     @ResponseBody
-    @PostMapping("/update")
+    @RequestMapping("/update")
     public int update(Csr csr){
         //封装当前系统时间到对象
         csr.setUpdateTime(new Timestamp(new Date().getTime()));
@@ -90,7 +90,7 @@ public class CsrController {
     }
 
     @ResponseBody
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     public int delete(Integer id, String name){
         //执行修改客户账号信息到数据库操作
         int state = csrService.delete(id);
