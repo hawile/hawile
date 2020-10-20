@@ -90,8 +90,8 @@ layui.use(['form', 'table'], function () {
             ,dataType: 'json'
             ,success: function (data){
                 if(!$.isEmptyObject(data)){
-                    parent.window.open('/form_input/download?fileName='+data.fileName+
-                        "&name="+data.name,'_blank');
+                    parent.window.location='/form_input/download?fileName='+data.fileName+
+                        "&name="+data.name;
                     parent.parent.layer.msg('填写成功,正在下载...');
                     parent.layer.closeAll();
                 }else{

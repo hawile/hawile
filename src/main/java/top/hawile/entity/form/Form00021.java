@@ -21,6 +21,7 @@ public class Form00021 {
     private String termination;
     private String type;
     private String group;
+    private String effectiveDate;
 
     public String getTitle() {
         return title;
@@ -156,5 +157,13 @@ public class Form00021 {
 
     public void setGroup(String group) {
         this.group = group;
+    }
+
+    public String getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    public void setEffectiveDate(String effectiveDate) {
+        this.effectiveDate = effectiveDate;
     }
 }

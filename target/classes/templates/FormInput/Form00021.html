@@ -15,7 +15,17 @@
 			laydate.render({
 				elem: '#joinDate',
 				trigger: 'click',
+				format: 'yyyy-MM-dd'
+			});
+			laydate.render({
+				elem: '#birth',
+				trigger: 'click',
 				format: 'yyyy/MM/dd'
+			});
+			laydate.render({
+				elem: '#effectiveDate',
+				trigger: 'click',
+				format: 'yyyy年MM月dd日'
 			});
 			form.on('select(dept)', function (obj) {
 				if(obj.value != ""){
@@ -93,7 +103,8 @@
 					<span style="color: red; ">*</span>出生年月:
 				</label>
 				<div class="float-left width-50">
-					<input type="text" class="layui-input" name="birth" lay-verify="required"/>
+					<input type="text" id="birth" name="birth" class="layui-input" autocomplete="off"
+						   placeholder="yyyy/MM/dd" lay-verify="required"/>
 				</div>
 			</div>
 			<div class="layui-form-item width-90">
@@ -110,7 +121,7 @@
 				</label>
 				<div class="float-left width-50">
 					<input type="text" id="joinDate" name="joinDate" class="layui-input" autocomplete="off"
-						   placeholder="yyyy/MM/dd" lay-verify="required"/>
+						   placeholder="yyyy-MM-dd" lay-verify="required"/>
 				</div>
 			</div>
 			<div class="layui-form-item width-90">
@@ -172,7 +183,7 @@
 					<input type="radio" name="termination" value="ZG" lay-skin="primary" title="转岗"/>
 					<input type="radio" name="termination" value="LZ" lay-skin="primary" title="离职"/>
 					<input type="radio" name="termination" value="QT" lay-skin="primary" title="其他"/>
-					<input type="radio" name="termination" value="No" lay-skin="primary" title="无"/>
+					<input type="radio" name="termination" value="No" lay-skin="primary" title="无" checked/>
 				</div>
 			</div>
 			<div class="layui-form-item width-90">
@@ -180,7 +191,7 @@
 					<span style="color: red; ">*</span>密钥组类型:
 				</label>
 				<div class="float-left width-50">
-					<input type="radio" name="type" value="primary" lay-skin="primary" title="正式"/>
+					<input type="radio" name="type" value="primary" lay-skin="primary" title="正式" checked/>
 					<input type="radio" name="type" value="secondary" lay-skin="primary" title="备份"/>
 				</div>
 			</div>
@@ -192,7 +203,17 @@
 					<input type="radio" name="group" value="KC1" lay-skin="primary" title="密钥持有人1" checked/>
 					<input type="radio" name="group" value="KC2" lay-skin="primary" title="密钥持有人2"/>
 					<input type="radio" name="group" value="KC3" lay-skin="primary" title="密钥持有人3"/>
-					<input type="radio" name="group" value="K" lay-skin="primary" title="密钥管理员"/>
+					<input type="radio" name="group" value="KA" lay-skin="primary" title="密钥管理员"/>
+					<input type="radio" name="group" value="KM" lay-skin="primary" title="密钥经理"/>
+				</div>
+			</div>
+			<div class="layui-form-item width-90">
+				<label class="layui-form-label width-30">
+					<span style="color: red; ">*</span>生效日期:
+				</label>
+				<div class="float-left width-50">
+					<input type="text" id="effectiveDate" name="effectiveDate" class="layui-input" autocomplete="off"
+						   placeholder="yyyy年MM月dd日" lay-verify="required"/>
 				</div>
 			</div>
 			<div class="submit_btn">

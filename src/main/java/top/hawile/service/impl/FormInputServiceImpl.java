@@ -487,22 +487,34 @@ public class FormInputServiceImpl implements FormInputService {
             CellIn(sheet,17,4,"T");
             CellIn(sheet,18,1,"T");
             CellIn(sheet,18,4,"T");
+            CellIn(sheet,19,1,"T");
         } else if ("KC2".equals(form.getGroup())) {
             CellIn(sheet,17,1,"T");
             CellIn(sheet,17,4,"R");
             CellIn(sheet,18,1,"T");
             CellIn(sheet,18,4,"T");
+            CellIn(sheet,19,1,"T");
         } else if ("KC3".equals(form.getGroup())) {
             CellIn(sheet,17,1,"T");
             CellIn(sheet,17,4,"T");
             CellIn(sheet,18,1,"R");
             CellIn(sheet,18,4,"T");
-        } else if ("KM".equals(form.getGroup())) {
+            CellIn(sheet,19,1,"T");
+        } else if ("KA".equals(form.getGroup())) {
             CellIn(sheet,17,1,"T");
             CellIn(sheet,17,4,"T");
             CellIn(sheet,18,1,"T");
             CellIn(sheet,18,4,"R");
+            CellIn(sheet,19,1,"T");
+        } else if ("KM".equals(form.getGroup())) {
+            CellIn(sheet,17,1,"T");
+            CellIn(sheet,17,4,"T");
+            CellIn(sheet,18,1,"T");
+            CellIn(sheet,18,4,"T");
+            CellIn(sheet,19,1,"R");
         }
+        //设置生效日期
+        CellIn(sheet,30,1,form.getEffectiveDate());
         //定义下载表单文件名
         String fileName = "Form"+dateTime+".xlsx";
         //输出Excel文件
