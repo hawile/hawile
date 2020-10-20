@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.hawile.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="top.hawile.entity.Role">
+    <id column="auth_id" jdbcType="INTEGER" property="authId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="symbol" jdbcType="VARCHAR" property="symbol" />
+    <result column="first_type" jdbcType="INTEGER" property="firstType" />
+    <result column="second_type" jdbcType="INTEGER" property="secondType" />
+    <result column="third_type" jdbcType="INTEGER" property="thirdType" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+      auth_id, `name`, symbol, first_type, second_type, third_type, parent_id, update_time
+    from role
+    where auth_id = #{authId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role
+    where auth_id = #{authId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.hawile.entity.Role">
+    insert into role (auth_id, `name`, symbol, 
+      first_type, second_type, third_type, 
+      parent_id, update_time)
+    values (#{authId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{symbol,jdbcType=VARCHAR}, 
+      #{firstType,jdbcType=INTEGER}, #{secondType,jdbcType=INTEGER}, #{thirdType,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.hawile.entity.Role">
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="authId != null">
+        auth_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="symbol != null">
+        symbol,
+      </if>
+      <if test="firstType != null">
+        first_type,
+      </if>
+      <if test="secondType != null">
+        second_type,
+      </if>
+      <if test="thirdType != null">
+        third_type,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="authId != null">
+        #{authId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="symbol != null">
+        #{symbol,jdbcType=VARCHAR},
+      </if>
+      <if test="firstType != null">
+        #{firstType,jdbcType=INTEGER},
+      </if>
+      <if test="secondType != null">
+        #{secondType,jdbcType=INTEGER},
+      </if>
+      <if test="thirdType != null">
+        #{thirdType,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.hawile.entity.Role">
+    update role
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="symbol != null">
+        symbol = #{symbol,jdbcType=VARCHAR},
+      </if>
+      <if test="firstType != null">
+        first_type = #{firstType,jdbcType=INTEGER},
+      </if>
+      <if test="secondType != null">
+        second_type = #{secondType,jdbcType=INTEGER},
+      </if>
+      <if test="thirdType != null">
+        third_type = #{thirdType,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where auth_id = #{authId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.hawile.entity.Role">
+    update role
+    set `name` = #{name,jdbcType=VARCHAR},
+      symbol = #{symbol,jdbcType=VARCHAR},
+      first_type = #{firstType,jdbcType=INTEGER},
+      second_type = #{secondType,jdbcType=INTEGER},
+      third_type = #{thirdType,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where auth_id = #{authId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+      auth_id, `name`, symbol, first_type, second_type, third_type, parent_id, update_time
+    from role order by first_type,second_type,auth_id;
+  </select>
+</mapper>

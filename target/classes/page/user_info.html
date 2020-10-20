@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/my.css" />
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link href="/assets/css/codemirror.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/assets/css/ace.min.css" />
+	<link rel="stylesheet" href="/font/css/font-awesome.min.css" />
+	<script src="/layui/layui.js" type="text/javascript"></script>
+	<script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="/assets/layer/layer.js" type="text/javascript"></script>
+	<script src="/assets/laydate/laydate.js" type="text/javascript"></script>
+	<script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/assets/js/typeahead-bs2.min.js" type="text/javascript"></script>
+	<script src="/assets/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="/assets/js/jquery.dataTables.bootstrap.js" type="text/javascript"></script>
+	<script src="/js/user_info.js" type="text/javascript"></script>
+	<title>个人信息管理</title>
+</head>
+<body>
+	<div class="clearfix">
+		<div class="admin_info_style">
+			<div class="admin_modify_style" id="Personal">
+				<div class="type_title">个人信息</div>
+				<div class="xinxi">
+					<form id="FormUser" class="layui-form" method="post" action="">
+						<input type="hidden" name="id" th:value="${user.id}" />
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">用户名:</label>
+							<div class="col-sm-9">
+								<span th:text="${user.userName}"></span>
+								<button style="float: right" th:if="${user.grxxPwd == 1}" id="button_pwd" type="button"
+										class="layui-btn layui-btn-warm" onclick="changePwd()">修改密码</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">姓名:</label>
+							<div class="col-sm-9">
+								<span class="user_info" th:text="${user.name}"></span>
+								<input type="hidden" name="name" id="name" th:value="${user.name}"
+									   class="text_info layui-input" lay-verify="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">性别:</label>
+							<div class="col-sm-9">
+								<span class="user_info" th:text="${user.sex}"></span>
+								<div class="input_info display-0">
+									<input id="sex0" name="sex" type="radio"
+										   class="ace" th:value="保密" checked="checked" title="保密"/>
+									<input id="sex1" name="sex" type="radio"
+										   class="ace" th:value="男"  title="男" />
+									<input id="sex2" name="sex" type="radio"
+										   class="ace" th:value="女"  title="女" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">年龄:</label>
+							<div class="col-sm-9">
+								<span class="user_info" th:text="${user.age}"></span>
+								<input type="hidden" class="text_info layui-input" name="age" lay-verify="number"
+									   th:value="${user.age}" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">部门:</label>
+							<div class="col-sm-9">
+								<span class="user_info" th:text="${user.deptName}"></span>
+								<div class="input_info display-0">
+									<select id="deptSelect" lay-filter="dept">
+										<option th:each="dept: ${deptList}" th:value="${dept.deptId}"
+												th:text="${dept.deptName}"></option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">职务:</label>
+							<div class="col-sm-9">
+								<span class="user_info" th:text="${user.jobName}"></span>
+								<div class="input_info display-0">
+									<select id="jobSelect" lay-filter="dept"></select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">移动电话:</label>
+							<div class="col-sm-9">
+								<span class="user_info" th:text="${user.phone}"></span>
+								<input type="hidden" name="phone" id="phone"
+									   th:value="${user.phone}" class="text_info layui-input" lay-verify="number" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">电子邮箱:</label>
+							<div class="col-sm-9">
+								<span class="user_info" th:text="${user.email}"></span>
+								<input type="hidden" class="text_info layui-input" name="email"
+									   id="email" th:value="${user.email}" lay-verify="email" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">QQ:</label>
+							<div class="col-sm-9">
+								<span class="user_info" th:text="${user.qq}"></span>
+								<input type="hidden" class="text_info layui-input" name="qq" id="qq"
+									   th:value="${user.qq}" lay-verify="number" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">权限:</label>
+							<div class="col-sm-9"><span th:text="${user.authName}"></span></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">注册时间:</label>
+							<div class="col-sm-9"><span th:text="${user.createTime}"></span></div>
+						</div>
+						<div class="Button_operation clearfix">
+							<button id="changeInfoButton" th:if="${user.grxxInfo == 1}" type="button" class="layui-btn layui-btn-danger"
+								th:onclick="update([[${user.sex}]],[[${user.deptId}]],[[${user.jobId}]])">修改信息</button>
+							<button id="saveInfoButton" type="button" style="display: none"
+								class="layui-btn layui-btn-success" lay-submit="" lay-filter="subUpdate">保存修改</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="recording_style" style="width:70%">
+				<div class="type_title">用户登录记录</div>
+				<div class="recording_list">
+					<script type="text/html" id="state">
+						{{# if (d.state == "成功") { }}
+						<span style="color: #00FF00; ">成功</span>
+						{{# } else if(d.state == "失败") { }}
+						<span style="color: #FF0000; ">失败</span>
+						{{# } }}
+					</script>
+					<table class="layui-hide" id="table" lay-filter="table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--修改密码样式-->
+	<div id="changePwdStyle" style="display: none" >
+		<form id="changePwdForm" class="layui-form" method="post" action="">
+			<input type="hidden" name="userName" th:value="${user.userName}" />
+			<div class="layui-form-item width-80" style="padding-top: 10px">
+				<label class="layui-form-label width-40"><span style="color: red; ">*</span>原密码:</label>
+				<div class="layui-input-block">
+					<input type="password" class="layui-input" id="oldPwd" name="oldPwd" lay-verify="required"/>
+				</div>
+			</div>
+			<div class="layui-form-item width-80" style="padding-top: 10px">
+				<label class="layui-form-label width-40"><span style="color: red; ">*</span>新密码:</label>
+				<div class="layui-input-block">
+					<input type="password" class="layui-input" id="newPwd" name="newPwd" lay-verify="required"/>
+				</div>
+			</div>
+			<div class="layui-form-item width-80" style="padding-top: 10px">
+				<label class="layui-form-label width-40"><span style="color: red; ">*</span>确认密码:</label>
+				<div class="layui-input-block">
+					<input type="password" class="layui-input" id="newPwd2" lay-verify="required"/>
+				</div>
+			</div>
+			<div class="submit_btn">
+				<button type="button" lay-submit="" lay-filter="subPwd" class="layui-btn layui-btn-normal">提交</button>
+				<button type="button" onclick="layer.closeAll()" class="layui-btn layui-btn-danger">关闭</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

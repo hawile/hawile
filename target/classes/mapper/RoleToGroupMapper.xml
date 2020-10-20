@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.hawile.mapper.RoleToGroupMapper">
+  <resultMap id="BaseResultMap" type="top.hawile.entity.RoleToGroup">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="auth_id" jdbcType="INTEGER" property="authId" />
+    <result column="value" jdbcType="INTEGER" property="value" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, group_id, auth_id, `value`, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_to_group
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role_to_group
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.hawile.entity.RoleToGroup">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into role_to_group (group_id, auth_id, `value`, 
+      update_time)
+    values (#{groupId,jdbcType=INTEGER}, #{authId,jdbcType=INTEGER}, #{value,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.hawile.entity.RoleToGroup">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into role_to_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="authId != null">
+        auth_id,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="authId != null">
+        #{authId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.hawile.entity.RoleToGroup">
+    update role_to_group
+    <set>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="authId != null">
+        auth_id = #{authId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.hawile.entity.RoleToGroup">
+    update role_to_group
+    set group_id = #{groupId,jdbcType=INTEGER},
+      auth_id = #{authId,jdbcType=INTEGER},
+      `value` = #{value,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
