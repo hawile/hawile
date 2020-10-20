@@ -36,7 +36,7 @@ public class ContactController {
         model.addAttribute("user",session.getAttribute("user"));
         //将操作写入日志
         logService.log("查看[ 厂商信息 ]","成功");
-        return "/page/contact";
+        return "page/contact";
     }
 
     @ResponseBody

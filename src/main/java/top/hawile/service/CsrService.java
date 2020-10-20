@@ -18,4 +18,13 @@ public interface CsrService {
     //删除客户账号信息
     int delete(Integer id);
 
+    //打印客户账号列表
+    String print(String filePath) throws Exception;
+
+    //批量修改状态
+    int updateManyState(String state, List<String> ids, String remark);
+
+    //批量删除
+    int deleteMany(List<String> ids);
+
 }

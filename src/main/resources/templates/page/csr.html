@@ -11,174 +11,209 @@
 	<title>客户账号清单</title>
 </head>
 <body>
-	<script type="text/html" id="toolbarDemo">
-		<div class="layui-btn-container">
-			<button th:if="${user.khzhAdd == 1}" class="layui-btn layui-btn-warm"
-					lay-event="insert">添加账号</button>
-		</div>
-	</script>
-	<script type="text/html" id="state">
-		{{# if (d.state == "正常") { }}
-		<span style="color: green">正常</span>
-		{{# } else if (d.state == "锁定") { }}
-		<span  style="color: blue">锁定</span>
-		{{# } else if (d.state == "注销") { }}
-		<span  style="color: red">注销</span>
-		{{# } }}
-	</script>
-	<script type="text/html" id="barDemo">
-		<a class="layui-btn layui-btn-xs"
-		   th:if="${user.khzhUp == 1}" lay-event="edit" >编辑</a>
-		<a class="layui-btn layui-btn-danger layui-btn-xs"
-		   th:if="${user.khzhDel == 1}" lay-event="delete">删除</a>
-	</script>
-	<table class="layui-hide" id="table" lay-filter="table"></table>
-	
+<script type="text/html" id="toolbarDemo">
+	<div class="layui-btn-container">
+		<button th:if="${user.khzhAdd == 1}" class="layui-btn layui-btn-warm"
+				lay-event="insert">添加账号</button>
+		<button th:if="${user.khzhUp == 1}" class="layui-btn layui-btn-normal"
+				lay-event="state">修改状态</button>
+		<button th:if="${user.khzhDel == 1}" class="layui-btn layui-btn-danger"
+				lay-event="delete">批量删除</button>
+		<button class="layui-btn layui-btn-warm"
+				onclick="window.location='/csr/print'">打印列表</button>
+	</div>
+</script>
+<script type="text/html" id="state">
+	{{# if (d.state == "正常") { }}
+	<span style="color: green">正常</span>
+	{{# } else if (d.state == "锁定") { }}
+	<span  style="color: blue">锁定</span>
+	{{# } else if (d.state == "注销") { }}
+	<span  style="color: red">注销</span>
+	{{# } }}
+</script>
+<script type="text/html" id="barDemo">
+	<a class="layui-btn layui-btn-xs"
+	   th:if="${user.khzhUp == 1}" lay-event="edit" >编辑</a>
+	<a class="layui-btn layui-btn-danger layui-btn-xs"
+	   th:if="${user.khzhDel == 1}" lay-event="delete">删除</a>
+</script>
+<table class="layui-hide" id="table" lay-filter="table"></table>
+
 <!--添加客户-->
-	<div id="add_csr_style" class="display-0">
-		<form id="FormAdd" class="layui-form" method="post" action="">
-			<div class="layui-form-item width-80" style="padding-top: 10px">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>VPN账号:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="vpnName"
-						   name="vpnName" onkeyup="setPath(this)" lay-verify="required"/>
-				</div>
+<div id="add_csr_style" class="display-0">
+	<form id="FormAdd" class="layui-form" method="post" action="">
+		<div class="layui-form-item width-80" style="padding-top: 10px">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>VPN账号:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="vpnName"
+					   name="vpnName" onkeyup="setPath(this)" lay-verify="required"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>FTP账号:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="ftpName"
-						   name="ftpName" lay-verify="required"/>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>FTP账号:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="ftpName"
+					   name="ftpName" lay-verify="required"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>客户名称:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="name"
-						   name="name" lay-verify="required"/>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>客户名称:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="name"
+					   name="name" lay-verify="required"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>开通时间:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="createDate"
-						   name="createDate" autocomplete="off" lay-verify="required" />
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>开通时间:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="createDate"
+					   name="createDate" autocomplete="off" lay-verify="required" />
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>FTP访问目录:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="path"
-						   name="path" lay-verify="required"/>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>FTP访问目录:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="path"
+					   name="path" lay-verify="required"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>状态:
-				</label>
-				<div class="float-left width-50">
-					<input type="radio" name="state" value="正常" th:title="正常" checked/>
-					<input type="radio" name="state" value="锁定" th:title="锁定"/>
-					<input type="radio" name="state" value="注销" th:title="注销"/>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>状态:
+			</label>
+			<div class="float-left width-50">
+				<input type="radio" name="state" value="正常" th:title="正常" checked/>
+				<input type="radio" name="state" value="锁定" th:title="锁定"/>
+				<input type="radio" name="state" value="注销" th:title="注销"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">备注:</label>
-				<div class="float-left width-50">
-					<textarea id="remark" name="remark" rows="3" cols="20" wrap="soft"></textarea>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">备注:</label>
+			<div class="float-left width-50">
+				<textarea id="remark" name="remark" rows="3" cols="20" wrap="soft"></textarea>
 			</div>
-			<div class="submit_btn">
-				<button type="button" lay-submit="" lay-filter="subInsert"
-						class="layui-btn layui-btn-normal">提交</button>
-				<button type="button" onclick="layer.closeAll();"
-						class="layui-btn layui-btn-danger">关闭</button>
-			</div>
-		</form>
-	</div>
-	
+		</div>
+		<div class="submit_btn">
+			<button type="button" lay-submit="" lay-filter="subInsert"
+					class="layui-btn layui-btn-normal">提交</button>
+			<button type="button" onclick="layer.closeAll();"
+					class="layui-btn layui-btn-danger">关闭</button>
+		</div>
+	</form>
+</div>
+
 <!--修改客户-->
-	<div id="up_csr_style" class="display-0">
-		<form id="FormUp" class="layui-form" method="post" action="">
-			<input type="hidden" id="id" name="id"/>
-			<div class="layui-form-item width-80" style="padding-top: 10px">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>VPN账号:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="up_vpnName"
-						   name="vpnName" onkeyup="setPath2(this)" lay-verify="required"/>
-				</div>
+<div id="up_csr_style" class="display-0">
+	<form id="FormUp" class="layui-form" method="post" action="">
+		<input type="hidden" id="id" name="id"/>
+		<div class="layui-form-item width-80" style="padding-top: 10px">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>VPN账号:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="up_vpnName"
+					   name="vpnName" onkeyup="setPath2(this)" lay-verify="required"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>FTP账号:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="up_ftpName"
-						   name="ftpName" lay-verify="required"/>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>FTP账号:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="up_ftpName"
+					   name="ftpName" lay-verify="required"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>客户名称:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="up_name"
-						   name="name" lay-verify="required"/>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>客户名称:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="up_name"
+					   name="name" lay-verify="required"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>开通时间:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="up_createDate"
-						   name="createDate" autocomplete="off" lay-verify="required" />
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>开通时间:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="up_createDate"
+					   name="createDate" autocomplete="off" lay-verify="required" />
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>FTP访问目录:
-				</label>
-				<div class="float-left width-50">
-					<input class="layui-input" type="text" id="up_path"
-						   name="path" lay-verify="required"/>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>FTP访问目录:
+			</label>
+			<div class="float-left width-50">
+				<input class="layui-input" type="text" id="up_path"
+					   name="path" lay-verify="required"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">
-					<span style="color: red; ">*</span>状态:
-				</label>
-				<div class="float-left width-50">
-					<input type="radio" class="state" name="state" value="正常" th:title="正常"/>
-					<input type="radio" class="state" name="state" value="锁定" th:title="锁定"/>
-					<input type="radio" class="state" name="state" value="注销" th:title="注销"/>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>状态:
+			</label>
+			<div class="float-left width-50">
+				<input type="radio" class="state" name="state" value="正常" th:title="正常"/>
+				<input type="radio" class="state" name="state" value="锁定" th:title="锁定"/>
+				<input type="radio" class="state" name="state" value="注销" th:title="注销"/>
 			</div>
-			<div class="layui-form-item width-80">
-				<label class="layui-form-label width-40">备注:</label>
-				<div class="float-left width-50">
-					<textarea id="up_remark" name="remark" rows="3" cols="20" wrap="soft"></textarea>
-				</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">备注:</label>
+			<div class="float-left width-50">
+				<textarea id="up_remark" name="remark" rows="3" cols="20" wrap="soft"></textarea>
 			</div>
-			<div class="submit_btn">
-				<button type="button" lay-submit="" lay-filter="subUpdate"
-						class="layui-btn layui-btn-normal">提交</button>
-				<button type="button" onclick="layer.closeAll();"
-						class="layui-btn layui-btn-danger">关闭</button>
-			</div>
-		</form>
-	</div>
+		</div>
+		<div class="submit_btn">
+			<button type="button" lay-submit="" lay-filter="subUpdate"
+					class="layui-btn layui-btn-normal">提交</button>
+			<button type="button" onclick="layer.closeAll();"
+					class="layui-btn layui-btn-danger">关闭</button>
+		</div>
+	</form>
+</div>
 </body>
+
+<!--修改客户-->
+<div id="state_csr_style" class="display-0">
+	<form id="FormState" class="layui-form" method="post" action="">
+		<input type="hidden" id="ids" name="ids"/>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>状态:
+			</label>
+			<div class="float-left width-50">
+				<input type="radio" class="state" name="state" value="正常" th:title="正常"/>
+				<input type="radio" class="state" name="state" value="锁定" th:title="锁定"/>
+				<input type="radio" class="state" name="state" value="注销" th:title="注销"/>
+			</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">备注:</label>
+			<div class="float-left width-50">
+				<textarea name="remark" rows="3" cols="20" wrap="soft"></textarea>
+			</div>
+		</div>
+		<div class="submit_btn">
+			<button type="button" lay-submit="" lay-filter="subState"
+					class="layui-btn layui-btn-normal">提交</button>
+			<button type="button" onclick="layer.closeAll();"
+					class="layui-btn layui-btn-danger">关闭</button>
+		</div>
+	</form>
+</div>
 </html>

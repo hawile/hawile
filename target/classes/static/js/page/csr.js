@@ -38,28 +38,96 @@ layui.use(['form','laydate','table'],function(){
 
     //监听头部工具栏事件
     table.on('toolbar(table)',function (obj){
-        //账号-添加
-        if(obj.event == 'insert'){
-            $('input').val('');
-            $('textarea').val('');
-            // 给date设置默认值
-            let now = new Date();
-            //格式化日，如果小于9，前面补0
-            let day = ("0" + now.getDate()).slice(-2);
-            //格式化月，如果小于9，前面补0
-            let month = ("0" + (now.getMonth() + 1)).slice(-2);
-            //拼装完整日期格式
-            let today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-            //完成赋值
-            $('input[id="createDate"]').val(today);
-            layer.open({
-                type: 1,
-                title:'添加客户',
-                area: ['400px','80%'],
-                shadeClose: false,
-                content: $('#add_csr_style'),
-            });
+        let checkStatus = table.checkStatus('table');
+        switch (obj.event){
+            //账号-添加
+            case 'insert':
+                $('input').val('');
+                $('textarea').val('');
+                // 给date设置默认值
+                let now = new Date();
+                //格式化日，如果小于9，前面补0
+                let day = ("0" + now.getDate()).slice(-2);
+                //格式化月，如果小于9，前面补0
+                let month = ("0" + (now.getMonth() + 1)).slice(-2);
+                //拼装完整日期格式
+                let today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+                //完成赋值
+                $('input[id="createDate"]').val(today);
+                layer.open({
+                    type: 1,
+                    title:'添加客户',
+                    area: ['400px','80%'],
+                    shadeClose: false,
+                    content: $('#add_csr_style'),
+                });
+                break;
+            //账号-批量修改状态
+            case 'state':
+                if(checkStatus.data.length==0) {
+                    parent.layer.msg('请先选择要修改的数据行！', {icon: 2});
+                    return;
+                }
+                let ids = checkStatus.data[0].id;
+                for(let i=1;i<checkStatus.data.length;i++){
+                    ids += ","+checkStatus.data[i].id;
+                }
+                $('#ids').val(ids);
+                layer.open({
+                    type: 1,
+                    title:'修改状态',
+                    area: ['400px','300px'],
+                    shadeClose: false,
+                    content: $('#state_csr_style'),
+                });
+                break;
+            case 'delete':
+                if(checkStatus.data.length==0) {
+                    parent.layer.msg('请先选择要删除的数据行！', {icon: 2});
+                    return;
+                }
+                layer.confirm('确认要删除吗？',function(){
+                    let ids = checkStatus.data[0].id;
+                    for(let i=1;i<checkStatus.data.length;i++){
+                        ids += ","+checkStatus.data[i].id;
+                    }
+                    $.ajax({
+                        async: true,
+                        url: '/csr/delete_many',
+                        type: 'post',
+                        data: {'ids':ids},
+                        dataType: 'text',
+                        success: function(data){
+                            //获取批量修改的账户数量
+                            let count = checkStatus.data.length;
+                            if(data == count){
+                                layer.alert('删除成功！',{
+                                    title: '提示框',
+                                    icon:1,
+                                },function(){
+                                    location.reload();
+                                });
+                            }else if (data >0) {
+                                layer.alert('部分删除失败！',{
+                                    title: '提示框',
+                                    icon:2,
+                                },function(){
+                                    location.reload();
+                                });
+                            }else {
+                                layer.alert('全部删除失败！',{
+                                    title: '提示框',
+                                    icon:2,
+                                },function(){
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+                });
+                break;
         }
+
     });
 
     //监听工具栏事件
@@ -85,7 +153,7 @@ layui.use(['form','laydate','table'],function(){
                     shadeClose: false,
                     content: $('#up_csr_style'),
                 });
-            break;
+                break;
             //账号-删除
             case 'delete':
                 layer.confirm('确认要删除吗？',function(){
@@ -114,7 +182,7 @@ layui.use(['form','laydate','table'],function(){
                         }
                     });
                 });
-            break;
+                break;
         }
     });
 
@@ -173,6 +241,44 @@ layui.use(['form','laydate','table'],function(){
             }
         });
     });
+
+    //账号批量修改状态-提交
+    form.on('submit(subState)',function (){
+        $.ajax({
+            async: true
+            ,url: '/csr/update_many_state'
+            ,type: 'post'
+            ,data: $('#FormState').serialize()
+            ,dataType: 'text'
+            ,success: function (data){
+                //获取批量修改的账户数量
+                let count = $('#ids').val().split(',').length;
+                if(data == count){
+                    layer.alert('修改成功！',{
+                        title: '提示框',
+                        icon:1,
+                    },function(){
+                        location.reload();
+                    });
+                }else if (data >0) {
+                    layer.alert('部分修改失败！',{
+                        title: '提示框',
+                        icon:2,
+                    },function(){
+                        location.reload();
+                    });
+                }else {
+                    layer.alert('全部修改失败！',{
+                        title: '提示框',
+                        icon:2,
+                    },function(){
+                        location.reload();
+                    });
+                }
+            }
+        });
+    });
+
     form.render();
 });
 

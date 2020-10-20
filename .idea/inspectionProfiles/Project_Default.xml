@@ -22,7 +22,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="21">
+          <list size="22">
             <item index="0" class="java.lang.String" itemvalue="menu-id" />
             <item index="1" class="java.lang.String" itemvalue="lay-unselect" />
             <item index="2" class="java.lang.String" itemvalue="layuimini-content-href" />
@@ -44,6 +44,7 @@
             <item index="18" class="java.lang.String" itemvalue="lay-percent" />
             <item index="19" class="java.lang.String" itemvalue="autocomplete" />
             <item index="20" class="java.lang.String" itemvalue="placeholder" />
+            <item index="21" class="java.lang.String" itemvalue="th:title" />
           </list>
         </value>
       </option>
@@ -52,7 +53,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="8">
+          <list size="9">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -61,6 +62,7 @@
             <item index="5" class="java.lang.String" itemvalue="script" />
             <item index="6" class="java.lang.String" itemvalue="li" />
             <item index="7" class="java.lang.String" itemvalue="tip" />
+            <item index="8" class="java.lang.String" itemvalue="div" />
           </list>
         </value>
       </option>

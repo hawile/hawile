@@ -42,7 +42,7 @@ public class LoginController {
     public String welcome(Model model){
         model.addAttribute("visits",sysInfoService.selectByName("visits").getValue());
         model.addAttribute("userSignCount",userSignService.count());
-        return "/page/welcome";
+        return "page/welcome";
     }
 
     @ResponseBody
