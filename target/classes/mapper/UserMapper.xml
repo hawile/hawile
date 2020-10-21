@@ -275,6 +275,7 @@
     select
       id, user_name, `name`, AES_DECRYPT(UNHEX(`password`),'keydom') as `password`, sex, age, u.job_id, phone, email, qq, u.auth_id, enabled,
       create_time, first_pwd, file_query, form_query, session_id, a.auth_name as auth_name, j.job_name, d.dept_id, d.dept_name
-    from user u left join job j on u.job_id = j.job_id left join department d on j.dept_id = d.dept_id left join authority a on u.auth_id = a.auth_id
+    from user u left join job j on u.job_id = j.job_id left join department d on j.dept_id = d.dept_id
+    left join authority a on u.auth_id = a.auth_id order by id
   </select>
 </mapper>

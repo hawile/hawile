@@ -24,26 +24,7 @@ public class LoginController {
     @Resource
     private UserSignService userSignService;
 
-    @RequestMapping({"/","/index"})
-    public String index(){
-        //清空session对象
-        session.invalidate();
-        return "index";
-    }
 
-    @RequestMapping("/home")
-    public String home(Model model){
-        //将user对象存入model
-        model.addAttribute("user", session.getAttribute("user"));
-        return "home";
-    }
-
-    @RequestMapping("/welcome")
-    public String welcome(Model model){
-        model.addAttribute("visits",sysInfoService.selectByName("visits").getValue());
-        model.addAttribute("userSignCount",userSignService.count());
-        return "page/welcome";
-    }
 
     @ResponseBody
     @RequestMapping("/login")

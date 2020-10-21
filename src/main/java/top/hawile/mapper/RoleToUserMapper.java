@@ -2,6 +2,8 @@ package top.hawile.mapper;
 
 import top.hawile.entity.RoleToUser;
 
+import java.util.List;
+
 public interface RoleToUserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,12 @@ public interface RoleToUserMapper {
     int updateByPrimaryKeySelective(RoleToUser record);
 
     int updateByPrimaryKey(RoleToUser record);
+
+    List<RoleToUser> selectByUserId(Integer id);
+
+    List<RoleToUser> selectByRoleId(Integer id);
+
+    int deleteByUserId(Integer id);
+
+    int deleteByRoleId(Integer id);
 }

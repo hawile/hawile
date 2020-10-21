@@ -1,17 +1,20 @@
 package top.hawile.service.impl;
 
 import org.springframework.stereotype.Service;
+import top.hawile.entity.Role;
+import top.hawile.entity.RoleToUser;
 import top.hawile.entity.SysInfo;
 import top.hawile.entity.User;
 import top.hawile.mapper.UserMapper;
-import top.hawile.service.LogService;
-import top.hawile.service.SysInfoService;
-import top.hawile.service.UserService;
+import top.hawile.service.*;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author Hawile
@@ -23,6 +26,10 @@ public class UserServiceImpl implements UserService {
     private HttpSession session;
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private RoleService roleService;
+    @Resource
+    private RoleToUserService roleToUserService;
     @Resource
     private LogService logService;
     @Resource
@@ -50,8 +57,17 @@ public class UserServiceImpl implements UserService {
         if(userMapper.pwdCount(userName,password) == 1){
             //根据用户名查找该用户信息
             User user = userMapper.findByUserName(userName);
+            //新建Map对象
+            Map<String,Object> map = new HashMap<>();
+            //获取当前用户权限信息
+            List<RoleToUser> roleList = roleToUserService.listByUserId(user.getId());
+            for (RoleToUser roleToUser:roleList){
+                map.put(roleToUser.getSymbol(),roleToUser.getValue());
+            }
             //将user对象存入session
             session.setAttribute("user", user);
+            //将权限信息存入session
+            session.setAttribute("role", map);
             //将当前操作写入系统日志
             logService.loginLog(userName, user.getName(), "密码验证通过", "成功");
             //判断是否为首次必须修改密码
@@ -116,22 +132,61 @@ public class UserServiceImpl implements UserService {
         if(userMapper.userCount(user.getUserName()) > 0){
             return 2;
         }
+        //获取用户名
+        String userName = user.getUserName();
         //封装当前系统时间到user对象
         user.setCreateTime(new Timestamp(new Date().getTime()));
         //设置账户为启用状态
         user.setEnabled(1);
-        return userMapper.insertSelective(user);
+        //执行操作到数据库
+        int state = userMapper.insertSelective(user);
+        //判断是否添加成功
+        if (state == 1){
+            //查询添加的用户对象
+            User user1 = userMapper.findByUserName(userName);
+            //获取权限列表
+            List<Role> roleList = roleService.list();
+            //新建对象
+            RoleToUser roleToUser = new RoleToUser();
+            //遍历循环权限列表
+            for (Role role:roleList){
+                //设置权限ID值
+                roleToUser.setRoleId(role.getId());
+                //设置用户ID值
+                roleToUser.setUserId(user1.getId());
+                //保存对象到数据库
+                roleToUserService.insert(roleToUser);
+            }
+
+
+        }
+        return state;
     }
 
     @Override
     //更新用户
     public int update(User user) {
+        /*//获取权限列表
+        List<Role> roleList = roleService.list();
+        //新建对象
+        RoleToUser roleToUser = new RoleToUser();
+        //遍历循环权限列表
+        for (Role role:roleList){
+            //设置权限ID值
+            roleToUser.setRoleId(role.getId());
+            //设置用户ID值
+            roleToUser.setUserId(user.getId());
+            //保存对象到数据库
+            roleToUserService.insert(roleToUser);
+        }*/
         return userMapper.updateByPrimaryKeySelective(user);
     }
 
     @Override
     //删除用户
     public int delete(Integer id)  {
+        //删除相应的权限信息
+        roleToUserService.deleteByUserId(id);
         return userMapper.deleteByPrimaryKey(id);
     }
 

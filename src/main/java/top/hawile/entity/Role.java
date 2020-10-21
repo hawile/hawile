@@ -1,7 +1,6 @@
 package top.hawile.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Role implements Serializable {
     private Integer id;
@@ -12,9 +11,13 @@ public class Role implements Serializable {
 
     private Integer parentId;
 
-    private Date updateTime;
+    private Integer menuId;
 
     private Integer sort;
+
+    private String icon;
+
+    private String href;
 
     private static final long serialVersionUID = 1L;
 
@@ -50,12 +53,12 @@ public class Role implements Serializable {
         this.parentId = parentId;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Integer getMenuId() {
+        return menuId;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
 
     public Integer getSort() {
@@ -64,6 +67,22 @@ public class Role implements Serializable {
 
     public void setSort(Integer sort) {
         this.sort = sort;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon == null ? null : icon.trim();
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href == null ? null : href.trim();
     }
 
     @Override
@@ -76,8 +95,10 @@ public class Role implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", symbol=").append(symbol);
         sb.append(", parentId=").append(parentId);
-        sb.append(", updateTime=").append(updateTime);
+        sb.append(", menuId=").append(menuId);
         sb.append(", sort=").append(sort);
+        sb.append(", icon=").append(icon);
+        sb.append(", href=").append(href);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

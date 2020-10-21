@@ -17,4 +17,8 @@ public interface RoleService {
 
     //删除权限
     int delete(Integer id);
+
+    List<Role> menuByUser0(Integer userId);
+
+    List<Role> menuByUser1(Integer userId, Integer roleId);
 }

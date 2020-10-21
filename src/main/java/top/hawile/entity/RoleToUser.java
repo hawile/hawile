@@ -3,16 +3,18 @@ package top.hawile.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class RoleToUser implements Serializable {
+public class RoleToUser extends Role {
     private Integer id;
 
     private Integer userId;
 
-    private Integer authId;
+    private Integer roleId;
 
     private Integer value;
 
     private Date updateTime;
+
+    private String symbol;
 
     private static final long serialVersionUID = 1L;
 
@@ -32,12 +34,12 @@ public class RoleToUser implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getAuthId() {
-        return authId;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setAuthId(Integer authId) {
-        this.authId = authId;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public Integer getValue() {
@@ -56,19 +58,11 @@ public class RoleToUser implements Serializable {
         this.updateTime = updateTime;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", userId=").append(userId);
-        sb.append(", authId=").append(authId);
-        sb.append(", value=").append(value);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 }

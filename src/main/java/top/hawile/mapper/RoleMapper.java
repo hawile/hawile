@@ -18,4 +18,8 @@ public interface RoleMapper {
     int updateByPrimaryKey(Role record);
 
     List<Role> selectAll();
+
+    List<Role> menuByUser0(Integer userId);
+
+    List<Role> menuByUser1(Integer userId, Integer roleId);
 }

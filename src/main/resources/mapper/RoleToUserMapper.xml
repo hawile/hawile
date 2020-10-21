@@ -4,16 +4,13 @@
   <resultMap id="BaseResultMap" type="top.hawile.entity.RoleToUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="auth_id" jdbcType="INTEGER" property="authId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
     <result column="value" jdbcType="INTEGER" property="value" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, user_id, auth_id, `value`, update_time
-  </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
+    select
+      id, user_id, role_id, `value`, update_time
     from role_to_user
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -25,9 +22,9 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into role_to_user (user_id, auth_id, `value`, 
+    insert into role_to_user (user_id, role_id, `value`, 
       update_time)
-    values (#{userId,jdbcType=INTEGER}, #{authId,jdbcType=INTEGER}, #{value,jdbcType=INTEGER}, 
+    values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{value,jdbcType=INTEGER}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="top.hawile.entity.RoleToUser">
@@ -39,8 +36,8 @@
       <if test="userId != null">
         user_id,
       </if>
-      <if test="authId != null">
-        auth_id,
+      <if test="roleId != null">
+        role_id,
       </if>
       <if test="value != null">
         `value`,
@@ -53,8 +50,8 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="authId != null">
-        #{authId,jdbcType=INTEGER},
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
       </if>
       <if test="value != null">
         #{value,jdbcType=INTEGER},
@@ -70,8 +67,8 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="authId != null">
-        auth_id = #{authId,jdbcType=INTEGER},
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
       </if>
       <if test="value != null">
         `value` = #{value,jdbcType=INTEGER},
@@ -85,9 +82,29 @@
   <update id="updateByPrimaryKey" parameterType="top.hawile.entity.RoleToUser">
     update role_to_user
     set user_id = #{userId,jdbcType=INTEGER},
-      auth_id = #{authId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER},
       `value` = #{value,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+      r2u.id, user_id, role_id, `value`, r2u.update_time, r.name as role_name, r.symbol
+    from role_to_user r2u left join role r on r.id = r2u.role_id
+    where user_id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+      id, user_id, role_id, `value`, update_time
+    from role_to_user
+    where role_id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByUserId" parameterType="java.lang.Integer">
+    delete from role_to_user
+    where user_id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByRoleId" parameterType="java.lang.Integer">
+    delete from role_to_user
+    where role_id = #{id,jdbcType=INTEGER}
+  </delete>
 </mapper>
