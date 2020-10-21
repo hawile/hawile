@@ -5,13 +5,13 @@ import top.hawile.entity.Role;
 import java.util.List;
 
 public interface RoleMapper {
-    int deleteByPrimaryKey(Integer authId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Role record);
 
     int insertSelective(Role record);
 
-    Role selectByPrimaryKey(Integer authId);
+    Role selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Role record);
 

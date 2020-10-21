@@ -25,6 +25,8 @@ public class User extends Job {
 
     private int authId;
 
+    private String roleName;
+
     private Integer enabled;
 
     private Date createTime;
@@ -125,6 +127,14 @@ public class User extends Job {
 
     public void setAuthId(int authId) {
         this.authId = authId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public Integer getEnabled() {

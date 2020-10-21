@@ -3,10 +3,10 @@ package top.hawile.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class RoleToGroup implements Serializable {
+public class RoleToUser implements Serializable {
     private Integer id;
 
-    private Integer groupId;
+    private Integer userId;
 
     private Integer authId;
 
@@ -24,12 +24,12 @@ public class RoleToGroup implements Serializable {
         this.id = id;
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getAuthId() {
@@ -63,7 +63,7 @@ public class RoleToGroup implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", groupId=").append(groupId);
+        sb.append(", userId=").append(userId);
         sb.append(", authId=").append(authId);
         sb.append(", value=").append(value);
         sb.append(", updateTime=").append(updateTime);

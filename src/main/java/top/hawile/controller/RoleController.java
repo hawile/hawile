@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import top.hawile.entity.Role;
 import top.hawile.service.LogService;
 import top.hawile.service.RoleService;
+import top.hawile.service.UserService;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -22,6 +24,8 @@ public class RoleController {
     @Resource
     private RoleService roleService;
     @Resource
+    private UserService userService;
+    @Resource
     private LogService logService;
 
     @RequestMapping
@@ -29,9 +33,11 @@ public class RoleController {
     public String authority(Model model, HttpSession session){
         //将登录用户信息传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将用户列表传入model
+        model.addAttribute("userList",userService.list());
         //将操作写入日志
         logService.log("查看[ 权限列表 ]","成功");
-        return "page/authority";
+        return "page/role";
     }
 
     @ResponseBody

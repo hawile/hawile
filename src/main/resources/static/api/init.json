@@ -121,7 +121,7 @@
           "child": [
             {
               "title": "权限管理",
-              "href": "auth",
+              "href": "role",
               "icon": "fa fa-sun-o",
               "target": "_self"
             },

@@ -8,6 +8,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/resources/templates/index.html" value="file://$PROJECT_DIR$/src/main/resources/templates" />
         <entry key="file://$PROJECT_DIR$/src/main/resources/templates/page/acc_num.html" value="file://$PROJECT_DIR$/src/main/resources/templates/page" />
         <entry key="file://$PROJECT_DIR$/src/main/resources/templates/page/csr.html" value="file://$PROJECT_DIR$/src/main/resources/templates/page" />
+        <entry key="file://$PROJECT_DIR$/src/main/resources/templates/page/role.html" value="file://$PROJECT_DIR$/src/main/resources/templates/page" />
         <entry key="file://$PROJECT_DIR$/src/main/resources/templates/page/welcome.html" value="file://$PROJECT_DIR$/src/main/resources/templates/page" />
       </map>
     </option>
