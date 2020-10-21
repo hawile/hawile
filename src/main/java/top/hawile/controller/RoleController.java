@@ -1,20 +1,15 @@
 package top.hawile.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import top.hawile.entity.Role;
 import top.hawile.service.LogService;
 import top.hawile.service.RoleService;
 import top.hawile.service.UserService;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -33,6 +28,8 @@ public class RoleController {
     public String authority(Model model, HttpSession session){
         //将登录用户信息传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限列表传入model
+        model.addAttribute("roleList",roleService.list());
         //将用户列表传入model
         model.addAttribute("userList",userService.list());
         //将操作写入日志

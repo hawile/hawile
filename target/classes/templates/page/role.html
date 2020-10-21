@@ -1,34 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>menu</title>
     <link rel="stylesheet" href="/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="/css/public.css" media="all">
+    <link rel="stylesheet" href="/css/my.css" />
+    <link rel="stylesheet" href="/css/ace.min.css" />
     <script src="/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
     <script src="/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
     <script src="/js/page/role.js" charset="utf-8"></script>
 </head>
 <body>
-<div class="layuimini-container">
-    <div class="layuimini-main">
-        <div class="layui-btn-group">
-            <button class="layui-btn" id="btn-expand">全部展开</button>
-            <button class="layui-btn layui-btn-normal" id="btn-fold">全部折叠</button>
-        </div>
-        <table id="table" class="layui-table" lay-filter="table"></table>
-    </div>
-</div>
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-warm"
                 lay-event="insert">添加权限</button>
     </div>
 </script>
-<!-- 操作列 -->
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
 </script>
+<div class="layuimini-main">
+    <div class="layui-btn-group">
+        <button class="layui-btn" id="btn-expand">全部展开</button>
+        <button class="layui-btn layui-btn-normal" id="btn-fold">全部折叠</button>
+    </div>
+    <table id="table" class="layui-table" lay-filter="table"></table>
+</div>
+
+<!--添加权限-->
+<div id="add_role_style" class="display-0">
+    <form id="FormAdd" class="layui-form" method="post" action="">
+        <div class="layui-form-item width-80">
+            <label class="layui-form-label width-40">
+                <span style="color: red; ">*</span>权限名称:
+            </label>
+            <div class="float-left width-50">
+                <input class="layui-input" type="text" id="name"
+                       name="name" lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item width-80" style="padding-top: 10px">
+            <label class="layui-form-label width-40">
+                <span style="color: red; ">*</span>权限标识:
+            </label>
+            <div class="float-left width-50">
+                <input class="layui-input" type="text" id="symbol"
+                       name="symbol" lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item width-80">
+            <label class="layui-form-label width-40">父权限名:</label>
+            <div class="float-left width-50">
+                <select id="parentId" class="layui-input" name="parentId">
+                    <option value=""></option>
+                    <option th:each="role:${roleList}" value="${role.id}" th:text="${role.name}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item width-80">
+            <label class="layui-form-label width-40">绑定用户:</label>
+            <div class="float-left width-50">
+                <textarea class="layui-textarea" id="users" name="users"
+                          rows="3" cols="20"></textarea>
+            </div>
+        </div>
+        <div class="submit_btn">
+            <button type="button" lay-submit="" lay-filter="subInsert"
+                    class="layui-btn layui-btn-normal">提交</button>
+            <button type="button" onclick="layer.closeAll();"
+                    class="layui-btn layui-btn-danger">关闭</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

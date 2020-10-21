@@ -16,10 +16,12 @@ layui.use(['table', 'treetable'], function () {
         ,page: false
         ,cols: [
             [
-                {type: 'numbers'},
-                {field: 'name', minWidth: 200, title: '权限名称'},
-                {field: 'symbol', title: '权限标识'},
-                {templet: '#barDemo', width: 120, align: 'center', title: '操作'}
+                {type: 'numbers'}
+                ,{field: 'name', minWidth: 200, title: '权限名称'}
+                ,{field: 'symbol', title: '权限标识'}
+                ,{field: 'updateTime', title: '修改时间', align:'center',templet :
+                    "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                ,{templet: '#barDemo', width: 120, align: 'center', title: '操作'}
             ]
         ],
         done: function () {
@@ -28,15 +30,35 @@ layui.use(['table', 'treetable'], function () {
         }
     });
 
+    //监听头部工具条
+    table.on('toolbar(table)', function (obj) {
+        switch (obj.event){
+            //权限-添加
+            case 'insert':
+                $('input').val('');
+                layer.open({
+                    type: 1,
+                    title:'添加权限',
+                    area: ['400px','90%'],
+                    shadeClose: false,
+                    content: $('#add_role_style'),
+                });
+            break;
+        }
+    });
+
     //监听工具条
     table.on('tool(table)', function (obj) {
         let data = obj.data;
-        let layEvent = obj.event;
-
-        if (layEvent === 'delete') {
-            layer.msg('删除' + data.id);
-        } else if (layEvent === 'edit') {
-            layer.msg('修改' + data.id);
+        switch (obj.event){
+            //权限-编辑
+            case 'edit':
+                layer.msg('编辑'+data.id);
+            break;
+            //权限-删除
+            case 'delete':
+                layer.msg('删除'+data.id);
+            break;
         }
     });
 
