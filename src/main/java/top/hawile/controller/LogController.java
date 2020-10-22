@@ -27,6 +27,8 @@ public class LogController {
     public String log(Model model, HttpSession session) {
         //将当前用户对象传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         return "page/log";
     }
 

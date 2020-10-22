@@ -13,13 +13,13 @@
 <body>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs"
-           th:if="${user.bmlbUp == 1}" lay-event="edit" >编辑</a>
+           th:if="${role['dept-edit']}" lay-event="edit" >编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs"
-           th:if="${user.bmlbDel == 1}" lay-event="delete">删除</a>
+           th:if="${role['dept-delete']}" lay-event="delete">删除</a>
     </script>
     <table class="layui-hide" id="table" lay-filter="table"></table>
     <div class="submit_btn">
-        <button type="button" th:if="${user.bmlbAdd == 1}" onclick="insert()" class="layui-btn layui-btn-normal">添加部门</button>
+        <button type="button" th:if="${role['dept-add']}" onclick="insert()" class="layui-btn layui-btn-normal">添加部门</button>
         <button type="button" onclick="parent.layer.closeAll();"
                 class="layui-btn layui-btn-danger">关闭</button>
     </div>

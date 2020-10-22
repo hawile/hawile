@@ -45,6 +45,8 @@ public class AtmController {
     public String atm(Model model, HttpSession session){
         //将登录用户信息传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         //将商品信息列表传入model
         model.addAttribute("goodsList",goodsService.list());
         //将操作写入日志
@@ -57,6 +59,8 @@ public class AtmController {
     public String goods(Model model, HttpSession session){
         //将登录用户信息传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         //将商品信息列表传入model
         model.addAttribute("goodsList",goodsService.list());
         //将操作写入日志

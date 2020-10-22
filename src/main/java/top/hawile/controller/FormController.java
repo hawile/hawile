@@ -39,6 +39,8 @@ public class FormController {
     public String form(Model model, HttpSession session){
         //将当前用户对象传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         //将部门列表传入model
         model.addAttribute("deptList",deptService.list());
         //将操作写入日志

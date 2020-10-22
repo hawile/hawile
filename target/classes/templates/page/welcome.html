@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
     <link rel="stylesheet" href="/css/public.css" media="all">
     <link rel="stylesheet" href="/css/welcome.css" media="all">
+    <script src="/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <script src="/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+    <script src="/js/page/welcome.js" charset="utf-8"></script>
 </head>
 <body>
 <div class="layuimini-container">
@@ -46,8 +49,9 @@
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins">
-                                                            <a href="user_sign" style="color: #1e88e5"
+                                                            <a th:if="${role['userSign']}" href="user_sign" style="color: #1e88e5"
                                                                th:text="${userSignCount}"></a>
+                                                            <span th:if="${role['userSign'] == 0}" th:text="${userSignCount}"></span>
                                                         </h1>
                                                         <small>当前用户申请请求处理数量</small>
                                                     </div>
@@ -65,50 +69,58 @@
                             <div class="layui-card-body">
                                 <div class="welcome-module">
                                     <div class="layui-row layui-col-space10">
-                                        <div class="layui-col-xs3 layuimini-quick-module">
-                                            <a href="" layuimini-content-href="user_sign" data-title="用户申请管理" data-icon="fa fa-window-maximize">
+                                        <div th:if="${role['userSign']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="user_sign"
+                                               data-title="用户申请管理" data-icon="fa fa-window-maximize">
                                                 <i class="fa fa-user-plus"></i>
                                                 <cite>用户申请管理</cite>
                                             </a>
                                         </div>
-                                        <div class="layui-col-xs3 layuimini-quick-module">
-                                            <a href="" layuimini-content-href="user" data-title="用户管理" data-icon="fa fa-gears">
+                                        <div th:if="${role['user']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="user"
+                                               data-title="用户管理" data-icon="fa fa-gears">
                                                 <i class="fa fa-users"></i>
                                                 <cite>用户管理</cite>
                                             </a>
                                         </div>
-                                        <div class="layui-col-xs3 layuimini-quick-module">
-                                            <a href="" layuimini-content-href="auth" data-title="权限管理" data-icon="fa fa-file-text">
+                                        <div th:if="${role['role']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="auth"
+                                               data-title="权限管理" data-icon="fa fa-file-text">
                                                 <i class="fa fa-sun-o"></i>
                                                 <cite>权限管理</cite>
                                             </a>
                                         </div>
-                                        <div class="layui-col-xs3 layuimini-quick-module">
-                                            <a href="" layuimini-content-href="job" data-title="职位管理" data-icon="fa fa-dot-circle-o">
+                                        <div th:if="${role['post']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="job"
+                                               data-title="职位管理" data-icon="fa fa-dot-circle-o">
                                                 <i class="fa fa-user"></i>
                                                 <cite>职位管理</cite>
                                             </a>
                                         </div>
-                                        <div class="layui-col-xs3 layuimini-quick-module">
-                                            <a href="" layuimini-content-href="csr" data-title="客户账号信息" data-icon="fa fa-calendar">
+                                        <div th:if="${role['csr']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="csr"
+                                               data-title="客户账号信息" data-icon="fa fa-calendar">
                                                 <i class="fa fa-envelope-square"></i>
                                                 <cite>客户账号信息</cite>
                                             </a>
                                         </div>
-                                        <div class="layui-col-xs3 layuimini-quick-module">
-                                            <a href="" layuimini-content-href="work" data-title="工作报表" data-icon="fa fa-calendar">
+                                        <div th:if="${role['work']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="work"
+                                               data-title="工作报表" data-icon="fa fa-calendar">
                                                 <i class="fa fa-file-word-o"></i>
                                                 <cite>工作报表</cite>
                                             </a>
                                         </div>
-                                        <div class="layui-col-xs3 layuimini-quick-module">
-                                            <a href="" layuimini-content-href="atm" data-title="售货机订单信息" data-icon="fa fa-calendar">
+                                        <div th:if="${role['atm']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="atm"
+                                               data-title="售货机订单信息" data-icon="fa fa-calendar">
                                                 <i class="fa fa-bar-chart"></i>
                                                 <cite>售货机订单信息</cite>
                                             </a>
                                         </div>
-                                        <div class="layui-col-xs3 layuimini-quick-module">
-                                            <a href="" layuimini-content-href="acc_num" data-title="账号信息" data-icon="fa fa-calendar">
+                                        <div th:if="${role['account']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="acc_num"
+                                               data-title="账号信息" data-icon="fa fa-calendar">
                                                 <i class="fa fa-envelope-square"></i>
                                                 <cite>账号信息</cite>
                                             </a>
@@ -137,21 +149,5 @@
         </div>
     </div>
 </div>
-<script src="/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script src="/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
-<script>
-    layui.use(['layer', 'miniTab','echarts'], function () {
-        let $ = layui.jquery,
-            miniTab = layui.miniTab,
-            echarts = layui.echarts;
-
-        miniTab.listen();
-        // echarts 窗口缩放自适应
-        window.onresize = function(){
-            echarts.resize();
-        }
-
-    });
-</script>
 </body>
 </html>

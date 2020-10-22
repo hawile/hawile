@@ -13,15 +13,15 @@
 <body>
 	<script type="text/html" id="toolbarDemo">
 		<div class="layui-btn-container">
-			<button th:if="${user.csxxAdd}" class="layui-btn layui-btn-warm"
+			<button th:if="${role['contact-add']}" class="layui-btn layui-btn-warm"
 					lay-event="insert">添加联系人</button>
 		</div>
 	</script>
 	<script type="text/html" id="barDemo">
 		<a class="layui-btn layui-btn-xs"
-		   th:if="${user.csxxUp}" lay-event="edit" >编辑</a>
+		   th:if="${role['contact-edit']}" lay-event="edit" >编辑</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs"
-		   th:if="${user.csxxDel}" lay-event="delete">删除</a>
+		   th:if="${role['contact-delete']}" lay-event="delete">删除</a>
 	</script>
 	<table class="layui-hide" id="table" lay-filter="table"></table>
 

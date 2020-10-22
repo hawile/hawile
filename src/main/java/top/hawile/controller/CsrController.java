@@ -3,6 +3,7 @@ package top.hawile.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,9 +31,11 @@ public class CsrController {
 
     @RequestMapping
     //设置客户账号信息列表所需内容
-    public String csr(HttpServletRequest request, HttpSession session){
-        //将登录用户信息传入request
-        request.setAttribute("user",session.getAttribute("user"));
+    public String csr(Model model, HttpSession session){
+        //将登录用户信息传入model
+        model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         //将操作写入日志
         logService.log("查看[ 客户账号信息列表 ]","成功");
         return "page/csr";

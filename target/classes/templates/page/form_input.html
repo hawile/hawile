@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="">
+<html lang="" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
@@ -20,10 +20,10 @@
 		</div>
 	</script>
 	<script type="text/html" id="input">
-		<a class="layui-btn layui-btn-xs" lay-event="input">填写</a>
+		<a th:if="${role['form-input']}" class="layui-btn layui-btn-xs" lay-event="input">填写</a>
 	</script>
 	<script type="text/html" id="record">
-		<a class="layui-btn layui-btn-xs" lay-event="download">下载</a>
+		<a th:if="${role['form-download']}" class="layui-btn layui-btn-xs" lay-event="download">下载</a>
 	</script>
 	<table class="layui-hide" id="table" lay-filter="table"></table>
 	<div class="submit_btn">

@@ -20,12 +20,11 @@ $(function() {
             ,toolbar: false
             ,cols: [[ //表头
                {type: 'numbers', title: '序号', align:'center', width:60, sort: true}
-                ,{field: 'userName', title: '用户', align:'center', width:120, sort: true}
-                ,{field: 'name', title: '姓名', align:'center', width:120, sort: true}
-                ,{field: 'authName', title: '用户组', align:'center', width:120, sort: true}
-                ,{field: 'content', title: '操作内容', align:'center', width:600, sort: true}
+                ,{field: 'userName', title: '用户', align:'center', width:150, sort: true}
+                ,{field: 'name', title: '姓名', align:'center', width:150, sort: true}
+                ,{field: 'content', title: '操作内容', align:'center', minWidth:200, sort: true}
                 ,{field: 'state', title: '操作状态', align:'center', width:120,templet:'#state', sort: true}
-                ,{field: 'createTime', title: '操作时间', align:'center',templet :
+                ,{field: 'createTime', title: '操作时间', align:'center', width:200,templet :
                         "<div>{{layui.util.toDateString(d.createTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
             ]]
         });

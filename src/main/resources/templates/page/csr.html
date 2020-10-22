@@ -13,13 +13,13 @@
 <body>
 <script type="text/html" id="toolbarDemo">
 	<div class="layui-btn-container">
-		<button th:if="${user.khzhAdd == 1}" class="layui-btn layui-btn-warm"
+		<button th:if="${role['csr-add']}" class="layui-btn layui-btn-warm"
 				lay-event="insert">添加账号</button>
-		<button th:if="${user.khzhUp == 1}" class="layui-btn layui-btn-normal"
+		<button th:if="${role['csr-edit']}" class="layui-btn layui-btn-normal"
 				lay-event="state">修改状态</button>
-		<button th:if="${user.khzhDel == 1}" class="layui-btn layui-btn-danger"
+		<button th:if="${role['csr-delete']}" class="layui-btn layui-btn-danger"
 				lay-event="delete">批量删除</button>
-		<button class="layui-btn layui-btn-warm"
+		<button th:if="${role['csr-print']}" class="layui-btn layui-btn-warm"
 				onclick="window.location='/csr/print'">打印列表</button>
 	</div>
 </script>
@@ -34,9 +34,9 @@
 </script>
 <script type="text/html" id="barDemo">
 	<a class="layui-btn layui-btn-xs"
-	   th:if="${user.khzhUp == 1}" lay-event="edit" >编辑</a>
+	   th:if="${role['csr-edit']}" lay-event="edit" >编辑</a>
 	<a class="layui-btn layui-btn-danger layui-btn-xs"
-	   th:if="${user.khzhDel == 1}" lay-event="delete">删除</a>
+	   th:if="${role['csr-delete']}" lay-event="delete">删除</a>
 </script>
 <table class="layui-hide" id="table" lay-filter="table"></table>
 

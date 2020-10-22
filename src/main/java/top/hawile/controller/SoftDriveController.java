@@ -42,6 +42,8 @@ public class SoftDriveController {
     public String softDrive(Model model, HttpSession session){
         //将登录用户信息传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         logService.log("查看[ 驱动下载 ]列表","成功");
         return "page/soft_drive";
     }

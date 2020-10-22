@@ -37,6 +37,8 @@ public class UserSignController {
     public String userApply(Model model, HttpSession session){
         //将登录用户信息传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         //将部门列表传入model
         model.addAttribute("deptList",deptService.list());
         //将权限列表传入model

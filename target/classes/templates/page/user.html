@@ -13,22 +13,22 @@
 <body>
 	<script type="text/html" id="toolbarDemo">
 		<div class="layui-btn-container">
-			<button th:if="${user.yhlbAdd == 1}" class="layui-btn layui-btn-warm"
+			<button th:if="${role['user-add']}" class="layui-btn layui-btn-warm"
 					lay-event="insert">添加用户</button>
 		</div>
 	</script>
 	<script type="text/html" id="barDemo">
 		{{# if (d.enabled==1) { }}
-		<a th:if="${user.yhlbEn == 1}" class="layui-btn layui-btn-xs layui-btn-normal"
+		<a class="layui-btn layui-btn-xs layui-btn-normal"
 		   lay-event="state">停用</a>
 		{{# } else if (d.enabled==0) { }}
-		<a th:if="${user.yhlbEn == 1}" class="layui-btn layui-btn-xs layui-btn-normal"
+		<a class="layui-btn layui-btn-xs layui-btn-normal"
 		   lay-event="state">启用</a>
 		{{# } }}
 		<a class="layui-btn layui-btn-xs"
-		   th:if="${user.yhlbUp == 1}" lay-event="edit" >编辑</a>
+		   th:if="${role['user-edit']}" lay-event="edit" >编辑</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs"
-		   th:if="${user.yhlbDel == 1}" lay-event="delete">删除</a>
+		   th:if="${role['user-delete']}" lay-event="delete">删除</a>
 	</script>
 	<script type="text/html" id="state">
 		{{# if (d.enabled == 1) { }}

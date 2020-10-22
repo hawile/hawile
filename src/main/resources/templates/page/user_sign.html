@@ -13,10 +13,10 @@
 <body>
 	<script type="text/html" id="barDemo">
 		{{# if (d.state == 0) { }}
-		<a class="layui-btn layui-btn-xs" lay-event="permit" >同意</a>
-		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="deny">拒绝</a>
+		<a th:if="${role['userSign-edit']}" class="layui-btn layui-btn-xs" lay-event="permit" >同意</a>
+		<a th:if="${role['userSign-edit']}" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="deny">拒绝</a>
 		{{# } else { }}
-		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+		<a th:if="${role['userSign-edit']}" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
 		{{# } }}
 	</script>
 	<script type="text/html" id="state">

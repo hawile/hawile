@@ -34,6 +34,8 @@ public class ContactController {
     public String contact(Model model, HttpSession session){
         //将登录用户信息传入model
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         //将操作写入日志
         logService.log("查看[ 厂商信息 ]","成功");
         return "page/contact";

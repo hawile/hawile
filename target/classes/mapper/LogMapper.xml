@@ -3,7 +3,6 @@
 <mapper namespace="top.hawile.mapper.LogMapper">
   <resultMap id="BaseResultMap" type="top.hawile.entity.Log">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="auth_name" jdbcType="VARCHAR" property="authName" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="content" jdbcType="VARCHAR" property="content" />
@@ -12,7 +11,7 @@
   </resultMap>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
-      id, auth_name, user_name, `name`, content, `state`, create_time
+      id, user_name, `name`, content, `state`, create_time
     from log
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -24,10 +23,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into log (auth_name, user_name, `name`, 
+    insert into log (user_name, `name`,
       content, `state`, create_time
       )
-    values (#{authName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+    values (#{userName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
       #{content,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -37,9 +36,6 @@
     </selectKey>
     insert into log
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="authName != null">
-        auth_name,
-      </if>
       <if test="userName != null">
         user_name,
       </if>
@@ -57,9 +53,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="authName != null">
-        #{authName,jdbcType=VARCHAR},
-      </if>
       <if test="userName != null">
         #{userName,jdbcType=VARCHAR},
       </if>
@@ -80,9 +73,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="top.hawile.entity.Log">
     update log
     <set>
-      <if test="authName != null">
-        auth_name = #{authName,jdbcType=VARCHAR},
-      </if>
       <if test="userName != null">
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
@@ -103,8 +93,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="top.hawile.entity.Log">
     update log
-    set auth_name = #{authName,jdbcType=VARCHAR},
-      user_name = #{userName,jdbcType=VARCHAR},
+    set user_name = #{userName,jdbcType=VARCHAR},
       `name` = #{name,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       `state` = #{state,jdbcType=VARCHAR},
@@ -112,15 +101,15 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectMonth" resultMap="BaseResultMap">
-    select id, auth_name, user_name, `name`, content, `state`, create_time
+    select id, user_name, `name`, content, `state`, create_time
     from log where create_time like concat(#{month,jdbcType=VARCHAR},'%') order by create_time desc
   </select>
   <select id="selectUserName" resultMap="BaseResultMap">
-    select id, auth_name, user_name, `name`, content, `state`, create_time
+    select id, user_name, `name`, content, `state`, create_time
     from log where user_name = #{userName,jdbcType=VARCHAR} order by create_time desc
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, auth_name, user_name, `name`, content, `state`, create_time
+    select id, user_name, `name`, content, `state`, create_time
     from log order by create_time desc
   </select>
 </mapper>

@@ -1,13 +1,9 @@
 package top.hawile.entity;
 
-import java.io.Serializable;
-
-public class Department extends Authority {
+public class Department {
     private Integer deptId;
     private String deptName;
     private Integer formNo;
-
-    private static final long serialVersionUID = 1L;
 
     public Integer getDeptId() {
         return deptId;

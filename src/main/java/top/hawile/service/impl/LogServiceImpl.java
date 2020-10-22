@@ -123,8 +123,6 @@ public class LogServiceImpl implements LogService {
 		Date date = new Date();
 		//新建log对象
 		Log log = new Log();
-		//设置log对象权限组名
-		log.setAuthName(userTemp.getAuthName());
 		//设置log对象用户名
 		log.setUserName(userTemp.getUserName());
 		//设置log对象姓名

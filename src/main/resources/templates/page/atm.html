@@ -13,9 +13,9 @@
 <body>
 	<script type="text/html" id="toolbarDemo">
 		<div class="layui-btn-container">
-			<button th:if="${user.atmAdd == 1}" class="layui-btn layui-btn-warm"
+			<button th:if="${role['atm-add']}" class="layui-btn layui-btn-warm"
 					lay-event="insert">添加订单</button>
-			<button th:if="${user.atmGoodsUp == 1}" class="layui-btn layui-btn-danger"
+			<button th:if="${role['goods-edit']}" class="layui-btn layui-btn-danger"
 					lay-event="goods">商品编辑</button>
 		</div>
 	</script>
@@ -23,7 +23,7 @@
 		<a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
 		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="export" >导出</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs"
-		   th:if="${user.atmDel == 1}" lay-event="delete">删除</a>
+		   th:if="${role['atm-delete']}" lay-event="delete">删除</a>
 	</script>
 	<table class="layui-hide" id="table" lay-filter="table"></table>
 

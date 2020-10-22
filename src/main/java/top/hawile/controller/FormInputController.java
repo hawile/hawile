@@ -39,6 +39,8 @@ public class FormInputController {
     public String input(Model model, HttpSession session){
         //传入当前用户对象
         model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         //传入部门列表
         model.addAttribute("deptList",deptService.list());
         return "page/form_input";

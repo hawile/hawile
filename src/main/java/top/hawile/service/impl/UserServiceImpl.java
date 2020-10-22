@@ -61,6 +61,7 @@ public class UserServiceImpl implements UserService {
             Map<String,Object> map = new HashMap<>();
             //获取当前用户权限信息
             List<RoleToUser> roleList = roleToUserService.listByUserId(user.getId());
+            //循环遍历权限信息
             for (RoleToUser roleToUser:roleList){
                 map.put(roleToUser.getSymbol(),roleToUser.getValue());
             }
