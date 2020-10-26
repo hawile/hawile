@@ -126,7 +126,7 @@ public class MainController {
         //默认菜单内容
         Map<String,Object> map002 = new HashMap<>();
         map002.put("title","");
-        map002.put("image","image/keydom.png");
+        map002.put("image","image/title.png");
         map002.put("href","");
         mapTop.put("logoInfo",map002);
         //默认菜单内容

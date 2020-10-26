@@ -15,6 +15,7 @@
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/LogLogin.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/impl/FileServiceImpl.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/SysInfoService.java
+/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/controller/MainController.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/GoodsMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/LogMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/controller/AccNumController.java
@@ -52,9 +53,7 @@
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/RoleMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/CsrService.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/AtmGoods.java
-/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/RoleGroupMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/ContactService.java
-/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/RoleToGroupMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/SoftOSMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/impl/SysInfoServiceImpl.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/impl/UserSignServiceImpl.java
@@ -62,13 +61,13 @@
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/FormMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/impl/RoleServiceImpl.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/DepartmentMapper.java
+/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/RoleToUserMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/SoftAppMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/FormInputMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/AuthService.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/UserSign.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/controller/RoleController.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/form/Form00203.java
-/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/controller/LoginController.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/impl/WorkServiceImpl.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/SoftDriveMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/Department.java
@@ -87,8 +86,8 @@
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/SysInfo.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/UserSignMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/FormInputService.java
+/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/impl/RoleToUserServiceImpl.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/controller/SoftOSController.java
-/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/RoleGroup.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/Job.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/SoftApp.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/FormInput.java
@@ -104,7 +103,9 @@
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/Log.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/controller/DeptController.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/AccNumService.java
+/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/RoleToUserService.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/SoftOSService.java
+/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/RoleToUser.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/controller/SoftAppController.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/KeydomApplication.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/config/ConnectorConfig.java
@@ -113,6 +114,5 @@
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/User.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/controller/LogController.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/UserService.java
-/Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/entity/RoleToGroup.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/mapper/JobMapper.java
 /Users/hawile/IdeaProjects/Keydom/src/main/java/top/hawile/service/impl/SoftDriveServiceImpl.java
