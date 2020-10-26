@@ -22,4 +22,6 @@ public interface RoleMapper {
     List<Role> menuByUser0(Integer userId);
 
     List<Role> menuByUser1(Integer userId, Integer roleId);
+
+    List<Role> selectMenu();
 }

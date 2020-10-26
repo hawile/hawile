@@ -133,4 +133,10 @@ public class MainController {
         mapTop.put("menuInfo",list0);
         return mapTop;
     }
+
+    @RequestMapping({"/icon"})
+    //设置首页所需内容
+    public String icon(){
+        return "page/icon";
+    }
 }

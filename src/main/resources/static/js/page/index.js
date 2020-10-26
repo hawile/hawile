@@ -17,7 +17,7 @@ layui.use(['form'], function () {
         $.ajax({
             async:true
             ,url: '/login'
-            ,type: 'get'
+            ,type: 'post'
             ,data: $('#form-login').serialize()
             ,dataType: 'json'
             ,success: function (data){

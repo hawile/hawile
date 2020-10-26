@@ -19,6 +19,8 @@ public class Role implements Serializable {
 
     private String href;
 
+    private String users;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -85,22 +87,11 @@ public class Role implements Serializable {
         this.href = href == null ? null : href.trim();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", symbol=").append(symbol);
-        sb.append(", parentId=").append(parentId);
-        sb.append(", menuId=").append(menuId);
-        sb.append(", sort=").append(sort);
-        sb.append(", icon=").append(icon);
-        sb.append(", href=").append(href);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    public String getUsers() {
+        return users;
+    }
+
+    public void setUsers(String users) {
+        this.users = users;
     }
 }

@@ -143,4 +143,10 @@
       and menu_id = 1 and parent_id = #{roleId,jdbcType=INTEGER}
     order by sort,parent_id
   </select>
+  <select id="selectMenu" resultMap="BaseResultMap">
+    select
+      id, `name`, symbol, parent_id, menu_id, sort, icon, href
+    from role where menu_id = 1 or menu_id = 0
+    order by sort,parent_id
+  </select>
 </mapper>

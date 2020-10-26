@@ -4,12 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import top.hawile.entity.Role;
+import top.hawile.entity.RoleToUser;
 import top.hawile.service.LogService;
 import top.hawile.service.RoleService;
 import top.hawile.service.UserService;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,8 +34,8 @@ public class RoleController {
         model.addAttribute("user",session.getAttribute("user"));
         //将权限信息存入model
         model.addAttribute("role", session.getAttribute("role"));
-        //将权限列表传入model
-        model.addAttribute("roleList",roleService.list());
+        //将权限菜单列表传入model
+        model.addAttribute("menuList",roleService.selectMenu());
         //将用户列表传入model
         model.addAttribute("userList",userService.list());
         //将操作写入日志
@@ -51,5 +55,13 @@ public class RoleController {
         map.put("count", roleService.list().size());
         map.put("data",roleService.list());
         return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("/insert")
+    public int insert(Role role){
+
+
+        return 0;
     }
 }
