@@ -45,10 +45,6 @@ public class FileServiceImpl implements FileService {
     @Override
     //修改文件
     public int update(FileEntity fileEntity) {
-        //判断是否存在相同文件编号文件
-        if(this.isSerial(fileEntity.getSerial()) > 0){
-            return 2;
-        }
         return fileMapper.updateByPrimaryKeySelective(fileEntity);
     }
 

@@ -2,11 +2,6 @@ package top.hawile.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import top.hawile.entity.SysInfo;
-import top.hawile.entity.User;
-import top.hawile.service.SysInfoService;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;

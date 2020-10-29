@@ -79,7 +79,7 @@
                 <select id="parentId" class="layui-input" name="parentId">
                     <option value=""></option>
                     <option value="0">新管理模块</option>
-                    <option th:each="role:${menuList}" value="${role.id}" th:text="${role.name}"></option>
+                    <option th:each="role:${menuList}" th:value="${role.id}" th:text="${role.name}"></option>
                 </select>
             </div>
         </div>
@@ -94,6 +94,76 @@
         </div>
         <div class="submit_btn">
             <button type="button" lay-submit="" lay-filter="subInsert"
+                    class="layui-btn layui-btn-normal">提交</button>
+            <button type="button" onclick="layer.closeAll();"
+                    class="layui-btn layui-btn-danger">关闭</button>
+        </div>
+    </form>
+</div>
+<!--修改权限-->
+<div id="up_role_style" class="display-0">
+    <form id="FormUp" class="layui-form" method="post" action="">
+        <input type="hidden" id="ids2" name="users"/>
+        <div class="layui-form-item width-80" style="padding-top: 10px">
+            <label class="layui-form-label width-40">
+                <span style="color: red; ">*</span>权限名称:
+            </label>
+            <div class="float-left width-50">
+                <input class="layui-input" type="text" id="name2"
+                       name="name" lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item width-80">
+            <label class="layui-form-label width-40">
+                <span style="color: red; ">*</span>权限标识:
+            </label>
+            <div class="float-left width-50">
+                <input class="layui-input" type="text" id="symbol2"
+                       name="symbol" lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item width-80">
+            <label class="layui-form-label width-40">
+                <span style="color: red; ">*</span>图标:
+            </label>
+            <div class="float-left width-50">
+                <input class="layui-input" type="text" id="icon2"
+                       name="icon" lay-verify="required"/>
+                <div style="padding-left: 10px">
+                    <a style="color: #1e88e5" href="icon" target="_blank">图标代码查询</a>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item width-80">
+            <label class="layui-form-label width-40">
+                <span style="color: red; ">*</span>路径:
+            </label>
+            <div class="float-left width-50">
+                <input class="layui-input" type="text" id="href2"
+                       name="href" lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item width-80">
+            <label class="layui-form-label width-40">父权限名:</label>
+            <div class="float-left width-50">
+                <select id="parentId2" class="layui-input" name="parentId">
+                    <option value=""></option>
+                    <option value="0">新管理模块</option>
+                    <option th:each="role:${menuList}" th:value="${role.id}" th:text="${role.name}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="submit_btn">
+            <h3>绑定用户</h3>
+        </div>
+
+        <div class="layui-form-item width-80" style="padding-left: 10%">
+            <div style="width: 300px;">
+                <table id="userTable2" class="layui-table" lay-filter="userTable"></table>
+            </div>
+        </div>
+        <div class="submit_btn">
+            <button type="button" lay-submit="" lay-filter="subUpdate"
                     class="layui-btn layui-btn-normal">提交</button>
             <button type="button" onclick="layer.closeAll();"
                     class="layui-btn layui-btn-danger">关闭</button>

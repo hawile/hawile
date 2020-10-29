@@ -18,6 +18,8 @@ $(function() {
             ,height: 550
             ,url: '/user_sign/list'
             ,page: true
+            ,limits: [10,20,30,50,100,200,500]
+            ,limit: 10
             ,toolbar: false
             ,cols: [[ //表头
                 {type: 'numbers', title: '序号', align:'center', width:60}

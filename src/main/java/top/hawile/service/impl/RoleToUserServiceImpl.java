@@ -40,6 +40,11 @@ public class RoleToUserServiceImpl implements RoleToUserService {
     }
 
     @Override
+    public RoleToUser selectByRoleIdAndUserId(Integer roleId, Integer userId) {
+        return roleToUserMapper.selectByRoleIdAndUserId(roleId,userId);
+    }
+
+    @Override
     public int deleteByUserId(Integer id) {
         return roleToUserMapper.deleteByUserId(id);
     }

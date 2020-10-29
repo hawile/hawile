@@ -8,6 +8,8 @@ layui.use(['form','table'],function(){
         ,limit: 8
         ,url: '/dept/list' //数据接口
         ,page: true
+        ,limits: [10,20,30,50,100,200,500]
+        ,limit: 10
         ,toolbar: false
         ,cols: [[ //表头
             {type: 'checkbox', width:40}

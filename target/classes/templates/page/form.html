@@ -77,16 +77,16 @@
 			</div>
 		</div>
 		<div class="submit_btn">
-			<button type="button" class="layui-btn layui-btn-normal upload">
+			<button id="upload" type="button" class="layui-btn layui-btn-normal">
 				<i class="layui-icon"></i>上传文件</button>
-			<div name="fileListDiv" class="submit_btn">
+			<div id="fileListDiv" class="submit_btn width-80 display-0">
 				<table class="layui-table">
 					<thead>
 					<tr><th>文件名</th>
 						<th>大小</th>
 						<th>操作</th>
 					</tr></thead>
-					<tbody name="fileList"></tbody>
+					<tbody id="fileList"></tbody>
 				</table>
 			</div>
 		</div>
@@ -96,8 +96,8 @@
 			</div>
 		</div>
 		<div class="submit_btn">
-			<button type="button" lay-submit="" lay-filter="subInsert"
-					class="layui-btn layui-btn-normal submit">提交</button>
+			<button type="button" lay-submit="" lay-filter="subInsert" id="submit"
+					class="layui-btn layui-btn-normal">提交</button>
 			<button type="button" onclick="layer.closeAll();"
 					class="layui-btn layui-btn-danger">关闭</button>
 		</div>
@@ -153,27 +153,27 @@
 				</div>
 			</div>
 			<div class="submit_btn">
-				<button type="button" class="layui-btn layui-btn-normal upload">
+				<button id="upload2" type="button" class="layui-btn layui-btn-normal">
 					<i class="layui-icon"></i>上传文件</button>
-				<div name="fileListDiv" class="submit_btn">
+				<div id="fileListDiv2" class="submit_btn width-80 display-0">
 					<table class="layui-table">
 						<thead>
 						<tr><th>文件名</th>
 							<th>大小</th>
 							<th>操作</th>
 						</tr></thead>
-						<tbody name="fileList"></tbody>
+						<tbody id="fileList2"></tbody>
 					</table>
 				</div>
 			</div>
 			<div class="submit_btn width-80">
-				<div class="layui-progress layui-progress-big submit_btn" lay-showpercent="true" lay-filter="fileProcess">
+				<div class="layui-progress layui-progress-big submit_btn" lay-showpercent="true" lay-filter="fileProcess2">
 					<div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
 				</div>
 			</div>
 			<div class="submit_btn">
-				<button type="button" lay-submit="" lay-filter="subUpdate"
-						class="layui-btn layui-btn-normal submit">提交</button>
+				<button type="button" lay-submit="" lay-filter="subUpdate" id="submit2"
+						class="layui-btn layui-btn-normal">提交</button>
 				<button type="button" onclick="layer.closeAll();"
 						class="layui-btn layui-btn-danger">关闭</button>
 			</div>

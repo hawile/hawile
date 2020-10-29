@@ -11,6 +11,8 @@ $(function($) {
             ,height: 550
             ,url: '/file/list' //数据接口
             ,page: true
+            ,limits: [10,20,30,50,100,200,500]
+            ,limit: 10
             ,toolbar: '#toolbarDemo'
             ,cols: [[ //表头
                 {type: 'checkbox', align:'center', width:40}
@@ -27,10 +29,10 @@ $(function($) {
             ]]
         });
 
-        //上传文件
+        //添加上传文件
         uploadListIns = upload.render({
-            elem: '.upload',
-            url: '/file/upload',
+            elem: '#upload',
+            url: '/form/upload',
             accept: 'file',
             exts: 'pdf|zip|rar|xls|xlsx|xlsm|doc|docx|docm|txt',
             multiple: true,
@@ -38,7 +40,7 @@ $(function($) {
             number: 2,
             data: {serial:function (){return $('input[name=serial]').val()}},
             auto: false,
-            bindAction: '.submit',
+            bindAction: '#submit',
             choose: function (obj){
                 //将每次选择的文件追加到文件队列
                 UPLOAD_FILES = obj.pushFile();
@@ -51,7 +53,7 @@ $(function($) {
                         $('input[name=exts]').val(exts);
                         $('input[name=size]').val(file.size);
                     }
-                    $('tbody[name=fileList]').append('<tr id="file'+index+'"></tr>');
+                    $('#fileList').append('<tr id="file'+index+'"></tr>');
                     $('tr[id=file'+index+']').append('<td>'+file.name+'</td>');
                     $('tr[id=file'+index+']').append('<td>'+(file.size/1024).toFixed(0) +'kb'+'</td>');
                     $('tr[id=file'+index+']').append('<td><button class="layui-btn layui-btn-xs ' +
@@ -60,16 +62,66 @@ $(function($) {
                         delete UPLOAD_FILES[index]; //删除对应的文件
                         uploadListIns.config.elem.next()[0].value = '';
                         $('tr[id=file'+index+']').remove();
-                        if($('tbody[name=fileList]').find('tr').val() == undefined){
-                            $('div[name=fileListDiv]').addClass('display-0');
+                        if($('#fileList').find('tr').val() == undefined){
+                            $('#fileListDiv').addClass('display-0');
                         }
                     });
                 });
                 obj.pushFile();
-                $('div[name=fileListDiv]').css('display','inline');
+                $('#fileListDiv').removeClass('display-0');
             },
             progress: function(n){
                 element.progress('fileProcess', n+"%");
+            }
+        });
+
+        //修改上传文件
+        uploadListIns2 = upload.render({
+            elem: '#upload2',
+            url: '/form/upload',
+            accept: 'file',
+            exts: 'pdf|zip|rar|xls|xlsx|xlsm|doc|docx|docm|txt',
+            multiple: true,
+            size: 20480,
+            number: 2,
+            data: {
+                serial: function () {
+                    return $('input[name=serial]').val()
+                }
+            },
+            auto: false,
+            bindAction: '#submit2',
+            choose: function (obj) {
+                //将每次选择的文件追加到文件队列
+                UPLOAD_FILES = obj.pushFile();
+                clearFile();
+                //预读本地文件，如果是多文件，则会遍历。(不支持ie8/9)
+                obj.preview(function (index, file) {
+                    let extsIndex = file.name.lastIndexOf('.');
+                    let exts = file.name.substring(extsIndex);
+                    if (exts != '.pdf') {
+                        $('input[name=exts]').val(exts);
+                        $('input[name=size]').val(file.size);
+                    }
+                    $('#fileList2').append('<tr id="file' + index + '"></tr>');
+                    $('tr[id=file' + index + ']').append('<td>' + file.name + '</td>');
+                    $('tr[id=file' + index + ']').append('<td>' + (file.size / 1024).toFixed(0) + 'kb' + '</td>');
+                    $('tr[id=file' + index + ']').append('<td><button class="layui-btn layui-btn-xs ' +
+                        'layui-btn-danger fileList-delete_' + index + '">删除</button></td>');
+                    $('.fileList-delete_' + index).on('click', function () {
+                        delete UPLOAD_FILES[index]; //删除对应的文件
+                        uploadListIns2.config.elem.next()[0].value = '';
+                        $('tr[id=file' + index + ']').remove();
+                        if ($('#fileList2').find('tr').val() == undefined) {
+                            $('#fileListDiv2').addClass('display-0');
+                        }
+                    });
+                });
+                obj.pushFile();
+                $('#fileListDiv2').removeClass('display-0');
+            },
+            progress: function (n) {
+                element.progress('fileProcess2', n + "%");
             }
         });
 

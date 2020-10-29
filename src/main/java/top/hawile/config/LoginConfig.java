@@ -18,7 +18,7 @@ public class LoginConfig implements WebMvcConfigurer {
         //添加拦截路径
         registration.addPathPatterns("/**");
         //排除例外路径
-        registration.excludePathPatterns("/", "/**/*.html", "/**/*.js", "/**/*.css", "/**/*.xls*", "/**/*.gif",
+        registration.excludePathPatterns("/", "/**/*.js", "/**/*.css", "/**/*.xls*", "/**/*.gif",
                 "/**/*.png","/**/*.ico","/**/*.jp*","/**/*.woff*", "/login", "/user/apply","/**/*.doc*", "/**/*.pdf",
                 "/user_sign/apply", "/job/findByDeptId");
     }

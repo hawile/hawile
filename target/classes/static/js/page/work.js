@@ -21,6 +21,8 @@ layui.use(['form','laydate','table'],function(){
         ,height: 550
         ,url: '/work/list' //数据接口
         ,page: true
+        ,limits: [10,20,30,50,100,200,500]
+        ,limit: 10
         ,toolbar: '#toolbarDemo'
         ,cols: [[ //表头
             {type: 'checkbox', width:40}

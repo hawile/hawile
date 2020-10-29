@@ -16,6 +16,8 @@ public interface RoleToUserService {
 
     List<RoleToUser> listByRoleId(Integer id);
 
+    RoleToUser selectByRoleIdAndUserId(Integer roleId, Integer userId);
+
     int deleteByUserId(Integer id);
 
     int deleteByRoleId(Integer id);

@@ -9,6 +9,8 @@ layui.use(['form', 'table'], function () {
         , url: '/form_input/list' //数据接口
         ,limit: 5
         , page: true
+        ,limits: [10,20,30,50,100,200,500]
+        ,limit: 10
         , toolbar: '#toolbarDemo'
         ,defaultToolbar: ''
         , cols: [[ //表头

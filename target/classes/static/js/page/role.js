@@ -20,6 +20,7 @@ layui.use(['table', 'treetable', 'form'], function () {
                 {type: 'numbers'}
                 ,{field: 'name', minWidth: 200, title: '权限名称'}
                 ,{field: 'symbol', title: '权限标识'}
+                ,{field: 'users', title: '用户'}
                 ,{field: 'updateTime', title: '修改时间', align:'center',templet :
                     "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
                 ,{templet: '#barDemo', width: 120, align: 'center', title: '操作'}
@@ -54,7 +55,19 @@ layui.use(['table', 'treetable', 'form'], function () {
         switch (obj.event){
             //权限-编辑
             case 'edit':
-                layer.msg('编辑'+data.id);
+                $('#name2').val(data.name);
+                $('#symbol2').val(data.symbol);
+                $('#icon2').val(data.icon);
+                $('#href2').val(data.href);
+                $('#parentId2').val(data.parentId);
+                $('#name2').val(data.name);
+                layer.open({
+                    type: 1,
+                    title:'添加权限',
+                    area: ['400px','90%'],
+                    shadeClose: false,
+                    content: $('#add_role_style'),
+                });
             break;
             //权限-删除
             case 'delete':
@@ -78,10 +91,9 @@ layui.use(['table', 'treetable', 'form'], function () {
         ]]
     });
 
-    let checkStatus = table.checkStatus('userTable');
-
     //权限添加-提交
     form.on('submit(subInsert)',function (){
+        let checkStatus = table.checkStatus('userTable');
         let count = checkStatus.data.length
         if(count != 0) {
             let ids = checkStatus.data[0].id;
@@ -89,39 +101,33 @@ layui.use(['table', 'treetable', 'form'], function () {
                 ids += ","+checkStatus.data[i].id;
             }
             $('#ids').val(ids);
-            $.ajax({
-                async: true
-                ,url: '/role/insert'
-                ,type: 'post'
-                ,data: $('#FormAdd').serialize()
-                ,dataType: 'text'
-                ,success: function (data){
-                    if(data == count){
-                        layer.alert('添加成功！',{
-                            title: '提示框',
-                            icon:1,
-                        },function(){
-                            location.reload();
-                        });
-                    }else if (data >0) {
-                        layer.alert('部分用户添加失败！',{
-                            title: '提示框',
-                            icon:2,
-                        },function(){
-                            location.reload();
-                        });
-                    }else {
-                        layer.alert('添加失败！',{
-                            title: '提示框',
-                            icon:2,
-                        },function(){
-                            location.reload();
-                        });
-                    }
-                }
-            });
+        } else {
+            $('#ids').val(0);
         }
-
+        $.ajax({
+            async: true
+            ,url: '/role/insert'
+            ,type: 'post'
+            ,data: $('#FormAdd').serialize()
+            ,dataType: 'text'
+            ,success: function (data){
+                if(data == 1){
+                    layer.alert('添加成功！',{
+                        title: '提示框',
+                        icon:1,
+                    },function(){
+                        location.reload();
+                    });
+                }else {
+                    layer.alert('添加失败！',{
+                        title: '提示框',
+                        icon:2,
+                    },function(){
+                        location.reload();
+                    });
+                }
+            }
+        });
     });
 
     $('#btn-expand').click(function () {

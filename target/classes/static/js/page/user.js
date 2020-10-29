@@ -18,6 +18,8 @@ $(function() {
             ,height: 550    //高度
             ,url: '/user/list' //数据接口
             ,page: true //是否启用分页
+            ,limits: [10,20,30,50,100,200,500]
+            ,limit: 10
             ,toolbar: '#toolbarDemo'    //绑定头部工具栏标签
             ,cols: [[ //表头
                 {type: 'checkbox', align:'center', width:40}

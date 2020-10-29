@@ -68,12 +68,54 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public int update(Role role) {
-        return roleMapper.updateByPrimaryKeySelective(role);
+        //修改权限到数据库操作
+        int state = roleMapper.updateByPrimaryKeySelective(role);
+        //判断是否修改成功
+        if (state == 1){
+            //获取用户列表
+            List<User> userList = userService.list();
+            //循环遍历用户列表
+            for (User user:userList){
+                //新建对象
+                RoleToUser roleToUser = new RoleToUser();
+                //设置权限对象userId值
+                roleToUser.setUserId(user.getId());
+                //设置权限对象roleId值
+                roleToUser.setRoleId(role.getId());
+                //设置权限对象默认值
+                roleToUser.setValue(0);
+                //执行修改到数据库操作
+                roleToUserService.update(roleToUser);
+            }
+            //将用户转换成数组
+            String[] users = role.getUsers().split(",");
+            //循环遍历权限用户
+            for (String id:users){
+                //新建对象
+                RoleToUser roleToUser = new RoleToUser();
+                //设置权限对象userId值
+                roleToUser.setUserId(Integer.parseInt(id));
+                //设置权限对象roleId值
+                roleToUser.setRoleId(role.getId());
+                //设置权限对象默认值
+                roleToUser.setValue(1);
+                //执行更新到数据库操作
+                roleToUserService.update(roleToUser);
+            }
+        }
+        return state;
     }
 
     @Override
     public int delete(Integer id) {
-        return roleMapper.deleteByPrimaryKey(id);
+        //删除权限到数据库操作
+        int state = roleMapper.deleteByPrimaryKey(id);
+        //判断是否删除成功
+        if (state == 1){
+            //删除所有该权限的用户权限信息
+            roleToUserService.deleteByRoleId(id);
+        }
+        return state;
     }
 
     @Override

@@ -48,10 +48,6 @@ public class FormServiceImpl implements FormService {
     @Override
     //修改文件
     public int update(Form form) {
-        //判断是否存在相同文件编号文件
-        if(this.isSerial(form.getSerial()) > 0){
-            return 2;
-        }
         return formMapper.updateByPrimaryKeySelective(form);
     }
 
