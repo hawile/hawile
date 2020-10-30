@@ -21,6 +21,7 @@ layui.use(['table', 'treetable', 'form'], function () {
                 ,{field: 'name', minWidth: 200, title: '权限名称'}
                 ,{field: 'symbol', title: '权限标识'}
                 ,{field: 'users', title: '用户'}
+                ,{field: 'href', title: '路径'}
                 ,{field: 'updateTime', title: '修改时间', align:'center',templet :
                     "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
                 ,{templet: '#barDemo', width: 120, align: 'center', title: '操作'}
