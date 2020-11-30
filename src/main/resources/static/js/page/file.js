@@ -32,7 +32,7 @@ $(function($) {
         //添加上传文件
         uploadListIns = upload.render({
             elem: '#upload',
-            url: '/form/upload',
+            url: '/file/upload',
             accept: 'file',
             exts: 'pdf|zip|rar|xls|xlsx|xlsm|doc|docx|docm|txt',
             multiple: true,
@@ -78,7 +78,7 @@ $(function($) {
         //修改上传文件
         uploadListIns2 = upload.render({
             elem: '#upload2',
-            url: '/form/upload',
+            url: '/file/upload',
             accept: 'file',
             exts: 'pdf|zip|rar|xls|xlsx|xlsm|doc|docx|docm|txt',
             multiple: true,

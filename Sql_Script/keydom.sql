@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : Linux
  Source Server Type    : MySQL
- Source Server Version : 50729
- Source Host           : localhost:3306
+ Source Server Version : 50731
+ Source Host           : 192.168.11.11:3306
  Source Schema         : keydom
 
  Target Server Type    : MySQL
- Target Server Version : 50729
+ Target Server Version : 50731
  File Encoding         : 65001
 
- Date: 26/10/2020 09:25:23
+ Date: 05/11/2020 15:51:39
 */
 
 SET NAMES utf8mb4;
@@ -43,8 +43,8 @@ INSERT INTO `acc_num` VALUES (2, '生产中心', '防火墙', 'H3C SecPath F100-
 INSERT INTO `acc_num` VALUES (3, '生产中心', '防火墙', 'H3C SecPath F1000-E-SI', 'https://192.168.1.1:9998', 'administrator', 'Jksmart.112127', '', '2018-07-19 11:27:48');
 INSERT INTO `acc_num` VALUES (4, '生产中心', '防火墙', 'H3C SecPath F1000-E-SI', 'http://192.168.1.1:9999', 'administrator', 'Jksmart.112127', '', '2018-07-19 11:27:48');
 INSERT INTO `acc_num` VALUES (5, '生产中心', '入侵防御', 'H3C T1000-C', '', 'admin', 'Jksmart.112127', 'IDS/IPS', '2018-07-19 11:31:25');
-INSERT INTO `acc_num` VALUES (6, '生产中心', 'Liveupdate', 'Symantec', ' ', 'admin', 'JKsmart.112127', 'symantec更新服务器，双击桌面上的快捷方式即可打开管理界面', '2020-09-07 09:21:14');
-INSERT INTO `acc_num` VALUES (7, '生产中心', 'Sepm', 'Symantec', ' ', 'admin', 'JKsmart.112127', 'symantec更新服务器，双击桌面上的快捷方式即可打开管理界面', '2020-09-07 09:21:17');
+INSERT INTO `acc_num` VALUES (6, ' 生产中心', ' LLiveupdate', ' Symantec', ' ', 'admin', ' JKsmart.112127', ' symantec更新服务器，双击桌面上的快捷方式即可打开管理界面', '2018-07-19 11:30:48');
+INSERT INTO `acc_num` VALUES (7, '  生产中心', ' Sepm', '  Symantec', ' ', ' admin', '  JKsmart.112127', '  symantec更新服务器，双击桌面上的快捷方式即可打开管理界面', '2018-07-19 11:31:07');
 INSERT INTO `acc_num` VALUES (8, '生产中心', '卫计委服务器', 'Lenovo 3650 M5', 'SSH://192.168.4.100:22', 'root', 'Jksmart.112127', 'DPC', '2018-07-24 09:20:36');
 INSERT INTO `acc_num` VALUES (9, '生产中心', '卫计委服务器', 'Lenovo 3650 M5', 'SSH://192.168.4.100:22', 'dpc', 'dpc', 'DPC', '2018-07-24 09:20:41');
 INSERT INTO `acc_num` VALUES (10, '生产中心', '所有服务器', '', '', 'keydom', '222222Aa', '', '2018-07-19 11:27:22');
@@ -271,13 +271,12 @@ CREATE TABLE `atm` (
   `headoffice_profit` double(10,2) DEFAULT '0.00',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of atm
 -- ----------------------------
 BEGIN;
-INSERT INTO `atm` VALUES (1, '2019-08-28', '进货单', 525, 1911.00, 1482.30, '单号：No.0145090', '进货', 1911.00, 525, 428.70, 0.00, 0, 0.00, '2019-09-05 11:17:45');
 INSERT INTO `atm` VALUES (2, '2019-08-30', '上货单', 264, 930.00, 712.68, '【工厂】上货到自动售货柜', '上货', 930.00, 264, 217.32, 0.00, 0, 0.00, '2019-09-05 11:20:45');
 INSERT INTO `atm` VALUES (3, '2019-08-31', '2019年8月销售报表', 457, 1662.00, 1291.85, '', '统计', 922.50, 264, 217.40, 739.50, 193, 152.75, '2019-09-05 11:48:37');
 INSERT INTO `atm` VALUES (4, '2019-09-09', '上货单', 40, 160.00, 126.80, '【工厂】上货到自动售货柜', '上货', 160.00, 40, 33.20, 0.00, 0, 0.00, '2019-09-09 10:42:22');
@@ -296,6 +295,8 @@ INSERT INTO `atm` VALUES (17, '2020-03-31', '2020年3月销售报表', 0, 0.00, 
 INSERT INTO `atm` VALUES (18, '2020-04-30', '2020年4月销售报表', 11, 36.00, 26.57, '', '统计', 0.00, 0, 0.00, 36.00, 11, 9.43, '2020-05-13 16:02:11');
 INSERT INTO `atm` VALUES (19, '2020-07-03', '进货单', 180, 663.00, 516.60, '', '进货', 663.00, 180, 146.40, 0.00, 0, 0.00, '2020-07-06 15:41:53');
 INSERT INTO `atm` VALUES (20, '2020-09-14', '2020年7-9月销售报表', 276, 724.50, 562.23, '', '统计', 699.00, 192, 156.36, 25.50, 84, 5.91, '2020-09-14 16:58:15');
+INSERT INTO `atm` VALUES (22, '2020-10-20', '进货单', 336, 1230.00, 957.12, '', '进货', 1230.00, 336, 272.88, 0.00, 0, 0.00, '2020-10-30 10:17:51');
+INSERT INTO `atm` VALUES (23, '2020-10-21', '上货单', 216, 795.00, 618.72, '【工厂】上货到自动售货柜', '上货', 795.00, 216, 176.28, 0.00, 0, 0.00, '2020-10-30 10:18:36');
 COMMIT;
 
 -- ----------------------------
@@ -319,20 +320,12 @@ CREATE TABLE `atm_goods` (
   KEY `FK1297xvmu53l480k0svaccmdwd` (`order_id`),
   CONSTRAINT `FK1297xvmu53l480k0svaccmdwd` FOREIGN KEY (`order_id`) REFERENCES `atm` (`id`),
   CONSTRAINT `fk_order_id` FOREIGN KEY (`order_id`) REFERENCES `atm` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of atm_goods
 -- ----------------------------
 BEGIN;
-INSERT INTO `atm_goods` VALUES (1, '可口可乐', 3.00, 2.17, '500ml', '瓶', 48, 144.00, 104.16, '工厂', '无', 1);
-INSERT INTO `atm_goods` VALUES (2, '百事可乐', 3.00, 2.17, '600ml', '瓶', 48, 144.00, 104.16, '工厂', '无', 1);
-INSERT INTO `atm_goods` VALUES (3, '方便面', 4.00, 3.17, '106g', '桶', 96, 384.00, 304.32, '工厂', '无', 1);
-INSERT INTO `atm_goods` VALUES (4, '鲜橙多', 3.00, 2.20, '450ml', '瓶', 90, 270.00, 198.00, '工厂', '无', 1);
-INSERT INTO `atm_goods` VALUES (5, '营养快线', 4.00, 3.00, '450g', '瓶', 45, 180.00, 135.00, '工厂', '无', 1);
-INSERT INTO `atm_goods` VALUES (6, '脉动', 4.00, 3.07, '600ml', '瓶', 60, 240.00, 184.20, '工厂', '无', 1);
-INSERT INTO `atm_goods` VALUES (7, '农夫茶π', 4.50, 3.87, '600ml', '瓶', 90, 405.00, 348.30, '工厂', '无', 1);
-INSERT INTO `atm_goods` VALUES (8, '雪碧', 3.00, 2.17, '500ml', '瓶', 48, 144.00, 104.16, '工厂', '无', 1);
 INSERT INTO `atm_goods` VALUES (9, '百事可乐', 3.00, 2.17, '600ml', '瓶', 48, 144.00, 104.16, '工厂', '无', 2);
 INSERT INTO `atm_goods` VALUES (10, '方便面', 4.00, 3.17, '106g', '桶', 48, 192.00, 152.16, '工厂', '无', 2);
 INSERT INTO `atm_goods` VALUES (11, '鲜橙多', 3.00, 2.20, '450ml', '瓶', 45, 135.00, 99.00, '工厂', '无', 2);
@@ -453,6 +446,18 @@ INSERT INTO `atm_goods` VALUES (131, '百事可乐', 3.00, 2.17, '600ml', '瓶',
 INSERT INTO `atm_goods` VALUES (132, '雪碧', 3.00, 2.17, '500ml', '瓶', 3, 9.00, 6.51, '总部', '无', 20);
 INSERT INTO `atm_goods` VALUES (133, '农夫茶π', 4.50, 3.87, '600ml', '瓶', 1, 4.50, 3.87, '总部', '无', 20);
 INSERT INTO `atm_goods` VALUES (134, '脉动', 4.00, 3.07, '600ml', '瓶', 3, 12.00, 9.21, '总部', '无', 20);
+INSERT INTO `atm_goods` VALUES (140, '可口可乐', 3.00, 2.17, '500ml', '瓶', 72, 216.00, 156.24, '生产中心', '无', 22);
+INSERT INTO `atm_goods` VALUES (141, '雪碧', 3.00, 2.17, '500ml', '瓶', 48, 144.00, 104.16, '生产中心', '无', 22);
+INSERT INTO `atm_goods` VALUES (142, '农夫茶π', 4.50, 3.87, '600ml', '瓶', 60, 270.00, 232.20, '生产中心', '无', 22);
+INSERT INTO `atm_goods` VALUES (143, '脉动', 4.00, 3.07, '600ml', '瓶', 60, 240.00, 184.20, '生产中心', '无', 22);
+INSERT INTO `atm_goods` VALUES (144, '方便面', 4.00, 3.17, '106g', '桶', 72, 288.00, 228.24, '生产中心', '无', 22);
+INSERT INTO `atm_goods` VALUES (145, '百事可乐（极度）', 3.00, 2.17, '500ml', '瓶', 24, 72.00, 52.08, '生产中心', '', 22);
+INSERT INTO `atm_goods` VALUES (146, '可口可乐', 3.00, 2.17, '500ml', '瓶', 48, 144.00, 104.16, '生产中心', '无', 23);
+INSERT INTO `atm_goods` VALUES (147, '雪碧', 3.00, 2.17, '500ml', '瓶', 24, 72.00, 52.08, '生产中心', '无', 23);
+INSERT INTO `atm_goods` VALUES (148, '农夫茶π', 4.50, 3.87, '600ml', '瓶', 30, 135.00, 116.10, '生产中心', '无', 23);
+INSERT INTO `atm_goods` VALUES (149, '脉动', 4.00, 3.07, '600ml', '瓶', 30, 120.00, 92.10, '生产中心', '无', 23);
+INSERT INTO `atm_goods` VALUES (150, '方便面', 4.00, 3.17, '106g', '桶', 72, 288.00, 228.24, '生产中心', '无', 23);
+INSERT INTO `atm_goods` VALUES (151, '百事可乐（极度）', 3.00, 2.17, '500ml', '瓶', 12, 36.00, 26.04, '生产中心', '', 23);
 COMMIT;
 
 -- ----------------------------
@@ -462,7 +467,7 @@ DROP TABLE IF EXISTS `authority`;
 CREATE TABLE `authority` (
   `auth_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '权限ID',
   `auth_name` varchar(255) DEFAULT NULL COMMENT '用户组名称',
-  `auth_update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `auth_update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `xxgl` int(1) DEFAULT '0' COMMENT '信息管理',
   `csxx` int(1) DEFAULT '0' COMMENT '厂商信息',
   `zhxx` int(1) DEFAULT '0' COMMENT '账号信息',
@@ -563,8 +568,8 @@ CREATE TABLE `authority` (
 -- Records of authority
 -- ----------------------------
 BEGIN;
-INSERT INTO `authority` VALUES (1, '超级管理员', '2020-10-13 10:07:06', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-INSERT INTO `authority` VALUES (5, '安全策略部', '2020-10-13 10:07:10', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, 1, 1, 1, 1, 1, NULL, NULL, NULL, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1);
+INSERT INTO `authority` VALUES (1, '超级管理员', '2020-10-13 11:22:55', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT INTO `authority` VALUES (5, '安全策略部', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, 1, 1, 1, 1, 1, NULL, NULL, NULL, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1);
 COMMIT;
 
 -- ----------------------------
@@ -636,7 +641,7 @@ CREATE TABLE `csr` (
   `remark` varchar(255) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of csr
@@ -676,7 +681,7 @@ INSERT INTO `csr` VALUES (39, 'ykh20190228', 'ykh20190228', '壹卡会', '2019-0
 INSERT INTO `csr` VALUES (40, 'hrzd20190402', 'hrzd20190402', '华润置地鞍山万象汇', '2019-04-02', 'D:/数据接收主目录/hrzd20190402', '注销', '', '2020-10-16 11:09:15');
 INSERT INTO `csr` VALUES (41, 'dzsb20190613', 'dzsb20190613', '四川省达州市人力资源和社会保障局', '2019-06-13', 'D:/数据接收主目录/dzsb20190613', '注销', '', '2020-10-16 11:09:20');
 INSERT INTO `csr` VALUES (42, 'njyh20191115', 'njyh20191115', '南京银行', '2019-11-15', 'D:/数据接收主目录/njyh20191115', '注销', '', '2020-10-16 11:09:25');
-INSERT INTO `csr` VALUES (43, '无', 'sasData', 'SAS数据接收', '2019-11-18', 'D:/数据接收主目录/SAS', '正常', '', '2019-11-20 13:49:12');
+INSERT INTO `csr` VALUES (43, '无', 'sasData', 'SAS数据接收', '2019-11-18', 'D:/数据接收主目录/SAS', '正常', '', '2020-10-30 10:05:44');
 INSERT INTO `csr` VALUES (44, '', 'backup', '日志备份', '2020-01-03', 'D:/数据接收日志/', '正常', '', '2020-06-05 09:26:19');
 INSERT INTO `csr` VALUES (45, 'scdx20200407', 'scdx20200407', '四川电信', '2020-04-07', 'D:/数据接收主目录/scdx20200407', '正常', '', '2020-05-25 15:53:07');
 INSERT INTO `csr` VALUES (46, 'snyc20200525', 'snyc20200525', '遂宁邮政储蓄银行', '2020-05-25', 'D:/数据接收主目录/snyc20200525', '正常', '', '2020-05-25 15:53:33');
@@ -685,6 +690,8 @@ INSERT INTO `csr` VALUES (48, 'mdgj', 'mdgj', '缅甸公交', '2019-10-12', 'D:/
 INSERT INTO `csr` VALUES (49, 'lzyh20200525', 'lzyh20200525', '泸州银行', '2020-05-25', 'D:/数据接收主目录/lzyh20200525', '正常', '', '2020-06-05 09:37:08');
 INSERT INTO `csr` VALUES (50, 'mdjk20200608', 'mdjk20200608', '迈德金卡', '2020-06-08', 'D:/数据接收主目录/mdjk20200608', '正常', '', '2020-06-11 08:49:39');
 INSERT INTO `csr` VALUES (51, 'lzyc20200701', 'lzyc20200701', '泸州邮政储蓄银行', '2020-07-01', 'D:/数据接收主目录/lzyc20200701', '正常', '', '2020-07-01 10:52:14');
+INSERT INTO `csr` VALUES (52, 'sas', 'sas', 'sas数据传输', '2020-10-26', 'D:/数据接收主目录/SAS/sas', '', '', '2020-10-30 10:05:11');
+INSERT INTO `csr` VALUES (53, 'dx20201029', 'dx20201029', '中国电信', '2020-10-30', 'D:/数据接收主目录/SAS/dx20201029', '', '', '2020-10-30 10:06:11');
 COMMIT;
 
 -- ----------------------------
@@ -696,7 +703,7 @@ CREATE TABLE `department` (
   `dept_name` varchar(255) DEFAULT NULL COMMENT '部门名称',
   `form_no` int(11) DEFAULT NULL COMMENT '文件编码',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of department
@@ -704,15 +711,15 @@ CREATE TABLE `department` (
 BEGIN;
 INSERT INTO `department` VALUES (1, '公司', NULL);
 INSERT INTO `department` VALUES (2, '总经办', NULL);
-INSERT INTO `department` VALUES (3, '营销部', NULL);
-INSERT INTO `department` VALUES (4, '安全策略部', 2020040007);
-INSERT INTO `department` VALUES (5, '支撑部', NULL);
+INSERT INTO `department` VALUES (3, '生产订单交付部', NULL);
+INSERT INTO `department` VALUES (4, '质量安全部', 2020040137);
+INSERT INTO `department` VALUES (5, '综合人力部', NULL);
 INSERT INTO `department` VALUES (6, '财务部', NULL);
 INSERT INTO `department` VALUES (7, '生产部', NULL);
 INSERT INTO `department` VALUES (8, '卡基生产部', NULL);
 INSERT INTO `department` VALUES (9, 'IC芯片封装部', NULL);
 INSERT INTO `department` VALUES (10, '个人化部', NULL);
-INSERT INTO `department` VALUES (14, '质量部', NULL);
+INSERT INTO `department` VALUES (11, '仓库管理部', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -1020,13 +1027,13 @@ BEGIN;
 INSERT INTO `form` VALUES (1, 'KD-LJ01-BD00001', 'IT故障维护记录表', 'KD-LJ01-BD00001.pdf', 'KD-LJ01-BD00001.xlsx', 504, 'A4', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (2, 'KD-LJ01-BD00002', 'IT日常检查记录表', 'KD-LJ01-BD00002.pdf', 'KD-LJ01-BD00002.xlsm', 506, 'A4', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (3, 'KD-LJ01-BD00003', 'IT设备交接函', 'KD-LJ01-BD00003.pdf', 'KD-LJ01-BD00003.xlsm', 509, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
-INSERT INTO `form` VALUES (4, 'KD-LJ01-BD00004', 'IT设备安装及变更申请表', 'KD-LJ01-BD00004.pdf', 'KD-LJ01-BD00004.xlsm', 505, 'A3', 4, '逻辑安全受控表单', 'Form00004.xlsx', '2020-10-19 10:07:11');
+INSERT INTO `form` VALUES (4, 'KD-LJ01-BD00004', 'IT设备安装及变更申请表', 'KD-LJ01-BD00004.pdf', 'KD-LJ01-BD00004.xlsm', 505, 'A3', 4, '逻辑安全受控表单', 'Form00004.xlsx', '2020-10-19 17:28:44');
 INSERT INTO `form` VALUES (5, 'KD-LJ01-BD00005', 'IT设备安装及变更记录表', 'KD-LJ01-BD00005.pdf', 'KD-LJ01-BD00005.xlsm', 503, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (6, 'KD-LJ01-BD00006', 'IT设备检查报告', 'KD-LJ01-BD00006.pdf', 'KD-LJ01-BD00006.xlsm', 504, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (7, 'KD-LJ01-BD00007', 'IT设备运输申请表', 'KD-LJ01-BD00007.pdf', 'KD-LJ01-BD00007.xlsm', 504, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
-INSERT INTO `form` VALUES (8, 'KD-LJ01-BD00008', 'IT账号开通及变更申请表', 'KD-LJ01-BD00008.pdf', 'KD-LJ01-BD00008.xlsm', 505, 'A3', 4, '逻辑安全受控表单', 'Form00008.xlsx', '2020-10-19 10:07:15');
+INSERT INTO `form` VALUES (8, 'KD-LJ01-BD00008', 'IT账号开通及变更申请表', 'KD-LJ01-BD00008.pdf', 'KD-LJ01-BD00008.xlsm', 505, 'A3', 4, '逻辑安全受控表单', 'Form00008.xlsx', '2020-10-19 17:28:53');
 INSERT INTO `form` VALUES (9, 'KD-LJ01-BD00009', 'IT账号管理记录表', 'KD-LJ01-BD00009.pdf', 'KD-LJ01-BD00009.xlsm', 584, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
-INSERT INTO `form` VALUES (10, 'KD-LJ01-BD00010', '关键设备审查记录', 'KD-LJ01-BD00010.pdf', 'KD-LJ01-BD00010.xlsx', 629, 'A8', 4, '逻辑安全受控表单', NULL, '2020-03-02 10:08:37');
+INSERT INTO `form` VALUES (10, 'KD-LJ01-BD00010', '关键设备审查记录', 'KD-LJ01-BD00010.pdf', 'KD-LJ01-BD00010.xlsx', 629, 'A9', 4, '逻辑安全受控表单', NULL, '2020-10-29 10:37:14');
 INSERT INTO `form` VALUES (11, 'KD-LJ01-BD00011', '安全区设备密码修改登记表', 'KD-LJ01-BD00011.pdf', 'KD-LJ01-BD00011.xlsm', 584, 'A2', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (12, 'KD-LJ01-BD00012', '客户账号管理记录表', 'KD-LJ01-BD00012.pdf', 'KD-LJ01-BD00012.xlsm', 585, 'A1', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (13, 'KD-LJ01-BD00013', '无线热点扫描统计表', 'KD-LJ01-BD00013.pdf', 'KD-LJ01-BD00013.xlsm', 503, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
@@ -1034,7 +1041,7 @@ INSERT INTO `form` VALUES (14, 'KD-LJ01-BD00014', '日志销毁记录表', 'KD-L
 INSERT INTO `form` VALUES (15, 'KD-LJ01-BD00015', '时间校对记录表', 'KD-LJ01-BD00015.pdf', 'KD-LJ01-BD00015.xlsm', 503, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (16, 'KD-LJ01-BD00016', '病毒及补丁更新记录表', 'KD-LJ01-BD00016.pdf', 'KD-LJ01-BD00016.xlsx', 53, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (17, 'KD-LJ01-BD00017', '计算机档案记录表', 'KD-LJ01-BD00017.pdf', 'KD-LJ01-BD00017.xlsm', 504, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
-INSERT INTO `form` VALUES (18, 'KD-LJ01-BD00018', '逻辑安全内部审计、审查报告', 'KD-LJ01-BD00018.pdf', 'KD-LJ01-BD00018.xlsm', 506, 'A5', 4, '逻辑安全受控表单', 'Form00018.xlsx', '2020-10-19 10:07:22');
+INSERT INTO `form` VALUES (18, 'KD-LJ01-BD00018', '逻辑安全内部审计、审查报告', 'KD-LJ01-BD00018.pdf', 'KD-LJ01-BD00018.xlsm', 506, 'A5', 4, '逻辑安全受控表单', 'Form00018.xlsx', '2020-10-19 17:29:00');
 INSERT INTO `form` VALUES (19, 'KD-LJ01-BD00019', 'Windows操作系统登陆权限记录表', 'KD-LJ01-BD00019.pdf', 'KD-LJ01-BD00019.xlsx', 580, 'A0', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (20, 'KD-LJ01-BD00020', '生产网络设备IP登记表', 'KD-LJ01-BD00020.pdf', 'KD-LJ01-BD00020.xlsx', 504, 'A0', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (21, 'KD-LJ01-BD00021', '生产区域IT设备清单', 'KD-LJ01-BD00021.pdf', 'KD-LJ01-BD00021.xlsx', 596, 'A0', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
@@ -1045,7 +1052,7 @@ INSERT INTO `form` VALUES (25, 'KD-LJ01-BD00025', '报废硬盘数据安全处�
 INSERT INTO `form` VALUES (26, 'KD-LJ01-BD00026', 'IT固定资产统计表', 'KD-LJ01-BD00026.pdf', 'KD-LJ01-BD00026.xlsx', 53, 'A0', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (27, 'KD-LJ01-BD00201', '日常机房巡检记录表', 'KD-LJ01-BD00201.pdf', 'KD-LJ01-BD00201.xlsm', 589, 'A2', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (28, 'KD-LJ01-BD00202', '机房人员、物品进出登记表', 'KD-LJ01-BD00202.pdf', 'KD-LJ01-BD00202.xlsm', 584, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
-INSERT INTO `form` VALUES (29, 'KD-LJ01-BD00203', '机房进出申请表', 'KD-LJ01-BD00203.pdf', 'KD-LJ01-BD00203.xlsm', 504, 'A3', 4, '逻辑安全受控表单', 'Form00203.xlsx', '2020-10-19 10:07:27');
+INSERT INTO `form` VALUES (29, 'KD-LJ01-BD00203', '机房进出申请表', 'KD-LJ01-BD00203.pdf', 'KD-LJ01-BD00203.xlsm', 504, 'A3', 4, '逻辑安全受控表单', 'Form00203.xlsx', '2020-10-19 17:29:12');
 INSERT INTO `form` VALUES (30, 'KD-LJ02-BD00001', '媒介及Psam卡使用申请表', 'KD-LJ02-BD00001.pdf', 'KD-LJ02-BD00001.xlsm', 505, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (31, 'KD-LJ02-BD00002', '存储介质信息记录表', 'KD-LJ02-BD00002.pdf', 'KD-LJ02-BD00002.xlsm', 584, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (32, 'KD-LJ02-BD00003', '存储介质数据删除及销毁记录表', 'KD-LJ02-BD00003.pdf', 'KD-LJ02-BD00003.xlsm', 584, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
@@ -1071,7 +1078,7 @@ INSERT INTO `form` VALUES (51, 'KD-MY01-BD00017', '密钥管理员记录表', 'K
 INSERT INTO `form` VALUES (52, 'KD-MY01-BD00018', '密钥访问日志', 'KD-MY01-BD00018.pdf', 'KD-MY01-BD00018.xlsm', 584, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (53, 'KD-MY01-BD00019', '密钥销毁申请表', 'KD-MY01-BD00019.pdf', 'KD-MY01-BD00019.xlsm', 508, 'A3', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (54, 'KD-MY01-BD00020', '密钥销毁记录表', 'KD-MY01-BD00020.pdf', 'KD-MY01-BD00020.xlsm', 508, 'A2', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
-INSERT INTO `form` VALUES (55, 'KD-MY01-BD00021', '密钥人员任命终止表', 'KD-MY01-BD00021.pdf', 'KD-MY01-BD00021.xlsx', 506, 'A0', 4, '逻辑安全受控表单', 'Form00021.xlsx', '2020-10-19 10:07:31');
+INSERT INTO `form` VALUES (55, 'KD-MY01-BD00021', '密钥人员任命终止表', 'KD-MY01-BD00021.pdf', 'KD-MY01-BD00021.xlsx', 506, 'A0', 4, '逻辑安全受控表单', 'Form00021.xlsx', '2020-10-19 17:29:23');
 INSERT INTO `form` VALUES (56, 'KD-MY01-BD00022', '密钥管理员任命终止表', 'KD-MY01-BD00022.pdf', 'KD-MY01-BD00022.xlsx', 506, 'A0', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 INSERT INTO `form` VALUES (57, 'KD-MY01-BD00023', '密钥组任命清单', 'KD-MY01-BD00023.pdf', 'KD-MY01-BD00023.xlsx', 503, 'A0', 4, '逻辑安全受控表单', NULL, '2020-01-10 15:33:08');
 COMMIT;
@@ -1088,15 +1095,46 @@ CREATE TABLE `form_input` (
   `form_path` varchar(255) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of form_input
 -- ----------------------------
 BEGIN;
-INSERT INTO `form_input` VALUES (1, '黄伟', '密钥人员任命终止表', 2020040005, 'Form20201019114121.xlsx', '2020-10-19 11:41:21');
-INSERT INTO `form_input` VALUES (2, '黄伟', '密钥人员任命终止表', 2020040006, 'Form20201020142627.xlsx', '2020-10-20 14:26:28');
-INSERT INTO `form_input` VALUES (3, '黄伟', '密钥人员任命终止表', 2020040007, 'Form20201020142716.xlsx', '2020-10-20 14:27:16');
+INSERT INTO `form_input` VALUES (8, '黄伟', '逻辑安全内部审计、审查报告', 2020040104, 'Form20201016113927.xlsx', '2020-10-16 11:39:28');
+INSERT INTO `form_input` VALUES (9, '黄伟', '逻辑安全内部审计、审查报告', 2020040105, 'Form20201016114021.xlsx', '2020-10-16 11:40:21');
+INSERT INTO `form_input` VALUES (10, '黄伟', '逻辑安全内部审计、审查报告', 2020040106, 'Form20201016114056.xlsx', '2020-10-16 11:40:56');
+INSERT INTO `form_input` VALUES (11, '黄伟', '逻辑安全内部审计、审查报告', 2020040107, 'Form20201016114130.xlsx', '2020-10-16 11:41:30');
+INSERT INTO `form_input` VALUES (12, '黄伟', '逻辑安全内部审计、审查报告', 2020040108, 'Form20201016114152.xlsx', '2020-10-16 11:41:52');
+INSERT INTO `form_input` VALUES (13, '黄伟', '逻辑安全内部审计、审查报告', 2020040109, 'Form20201016114229.xlsx', '2020-10-16 11:42:29');
+INSERT INTO `form_input` VALUES (14, '黄伟', '逻辑安全内部审计、审查报告', 2020040110, 'Form20201016114254.xlsx', '2020-10-16 11:42:54');
+INSERT INTO `form_input` VALUES (15, '黄伟', '逻辑安全内部审计、审查报告', 2020040111, 'Form20201016114318.xlsx', '2020-10-16 11:43:18');
+INSERT INTO `form_input` VALUES (16, '黄伟', '逻辑安全内部审计、审查报告', 2020040112, 'Form20201016114348.xlsx', '2020-10-16 11:43:48');
+INSERT INTO `form_input` VALUES (17, '黄伟', '逻辑安全内部审计、审查报告', 2020040113, 'Form20201016114411.xlsx', '2020-10-16 11:44:11');
+INSERT INTO `form_input` VALUES (18, '黄伟', '逻辑安全内部审计、审查报告', 2020040114, 'Form20201016114505.xlsx', '2020-10-16 11:45:05');
+INSERT INTO `form_input` VALUES (19, '黄伟', '逻辑安全内部审计、审查报告', 2020040115, 'Form20201016114526.xlsx', '2020-10-16 11:45:26');
+INSERT INTO `form_input` VALUES (20, '黄伟', '逻辑安全内部审计、审查报告', 2020040116, 'Form20201016114549.xlsx', '2020-10-16 11:45:49');
+INSERT INTO `form_input` VALUES (21, '黄伟', '逻辑安全内部审计、审查报告', 2020040117, 'Form20201016114606.xlsx', '2020-10-16 11:46:06');
+INSERT INTO `form_input` VALUES (22, '黄伟', '逻辑安全内部审计、审查报告', 2020040118, 'Form20201016114636.xlsx', '2020-10-16 11:46:36');
+INSERT INTO `form_input` VALUES (23, '黄伟', '逻辑安全内部审计、审查报告', 2020040119, 'Form20201016114758.xlsx', '2020-10-16 11:47:58');
+INSERT INTO `form_input` VALUES (24, '黄伟', '逻辑安全内部审计、审查报告', 2020040120, 'Form20201016114839.xlsx', '2020-10-16 11:48:39');
+INSERT INTO `form_input` VALUES (25, '黄伟', '密钥人员任命终止表', 2020040121, 'Form20201020114223.xlsx', '2020-10-20 11:42:24');
+INSERT INTO `form_input` VALUES (26, '黄伟', '密钥人员任命终止表', 2020040122, 'Form20201020140801.xlsx', '2020-10-20 14:08:02');
+INSERT INTO `form_input` VALUES (27, '黄伟', '密钥人员任命终止表', 2020040123, 'Form20201020142143.xlsx', '2020-10-20 14:21:44');
+INSERT INTO `form_input` VALUES (28, '黄伟', '密钥人员任命终止表', 2020040124, 'Form20201020143532.xlsx', '2020-10-20 14:35:33');
+INSERT INTO `form_input` VALUES (29, '黄伟', '密钥人员任命终止表', 2020040125, 'Form20201020143853.xlsx', '2020-10-20 14:38:53');
+INSERT INTO `form_input` VALUES (30, '黄伟', '密钥人员任命终止表', 2020040126, 'Form20201020144048.xlsx', '2020-10-20 14:40:48');
+INSERT INTO `form_input` VALUES (31, '黄伟', '密钥人员任命终止表', 2020040127, 'Form20201020144317.xlsx', '2020-10-20 14:43:17');
+INSERT INTO `form_input` VALUES (32, '黄伟', '密钥人员任命终止表', 2020040128, 'Form20201020155106.xlsx', '2020-10-20 15:51:07');
+INSERT INTO `form_input` VALUES (33, '黄伟', '密钥人员任命终止表', 2020040129, 'Form20201020164232.xlsx', '2020-10-20 16:42:32');
+INSERT INTO `form_input` VALUES (34, '黄伟', '密钥人员任命终止表', 2020040130, 'Form20201020164454.xlsx', '2020-10-20 16:44:55');
+INSERT INTO `form_input` VALUES (35, '黄伟', '逻辑安全内部审计、审查报告', 2020040131, 'Form20201030093322.xlsx', '2020-10-30 09:33:23');
+INSERT INTO `form_input` VALUES (36, '黄伟', '逻辑安全内部审计、审查报告', 2020040132, 'Form20201030093354.xlsx', '2020-10-30 09:33:54');
+INSERT INTO `form_input` VALUES (37, '黄伟', '逻辑安全内部审计、审查报告', 2020040133, 'Form20201030093404.xlsx', '2020-10-30 09:34:05');
+INSERT INTO `form_input` VALUES (38, '黄伟', '逻辑安全内部审计、审查报告', 2020040134, 'Form20201030093417.xlsx', '2020-10-30 09:34:17');
+INSERT INTO `form_input` VALUES (39, '黄伟', '逻辑安全内部审计、审查报告', 2020040135, 'Form20201030093427.xlsx', '2020-10-30 09:34:27');
+INSERT INTO `form_input` VALUES (40, '黄伟', '逻辑安全内部审计、审查报告', 2020040136, 'Form20201030093437.xlsx', '2020-10-30 09:34:37');
+INSERT INTO `form_input` VALUES (41, '李朝霞', 'IT账号开通及变更申请表', NULL, 'Form20201030095001.xlsx', '2020-10-30 09:50:01');
 COMMIT;
 
 -- ----------------------------
@@ -1113,20 +1151,21 @@ CREATE TABLE `goods` (
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
 BEGIN;
 INSERT INTO `goods` VALUES (1, '可口可乐', '500ml', '瓶', 3.00, 2.17, '无', '2019-09-04 16:24:13');
-INSERT INTO `goods` VALUES (2, '雪碧', '500ml', '瓶', 3.00, 2.17, '无', '2020-09-07 15:27:51');
-INSERT INTO `goods` VALUES (3, '农夫茶π', '600ml', '瓶', 4.50, 3.87, '无', '2020-09-07 15:27:52');
-INSERT INTO `goods` VALUES (4, '脉动', '600ml', '瓶', 4.00, 3.07, '无', '2020-09-07 15:27:53');
-INSERT INTO `goods` VALUES (5, '营养快线', '450g', '瓶', 4.00, 3.00, '无', '2020-09-07 15:27:53');
-INSERT INTO `goods` VALUES (6, '鲜橙多', '450ml', '瓶', 3.00, 2.20, '无', '2020-09-07 15:27:54');
-INSERT INTO `goods` VALUES (7, '方便面', '106g', '桶', 4.00, 3.17, '无', '2020-09-07 15:27:54');
-INSERT INTO `goods` VALUES (8, '百事可乐', '600ml', '瓶', 3.00, 2.17, '无', '2020-09-07 15:27:55');
+INSERT INTO `goods` VALUES (2, '雪碧', '500ml', '瓶', 3.00, 2.17, '无', '2020-09-07 17:01:31');
+INSERT INTO `goods` VALUES (3, '农夫茶π', '600ml', '瓶', 4.50, 3.87, '无', '2020-09-07 17:01:32');
+INSERT INTO `goods` VALUES (4, '脉动', '600ml', '瓶', 4.00, 3.07, '无', '2020-09-07 17:01:33');
+INSERT INTO `goods` VALUES (5, '营养快线', '450g', '瓶', 4.00, 3.00, '无', '2020-09-07 17:01:33');
+INSERT INTO `goods` VALUES (6, '鲜橙多', '450ml', '瓶', 3.00, 2.20, '无', '2020-09-07 17:01:34');
+INSERT INTO `goods` VALUES (7, '方便面', '106g', '桶', 4.00, 3.17, '无', '2020-09-07 17:01:34');
+INSERT INTO `goods` VALUES (8, '百事可乐', '600ml', '瓶', 3.00, 2.17, '无', '2020-09-07 17:01:35');
+INSERT INTO `goods` VALUES (9, '百事可乐（极度）', '500ml', '瓶', 3.00, 2.17, '无', '2020-10-30 10:18:55');
 COMMIT;
 
 -- ----------------------------
@@ -1481,7 +1520,7 @@ CREATE TABLE `job` (
   PRIMARY KEY (`job_id`) USING BTREE,
   KEY `FKed8v8332ryisog58b6tylnny7` (`dept_id`) USING BTREE,
   CONSTRAINT `FKed8v8332ryisog58b6tylnny7` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of job
@@ -1500,21 +1539,21 @@ INSERT INTO `job` VALUES (10, '客户服务主管', 2, '', '2020-08-26 14:22:35'
 INSERT INTO `job` VALUES (11, '客服专员', 3, '', '2019-04-28 16:32:05');
 INSERT INTO `job` VALUES (12, '投标专员', 3, '', '2019-04-28 16:32:15');
 INSERT INTO `job` VALUES (13, '物流专员', 3, '', '2019-04-28 16:32:24');
-INSERT INTO `job` VALUES (14, '质量安全总监', 14, '', '2020-10-12 16:05:31');
+INSERT INTO `job` VALUES (14, '质量安全总监', 4, '', '2019-04-28 16:32:44');
 INSERT INTO `job` VALUES (15, '物理安全组长', 4, '', '2019-04-28 16:32:59');
 INSERT INTO `job` VALUES (16, '保安', 4, '', '2019-04-28 16:33:06');
 INSERT INTO `job` VALUES (17, '逻辑安全组长', 4, '', '2019-04-28 16:33:17');
 INSERT INTO `job` VALUES (18, '逻辑安全员', 4, '', '2019-04-28 16:33:26');
-INSERT INTO `job` VALUES (19, '质量组长', 14, '', '2020-10-12 16:05:31');
-INSERT INTO `job` VALUES (20, '检验员', 14, '', '2020-10-12 16:05:31');
-INSERT INTO `job` VALUES (21, '体系专员', 14, '', '2020-10-12 16:05:31');
+INSERT INTO `job` VALUES (19, '质量组长', 4, '', '2019-04-28 16:33:38');
+INSERT INTO `job` VALUES (20, '检验员', 4, '', '2019-04-28 16:33:51');
+INSERT INTO `job` VALUES (21, '体系专员', 4, '', '2019-04-28 16:34:02');
 INSERT INTO `job` VALUES (22, '支撑总监', 5, '', '2019-04-28 16:34:14');
 INSERT INTO `job` VALUES (23, '人力行政专员', 5, '', '2019-04-28 16:34:26');
 INSERT INTO `job` VALUES (24, '后勤主管', 5, '', '2019-04-28 16:34:34');
 INSERT INTO `job` VALUES (25, '保洁', 5, '', '2019-04-28 16:34:42');
 INSERT INTO `job` VALUES (26, '厨师', 5, '', '2019-04-28 16:34:51');
 INSERT INTO `job` VALUES (27, '宿管', 5, '', '2019-04-28 16:35:00');
-INSERT INTO `job` VALUES (28, '库管员', 5, '', '2019-04-28 16:35:09');
+INSERT INTO `job` VALUES (28, '库管员', 11, '', '2020-10-20 14:30:01');
 INSERT INTO `job` VALUES (29, '采购员', 5, '', '2019-04-28 16:35:19');
 INSERT INTO `job` VALUES (30, '会计', 6, '', '2019-04-29 08:41:58');
 INSERT INTO `job` VALUES (31, '生产总监', 7, '', '2019-04-29 08:42:11');
@@ -1538,6 +1577,8 @@ INSERT INTO `job` VALUES (48, '个人化部主管', 10, '', '2019-04-29 08:50:24
 INSERT INTO `job` VALUES (49, '技术员', 10, '', '2019-04-29 08:50:32');
 INSERT INTO `job` VALUES (50, '操作员', 10, '', '2019-04-29 08:50:39');
 INSERT INTO `job` VALUES (51, '包装组长', 10, '', '2019-04-29 08:50:56');
+INSERT INTO `job` VALUES (52, '计划主管', 7, '', '2020-10-20 14:30:01');
+INSERT INTO `job` VALUES (53, '客户服务部主管', 3, '', '2020-10-29 10:35:40');
 COMMIT;
 
 -- ----------------------------
@@ -1546,23 +1587,601 @@ COMMIT;
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `auth_name` varchar(255) DEFAULT NULL,
   `user_name` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=583 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of log
 -- ----------------------------
 BEGIN;
-INSERT INTO `log` VALUES (1, 'hawile', '黄伟', '查看[ 申请列表 ]', '成功', '2020-10-22 11:01:14');
-INSERT INTO `log` VALUES (2, 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-10-22 11:01:45');
-INSERT INTO `log` VALUES (3, 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-10-22 11:01:47');
-INSERT INTO `log` VALUES (4, 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-22 11:01:48');
-INSERT INTO `log` VALUES (5, 'hawile', '黄伟', '查看[ 申请列表 ]', '成功', '2020-10-26 09:19:37');
+INSERT INTO `log` VALUES (1, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-09-07 17:28:04');
+INSERT INTO `log` VALUES (2, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-07 17:28:09');
+INSERT INTO `log` VALUES (3, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-07 17:28:15');
+INSERT INTO `log` VALUES (4, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-07 17:28:18');
+INSERT INTO `log` VALUES (5, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-07 17:28:22');
+INSERT INTO `log` VALUES (6, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-09-07 17:30:34');
+INSERT INTO `log` VALUES (7, '超级管理员', 'hawile', '黄伟', '添加[ wangjx ]用户', '成功', '2020-09-07 17:31:31');
+INSERT INTO `log` VALUES (8, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-09-07 17:31:32');
+INSERT INTO `log` VALUES (9, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-07 17:32:35');
+INSERT INTO `log` VALUES (10, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-07 17:32:40');
+INSERT INTO `log` VALUES (11, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-07 17:32:47');
+INSERT INTO `log` VALUES (12, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-07 17:33:00');
+INSERT INTO `log` VALUES (13, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-07 17:33:01');
+INSERT INTO `log` VALUES (14, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-07 17:33:59');
+INSERT INTO `log` VALUES (15, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-09-07 17:34:11');
+INSERT INTO `log` VALUES (16, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-07 17:34:12');
+INSERT INTO `log` VALUES (17, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-09-07 17:34:13');
+INSERT INTO `log` VALUES (18, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-09-07 17:34:14');
+INSERT INTO `log` VALUES (19, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 08:47:30');
+INSERT INTO `log` VALUES (20, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-08 08:47:54');
+INSERT INTO `log` VALUES (21, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-09-08 08:48:06');
+INSERT INTO `log` VALUES (22, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-09-08 08:48:08');
+INSERT INTO `log` VALUES (23, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:48:13');
+INSERT INTO `log` VALUES (24, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-09-08 08:48:16');
+INSERT INTO `log` VALUES (25, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:48:23');
+INSERT INTO `log` VALUES (26, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:48:33');
+INSERT INTO `log` VALUES (27, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 08:48:39');
+INSERT INTO `log` VALUES (28, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:48:58');
+INSERT INTO `log` VALUES (29, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-08 08:49:39');
+INSERT INTO `log` VALUES (30, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 08:49:45');
+INSERT INTO `log` VALUES (31, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:49:48');
+INSERT INTO `log` VALUES (32, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-09-08 08:49:50');
+INSERT INTO `log` VALUES (33, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:54:05');
+INSERT INTO `log` VALUES (34, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:54:07');
+INSERT INTO `log` VALUES (35, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:54:07');
+INSERT INTO `log` VALUES (36, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:54:07');
+INSERT INTO `log` VALUES (37, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:54:07');
+INSERT INTO `log` VALUES (38, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:54:07');
+INSERT INTO `log` VALUES (39, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-09-08 08:54:11');
+INSERT INTO `log` VALUES (40, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-09-08 08:54:12');
+INSERT INTO `log` VALUES (41, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 08:55:54');
+INSERT INTO `log` VALUES (42, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-09-08 08:56:00');
+INSERT INTO `log` VALUES (43, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-09-08 08:56:07');
+INSERT INTO `log` VALUES (44, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 09:19:42');
+INSERT INTO `log` VALUES (45, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 15:29:41');
+INSERT INTO `log` VALUES (46, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 15:31:49');
+INSERT INTO `log` VALUES (47, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 15:31:50');
+INSERT INTO `log` VALUES (48, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-08 15:47:10');
+INSERT INTO `log` VALUES (49, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-08 15:47:55');
+INSERT INTO `log` VALUES (50, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-08 15:48:15');
+INSERT INTO `log` VALUES (51, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-08 15:48:21');
+INSERT INTO `log` VALUES (52, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-08 15:48:27');
+INSERT INTO `log` VALUES (53, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-08 15:51:09');
+INSERT INTO `log` VALUES (54, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-08 16:17:03');
+INSERT INTO `log` VALUES (55, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-08 16:17:04');
+INSERT INTO `log` VALUES (56, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 16:17:05');
+INSERT INTO `log` VALUES (57, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-08 16:17:08');
+INSERT INTO `log` VALUES (58, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 17:21:57');
+INSERT INTO `log` VALUES (59, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 17:22:06');
+INSERT INTO `log` VALUES (60, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-08 17:22:17');
+INSERT INTO `log` VALUES (61, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 17:22:21');
+INSERT INTO `log` VALUES (62, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-08 17:22:40');
+INSERT INTO `log` VALUES (63, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 17:22:41');
+INSERT INTO `log` VALUES (64, '超级管理员', 'hawile', '黄伟', '添加[ 王建勋 ]的工作内容', '成功', '2020-09-08 17:23:14');
+INSERT INTO `log` VALUES (65, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 17:23:15');
+INSERT INTO `log` VALUES (66, '超级管理员', 'hawile', '黄伟', '更新[ 黄伟 ]的工作内容', '成功', '2020-09-08 17:23:29');
+INSERT INTO `log` VALUES (67, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-08 17:23:30');
+INSERT INTO `log` VALUES (68, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-08 17:24:03');
+INSERT INTO `log` VALUES (69, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-10 10:01:21');
+INSERT INTO `log` VALUES (70, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-10 10:01:46');
+INSERT INTO `log` VALUES (71, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-10 10:01:47');
+INSERT INTO `log` VALUES (72, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-10 10:02:22');
+INSERT INTO `log` VALUES (73, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-10 10:02:23');
+INSERT INTO `log` VALUES (74, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-09-10 10:02:29');
+INSERT INTO `log` VALUES (75, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-10 10:09:31');
+INSERT INTO `log` VALUES (76, '安全策略部', 'wangjx', '王建勋', '查看[ 工作报表 ]', '成功', '2020-09-10 10:10:38');
+INSERT INTO `log` VALUES (77, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-14 16:51:17');
+INSERT INTO `log` VALUES (78, '超级管理员', 'hawile', '黄伟', '添加 [2020年7-9月销售报表 ]订单信息', '成功', '2020-09-14 16:58:15');
+INSERT INTO `log` VALUES (79, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-14 16:58:16');
+INSERT INTO `log` VALUES (80, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-14 17:19:45');
+INSERT INTO `log` VALUES (81, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-14 17:20:07');
+INSERT INTO `log` VALUES (82, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-14 17:21:16');
+INSERT INTO `log` VALUES (83, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-16 15:12:42');
+INSERT INTO `log` VALUES (84, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-16 15:13:02');
+INSERT INTO `log` VALUES (85, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-16 15:13:03');
+INSERT INTO `log` VALUES (86, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-16 15:13:12');
+INSERT INTO `log` VALUES (87, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-16 15:13:13');
+INSERT INTO `log` VALUES (88, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-16 15:13:38');
+INSERT INTO `log` VALUES (89, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-16 15:13:39');
+INSERT INTO `log` VALUES (90, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-16 15:14:03');
+INSERT INTO `log` VALUES (91, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-16 15:14:03');
+INSERT INTO `log` VALUES (92, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-16 15:14:17');
+INSERT INTO `log` VALUES (93, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-16 15:14:18');
+INSERT INTO `log` VALUES (94, '超级管理员', 'hawile', '黄伟', '添加[ 黄伟 ]的工作内容', '成功', '2020-09-16 15:14:33');
+INSERT INTO `log` VALUES (95, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-09-16 15:14:34');
+INSERT INTO `log` VALUES (96, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-09-16 17:56:14');
+INSERT INTO `log` VALUES (97, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-09-17 10:56:23');
+INSERT INTO `log` VALUES (98, '超级管理员', 'hawile', '黄伟', '查看[ 文件信息 ] 列表', '成功', '2020-09-17 10:56:41');
+INSERT INTO `log` VALUES (99, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-09-17 10:56:42');
+INSERT INTO `log` VALUES (100, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-09-25 11:17:58');
+INSERT INTO `log` VALUES (101, '安全策略部', 'wangjx', '王建勋', '查看[ 用户列表 ]', '成功', '2020-09-25 14:42:59');
+INSERT INTO `log` VALUES (102, '安全策略部', 'wangjx', '王建勋', '查看[ 个人信息 ]', '成功', '2020-09-25 14:43:02');
+INSERT INTO `log` VALUES (103, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-09-27 09:36:48');
+INSERT INTO `log` VALUES (104, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-13 11:28:41');
+INSERT INTO `log` VALUES (105, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-10-13 11:28:47');
+INSERT INTO `log` VALUES (106, '超级管理员', 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-10-13 11:28:48');
+INSERT INTO `log` VALUES (107, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-13 11:28:49');
+INSERT INTO `log` VALUES (108, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-13 11:28:50');
+INSERT INTO `log` VALUES (109, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-10-13 11:28:51');
+INSERT INTO `log` VALUES (110, '超级管理员', 'hawile', '黄伟', '查看[ 文件信息 ] 列表', '成功', '2020-10-13 11:28:56');
+INSERT INTO `log` VALUES (111, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-13 11:29:00');
+INSERT INTO `log` VALUES (112, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:29:02');
+INSERT INTO `log` VALUES (113, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-13 11:29:03');
+INSERT INTO `log` VALUES (114, '超级管理员', 'hawile', '黄伟', '查看[ 系统下载 ]列表', '成功', '2020-10-13 11:29:04');
+INSERT INTO `log` VALUES (115, '超级管理员', 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-13 11:29:11');
+INSERT INTO `log` VALUES (116, '超级管理员', 'hawile', '黄伟', '删除[ 来宾用户 ]权限组', '失败', '2020-10-13 11:29:15');
+INSERT INTO `log` VALUES (117, '超级管理员', 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-13 11:29:16');
+INSERT INTO `log` VALUES (118, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-10-13 11:29:17');
+INSERT INTO `log` VALUES (119, '超级管理员', 'hawile', '黄伟', '删除[ guest ]用户', '成功', '2020-10-13 11:29:19');
+INSERT INTO `log` VALUES (120, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-10-13 11:29:20');
+INSERT INTO `log` VALUES (121, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-13 11:29:23');
+INSERT INTO `log` VALUES (122, '超级管理员', 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-13 11:29:25');
+INSERT INTO `log` VALUES (123, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-13 11:29:25');
+INSERT INTO `log` VALUES (124, '超级管理员', 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-13 11:29:26');
+INSERT INTO `log` VALUES (125, '超级管理员', 'hawile', '黄伟', '删除[ 来宾用户 ]权限组', '成功', '2020-10-13 11:29:30');
+INSERT INTO `log` VALUES (126, '超级管理员', 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-13 11:29:30');
+INSERT INTO `log` VALUES (127, '超级管理员', 'hawile', '黄伟', '删除[ HR ]权限组', '成功', '2020-10-13 11:29:33');
+INSERT INTO `log` VALUES (128, '超级管理员', 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-13 11:29:34');
+INSERT INTO `log` VALUES (129, '超级管理员', 'hawile', '黄伟', '删除[ 质量部 ]权限组', '成功', '2020-10-13 11:29:36');
+INSERT INTO `log` VALUES (130, '超级管理员', 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-13 11:29:37');
+INSERT INTO `log` VALUES (131, '超级管理员', 'hawile', '黄伟', '更新[ 安全策略部 ]权限组', '成功', '2020-10-13 11:29:45');
+INSERT INTO `log` VALUES (132, '超级管理员', 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-13 11:29:46');
+INSERT INTO `log` VALUES (133, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-13 11:29:47');
+INSERT INTO `log` VALUES (134, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-10-13 11:29:48');
+INSERT INTO `log` VALUES (135, '超级管理员', 'hawile', '黄伟', '查看[ 申请列表 ]', '成功', '2020-10-13 11:29:50');
+INSERT INTO `log` VALUES (136, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-10-13 11:29:52');
+INSERT INTO `log` VALUES (137, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-10-13 11:30:18');
+INSERT INTO `log` VALUES (138, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-13 11:30:23');
+INSERT INTO `log` VALUES (139, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-13 11:31:10');
+INSERT INTO `log` VALUES (140, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:32:38');
+INSERT INTO `log` VALUES (141, '超级管理员', 'hawile', '黄伟', '添加 [PGP加密软件 ]应用软件', '成功', '2020-10-13 11:33:05');
+INSERT INTO `log` VALUES (142, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:33:19');
+INSERT INTO `log` VALUES (143, '超级管理员', 'hawile', '黄伟', '查看[ 个人信息 ]', '成功', '2020-10-13 11:33:25');
+INSERT INTO `log` VALUES (144, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:33:39');
+INSERT INTO `log` VALUES (145, '超级管理员', 'hawile', '黄伟', '添加 [Serv-U ]应用软件', '成功', '2020-10-13 11:34:26');
+INSERT INTO `log` VALUES (146, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:34:31');
+INSERT INTO `log` VALUES (147, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:37:59');
+INSERT INTO `log` VALUES (148, '超级管理员', 'hawile', '黄伟', '添加 [TortoiseSVN ]应用软件', '成功', '2020-10-13 11:38:56');
+INSERT INTO `log` VALUES (149, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:39:00');
+INSERT INTO `log` VALUES (150, '超级管理员', 'hawile', '黄伟', '添加 [TortoiseSVN ]应用软件', '成功', '2020-10-13 11:39:46');
+INSERT INTO `log` VALUES (151, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:39:52');
+INSERT INTO `log` VALUES (152, '超级管理员', 'hawile', '黄伟', '添加 [FlashFXP ]应用软件', '成功', '2020-10-13 11:40:30');
+INSERT INTO `log` VALUES (153, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:40:33');
+INSERT INTO `log` VALUES (154, '超级管理员', 'hawile', '黄伟', '添加 [SafeShare ]应用软件', '成功', '2020-10-13 11:41:04');
+INSERT INTO `log` VALUES (155, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:41:13');
+INSERT INTO `log` VALUES (156, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:43:11');
+INSERT INTO `log` VALUES (157, '超级管理员', 'hawile', '黄伟', '下载 [PGP加密软件 ]文件', '失败', '2020-10-13 11:43:13');
+INSERT INTO `log` VALUES (158, '超级管理员', 'hawile', '黄伟', '下载 [Serv-U ]文件', '失败', '2020-10-13 11:43:28');
+INSERT INTO `log` VALUES (159, '超级管理员', 'hawile', '黄伟', '修改 [Serv-U ]应用软件', '成功', '2020-10-13 11:44:38');
+INSERT INTO `log` VALUES (160, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-13 11:44:41');
+INSERT INTO `log` VALUES (161, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-10-13 11:47:04');
+INSERT INTO `log` VALUES (162, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-10-13 11:47:13');
+INSERT INTO `log` VALUES (163, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-13 11:47:17');
+INSERT INTO `log` VALUES (164, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-13 11:48:54');
+INSERT INTO `log` VALUES (165, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-10-14 14:50:17');
+INSERT INTO `log` VALUES (166, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 14:50:20');
+INSERT INTO `log` VALUES (167, '超级管理员', 'hawile', '黄伟', '查看[ 系统下载 ]列表', '成功', '2020-10-14 14:51:07');
+INSERT INTO `log` VALUES (168, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 14:51:08');
+INSERT INTO `log` VALUES (169, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 14:51:09');
+INSERT INTO `log` VALUES (170, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 14:51:47');
+INSERT INTO `log` VALUES (171, '超级管理员', 'hawile', '黄伟', '修改 [Serv-U ]应用软件', '成功', '2020-10-14 14:52:05');
+INSERT INTO `log` VALUES (172, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 14:52:07');
+INSERT INTO `log` VALUES (173, '超级管理员', 'hawile', '黄伟', '修改 [PGP加密软件 ]应用软件', '成功', '2020-10-14 14:52:20');
+INSERT INTO `log` VALUES (174, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 14:52:29');
+INSERT INTO `log` VALUES (175, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:04:36');
+INSERT INTO `log` VALUES (176, '超级管理员', 'hawile', '黄伟', '修改 [TortoiseSVN ]应用软件', '成功', '2020-10-14 15:04:49');
+INSERT INTO `log` VALUES (177, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:04:52');
+INSERT INTO `log` VALUES (178, '超级管理员', 'hawile', '黄伟', '修改 [TortoiseSVN ]应用软件', '成功', '2020-10-14 15:05:06');
+INSERT INTO `log` VALUES (179, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:05:10');
+INSERT INTO `log` VALUES (180, '超级管理员', 'hawile', '黄伟', '修改 [FlashFXP ]应用软件', '成功', '2020-10-14 15:05:23');
+INSERT INTO `log` VALUES (181, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:05:25');
+INSERT INTO `log` VALUES (182, '超级管理员', 'hawile', '黄伟', '修改 [SafeShare ]应用软件', '成功', '2020-10-14 15:05:38');
+INSERT INTO `log` VALUES (183, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:05:43');
+INSERT INTO `log` VALUES (184, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:06:09');
+INSERT INTO `log` VALUES (185, '超级管理员', 'hawile', '黄伟', '修改 [Navicat Premium ]应用软件', '成功', '2020-10-14 15:06:25');
+INSERT INTO `log` VALUES (186, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:06:31');
+INSERT INTO `log` VALUES (187, '超级管理员', 'hawile', '黄伟', '删除 [KMSAuto Net ]应用软件', '成功', '2020-10-14 15:06:36');
+INSERT INTO `log` VALUES (188, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:06:37');
+INSERT INTO `log` VALUES (189, '超级管理员', 'hawile', '黄伟', '修改 [Microsoft  Visual C++运行库 ]应用软件', '成功', '2020-10-14 15:06:45');
+INSERT INTO `log` VALUES (190, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:06:51');
+INSERT INTO `log` VALUES (191, '超级管理员', 'hawile', '黄伟', '删除 [.Net运行库 ]应用软件', '成功', '2020-10-14 15:06:54');
+INSERT INTO `log` VALUES (192, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:06:55');
+INSERT INTO `log` VALUES (193, '超级管理员', 'hawile', '黄伟', '修改 [DiskGenius ]应用软件', '成功', '2020-10-14 15:07:07');
+INSERT INTO `log` VALUES (194, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:07:14');
+INSERT INTO `log` VALUES (195, '超级管理员', 'hawile', '黄伟', '修改 [Microsoft Office Pro ]应用软件', '成功', '2020-10-14 15:07:34');
+INSERT INTO `log` VALUES (196, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:07:36');
+INSERT INTO `log` VALUES (197, '超级管理员', 'hawile', '黄伟', '修改 [Adobe Photoshop（精简版） ]应用软件', '成功', '2020-10-14 15:11:13');
+INSERT INTO `log` VALUES (198, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:13:33');
+INSERT INTO `log` VALUES (199, '超级管理员', 'hawile', '黄伟', '修改 [Adobe Photoshop ]应用软件', '成功', '2020-10-14 15:14:13');
+INSERT INTO `log` VALUES (200, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:14:23');
+INSERT INTO `log` VALUES (201, '超级管理员', 'hawile', '黄伟', '修改 [Adobe Acrobat Pro ]应用软件', '成功', '2020-10-14 15:14:36');
+INSERT INTO `log` VALUES (202, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:15:35');
+INSERT INTO `log` VALUES (203, '超级管理员', 'hawile', '黄伟', '修改 [CorelDRAW Graphics Suite ]应用软件', '成功', '2020-10-14 15:15:50');
+INSERT INTO `log` VALUES (204, '超级管理员', 'hawile', '黄伟', '修改 [Adobe Acrobat Pro DC ]应用软件', '成功', '2020-10-14 15:16:04');
+INSERT INTO `log` VALUES (205, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:17:13');
+INSERT INTO `log` VALUES (206, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:17:48');
+INSERT INTO `log` VALUES (207, '超级管理员', 'hawile', '黄伟', '修改 [PDF转换器 ]应用软件', '成功', '2020-10-14 15:20:47');
+INSERT INTO `log` VALUES (208, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:20:49');
+INSERT INTO `log` VALUES (209, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 15:38:58');
+INSERT INTO `log` VALUES (210, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:38:59');
+INSERT INTO `log` VALUES (211, '超级管理员', 'hawile', '黄伟', '修改 [WinRAR ]应用软件', '成功', '2020-10-14 15:39:32');
+INSERT INTO `log` VALUES (212, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:39:34');
+INSERT INTO `log` VALUES (213, '超级管理员', 'hawile', '黄伟', '删除 [XShell ]应用软件', '成功', '2020-10-14 15:39:54');
+INSERT INTO `log` VALUES (214, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:39:55');
+INSERT INTO `log` VALUES (215, '超级管理员', 'hawile', '黄伟', '删除 [XFtp ]应用软件', '成功', '2020-10-14 15:40:00');
+INSERT INTO `log` VALUES (216, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:40:01');
+INSERT INTO `log` VALUES (217, '超级管理员', 'hawile', '黄伟', '修改 [MySQL ]应用软件', '成功', '2020-10-14 15:40:16');
+INSERT INTO `log` VALUES (218, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:41:16');
+INSERT INTO `log` VALUES (219, '超级管理员', 'hawile', '黄伟', '删除 [MySQL ]应用软件', '成功', '2020-10-14 15:41:27');
+INSERT INTO `log` VALUES (220, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:41:28');
+INSERT INTO `log` VALUES (221, '超级管理员', 'hawile', '黄伟', '修改 [SecureCRT ]应用软件', '成功', '2020-10-14 15:41:41');
+INSERT INTO `log` VALUES (222, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:41:44');
+INSERT INTO `log` VALUES (223, '超级管理员', 'hawile', '黄伟', '修改 [Corel VideoStudio Pro ]应用软件', '成功', '2020-10-14 15:41:54');
+INSERT INTO `log` VALUES (224, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:51:35');
+INSERT INTO `log` VALUES (225, '超级管理员', 'hawile', '黄伟', '修改 [PotPlayer ]应用软件', '成功', '2020-10-14 15:52:43');
+INSERT INTO `log` VALUES (226, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:52:49');
+INSERT INTO `log` VALUES (227, '超级管理员', 'hawile', '黄伟', '修改 [FileZilla ]应用软件', '成功', '2020-10-14 15:52:59');
+INSERT INTO `log` VALUES (228, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:53:04');
+INSERT INTO `log` VALUES (229, '超级管理员', 'hawile', '黄伟', '修改 [CPU-Z ]应用软件', '成功', '2020-10-14 15:53:15');
+INSERT INTO `log` VALUES (230, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:53:17');
+INSERT INTO `log` VALUES (231, '超级管理员', 'hawile', '黄伟', '修改 [AIDA64 ]应用软件', '成功', '2020-10-14 15:53:28');
+INSERT INTO `log` VALUES (232, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:53:42');
+INSERT INTO `log` VALUES (233, '超级管理员', 'hawile', '黄伟', '修改 [System Spec ]应用软件', '成功', '2020-10-14 15:53:53');
+INSERT INTO `log` VALUES (234, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:53:55');
+INSERT INTO `log` VALUES (235, '超级管理员', 'hawile', '黄伟', '修改 [Keygen ]应用软件', '成功', '2020-10-14 15:54:23');
+INSERT INTO `log` VALUES (236, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 15:54:27');
+INSERT INTO `log` VALUES (237, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:00:23');
+INSERT INTO `log` VALUES (238, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:00:25');
+INSERT INTO `log` VALUES (239, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:01:44');
+INSERT INTO `log` VALUES (240, '超级管理员', 'hawile', '黄伟', '修改 [DocuCentre_S1810_Driver ]驱动', '成功', '2020-10-14 16:01:54');
+INSERT INTO `log` VALUES (241, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:01:56');
+INSERT INTO `log` VALUES (242, '超级管理员', 'hawile', '黄伟', '修改 [L565 ]驱动', '成功', '2020-10-14 16:02:13');
+INSERT INTO `log` VALUES (243, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:02:20');
+INSERT INTO `log` VALUES (244, '超级管理员', 'hawile', '黄伟', '修改 [L565 ]驱动', '成功', '2020-10-14 16:02:30');
+INSERT INTO `log` VALUES (245, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:02:36');
+INSERT INTO `log` VALUES (246, '超级管理员', 'hawile', '黄伟', '修改 [R330 ]驱动', '成功', '2020-10-14 16:02:48');
+INSERT INTO `log` VALUES (247, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:02:51');
+INSERT INTO `log` VALUES (248, '超级管理员', 'hawile', '黄伟', '修改 [S1810 ]驱动', '成功', '2020-10-14 16:03:02');
+INSERT INTO `log` VALUES (249, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:03:04');
+INSERT INTO `log` VALUES (250, '超级管理员', 'hawile', '黄伟', '修改 [TOSHIBA e-STUDIO2830C XPS ]驱动', '成功', '2020-10-14 16:03:14');
+INSERT INTO `log` VALUES (251, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:03:18');
+INSERT INTO `log` VALUES (252, '超级管理员', 'hawile', '黄伟', '修改 [固网1008_2008标准版 ]驱动', '成功', '2020-10-14 16:03:29');
+INSERT INTO `log` VALUES (253, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:03:31');
+INSERT INTO `log` VALUES (254, '超级管理员', 'hawile', '黄伟', '修改 [驱动人生网卡版 ]驱动', '成功', '2020-10-14 16:03:41');
+INSERT INTO `log` VALUES (255, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:04:02');
+INSERT INTO `log` VALUES (256, '超级管理员', 'hawile', '黄伟', '查看[ 系统下载 ]列表', '成功', '2020-10-14 16:06:03');
+INSERT INTO `log` VALUES (257, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:06:04');
+INSERT INTO `log` VALUES (258, '超级管理员', 'hawile', '黄伟', '修改 [DocuCentre_S2220_S2420 ]驱动', '成功', '2020-10-14 16:06:17');
+INSERT INTO `log` VALUES (259, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:06:18');
+INSERT INTO `log` VALUES (260, '超级管理员', 'hawile', '黄伟', '查看[ 系统下载 ]列表', '成功', '2020-10-14 16:06:30');
+INSERT INTO `log` VALUES (261, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:06:51');
+INSERT INTO `log` VALUES (262, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:07:14');
+INSERT INTO `log` VALUES (263, '超级管理员', 'hawile', '黄伟', '修改 [Corel VideoStudio Pro ]应用软件', '成功', '2020-10-14 16:07:27');
+INSERT INTO `log` VALUES (264, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:09:01');
+INSERT INTO `log` VALUES (265, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-14 16:09:43');
+INSERT INTO `log` VALUES (266, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:09:45');
+INSERT INTO `log` VALUES (267, '超级管理员', 'hawile', '黄伟', '修改 [360极速浏览器 ]应用软件', '成功', '2020-10-14 16:10:19');
+INSERT INTO `log` VALUES (268, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:11:32');
+INSERT INTO `log` VALUES (269, '超级管理员', 'hawile', '黄伟', '下载 [360极速浏览器 ]文件', '失败', '2020-10-14 16:11:40');
+INSERT INTO `log` VALUES (270, '超级管理员', 'hawile', '黄伟', '修改 [搜狗拼音输入法 ]应用软件', '成功', '2020-10-14 16:11:55');
+INSERT INTO `log` VALUES (271, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:12:35');
+INSERT INTO `log` VALUES (272, '超级管理员', 'hawile', '黄伟', '修改 [iNode ]应用软件', '成功', '2020-10-14 16:13:22');
+INSERT INTO `log` VALUES (273, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:15:04');
+INSERT INTO `log` VALUES (274, '超级管理员', 'hawile', '黄伟', '修改 [飞鸽传书 ]应用软件', '成功', '2020-10-14 16:15:18');
+INSERT INTO `log` VALUES (275, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:15:20');
+INSERT INTO `log` VALUES (276, '超级管理员', 'hawile', '黄伟', '修改 [AutoCad ]应用软件', '成功', '2020-10-14 16:16:04');
+INSERT INTO `log` VALUES (277, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:16:06');
+INSERT INTO `log` VALUES (278, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:24:00');
+INSERT INTO `log` VALUES (279, '超级管理员', 'hawile', '黄伟', '修改 [Corel VideoStudio Pro ]应用软件', '成功', '2020-10-14 16:24:11');
+INSERT INTO `log` VALUES (280, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:24:13');
+INSERT INTO `log` VALUES (281, '超级管理员', 'hawile', '黄伟', '下载 [Corel VideoStudio Pro ]文件', '失败', '2020-10-14 16:25:15');
+INSERT INTO `log` VALUES (282, '超级管理员', 'hawile', '黄伟', '修改 [用友U8+ ]应用软件', '成功', '2020-10-14 16:25:38');
+INSERT INTO `log` VALUES (283, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:25:40');
+INSERT INTO `log` VALUES (284, '超级管理员', 'hawile', '黄伟', '修改 [Adobe Illustrator ]应用软件', '成功', '2020-10-14 16:25:56');
+INSERT INTO `log` VALUES (285, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:25:58');
+INSERT INTO `log` VALUES (286, '超级管理员', 'hawile', '黄伟', '修改 [AIDA64 ]应用软件', '成功', '2020-10-14 16:27:34');
+INSERT INTO `log` VALUES (287, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-14 16:27:49');
+INSERT INTO `log` VALUES (288, '超级管理员', 'hawile', '黄伟', '查看[ 文件信息 ] 列表', '成功', '2020-10-15 10:14:20');
+INSERT INTO `log` VALUES (289, '超级管理员', 'hawile', '黄伟', '下载 [网络配置授权书 ]文件', '成功', '2020-10-15 10:14:41');
+INSERT INTO `log` VALUES (290, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-10-16 08:45:53');
+INSERT INTO `log` VALUES (291, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-16 08:45:55');
+INSERT INTO `log` VALUES (292, '超级管理员', 'hawile', '黄伟', '查看[ 部门列表 ]', '成功', '2020-10-16 08:45:56');
+INSERT INTO `log` VALUES (293, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-10-16 08:46:02');
+INSERT INTO `log` VALUES (294, '超级管理员', 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-10-16 08:46:03');
+INSERT INTO `log` VALUES (295, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 08:46:04');
+INSERT INTO `log` VALUES (296, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 08:46:06');
+INSERT INTO `log` VALUES (297, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 08:50:18');
+INSERT INTO `log` VALUES (298, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 08:52:44');
+INSERT INTO `log` VALUES (299, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 08:52:50');
+INSERT INTO `log` VALUES (300, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 08:53:10');
+INSERT INTO `log` VALUES (301, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 08:57:33');
+INSERT INTO `log` VALUES (302, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 08:58:00');
+INSERT INTO `log` VALUES (303, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016085758.xlsx ]文件', '成功', '2020-10-16 08:58:05');
+INSERT INTO `log` VALUES (304, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 08:58:46');
+INSERT INTO `log` VALUES (305, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016085845.xlsx ]文件', '成功', '2020-10-16 08:58:46');
+INSERT INTO `log` VALUES (306, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 10:05:27');
+INSERT INTO `log` VALUES (307, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 10:05:48');
+INSERT INTO `log` VALUES (308, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016100546.xlsx ]文件', '成功', '2020-10-16 10:05:52');
+INSERT INTO `log` VALUES (309, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 10:06:03');
+INSERT INTO `log` VALUES (310, '超级管理员', 'hawile', '黄伟', '修改[ 缅甸公交 ]客户账号信息', '成功', '2020-10-16 10:06:29');
+INSERT INTO `log` VALUES (311, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 10:06:30');
+INSERT INTO `log` VALUES (312, '超级管理员', 'hawile', '黄伟', '修改[ 宝能百货零售有限公司 ]客户账号信息', '成功', '2020-10-16 10:06:46');
+INSERT INTO `log` VALUES (313, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 10:06:48');
+INSERT INTO `log` VALUES (314, '超级管理员', 'hawile', '黄伟', '修改[ 南京银行 ]客户账号信息', '成功', '2020-10-16 10:06:58');
+INSERT INTO `log` VALUES (315, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 10:06:59');
+INSERT INTO `log` VALUES (316, '超级管理员', 'hawile', '黄伟', '修改[ 南京银行 ]客户账号信息', '成功', '2020-10-16 10:23:03');
+INSERT INTO `log` VALUES (317, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 10:23:04');
+INSERT INTO `log` VALUES (318, '超级管理员', 'hawile', '黄伟', '修改[ 宝能百货零售有限公司 ]客户账号信息', '成功', '2020-10-16 10:23:15');
+INSERT INTO `log` VALUES (319, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 10:23:17');
+INSERT INTO `log` VALUES (320, '超级管理员', 'hawile', '黄伟', '修改[ 缅甸公交 ]客户账号信息', '成功', '2020-10-16 10:23:40');
+INSERT INTO `log` VALUES (321, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 10:23:41');
+INSERT INTO `log` VALUES (322, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 11:08:08');
+INSERT INTO `log` VALUES (323, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 11:08:13');
+INSERT INTO `log` VALUES (324, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:15');
+INSERT INTO `log` VALUES (325, '超级管理员', 'hawile', '黄伟', '修改[ 四川省德阳市德阳银行 ]客户账号信息', '成功', '2020-10-16 11:08:19');
+INSERT INTO `log` VALUES (326, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:19');
+INSERT INTO `log` VALUES (327, '超级管理员', 'hawile', '黄伟', '修改[ 深圳精工 ]客户账号信息', '成功', '2020-10-16 11:08:23');
+INSERT INTO `log` VALUES (328, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:24');
+INSERT INTO `log` VALUES (329, '超级管理员', 'hawile', '黄伟', '修改[ 达州银行 ]客户账号信息', '成功', '2020-10-16 11:08:29');
+INSERT INTO `log` VALUES (330, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:30');
+INSERT INTO `log` VALUES (331, '超级管理员', 'hawile', '黄伟', '修改[ 深圳精工伟达信息科技有限公司 ]客户账号信息', '成功', '2020-10-16 11:08:34');
+INSERT INTO `log` VALUES (332, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:35');
+INSERT INTO `log` VALUES (333, '超级管理员', 'hawile', '黄伟', '修改[ 北京华虹集成电路设计有限公司 ]客户账号信息', '成功', '2020-10-16 11:08:40');
+INSERT INTO `log` VALUES (334, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:40');
+INSERT INTO `log` VALUES (335, '超级管理员', 'hawile', '黄伟', '修改[ 徐州电信电子学生证 ]客户账号信息', '成功', '2020-10-16 11:08:45');
+INSERT INTO `log` VALUES (336, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:45');
+INSERT INTO `log` VALUES (337, '超级管理员', 'hawile', '黄伟', '修改[ 达州市商业银行 ]客户账号信息', '成功', '2020-10-16 11:08:49');
+INSERT INTO `log` VALUES (338, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:50');
+INSERT INTO `log` VALUES (339, '超级管理员', 'hawile', '黄伟', '修改[ 四川遂宁银行 ]客户账号信息', '成功', '2020-10-16 11:08:54');
+INSERT INTO `log` VALUES (340, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:54');
+INSERT INTO `log` VALUES (341, '超级管理员', 'hawile', '黄伟', '修改[ 校芯通 ]客户账号信息', '成功', '2020-10-16 11:08:59');
+INSERT INTO `log` VALUES (342, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:08:59');
+INSERT INTO `log` VALUES (343, '超级管理员', 'hawile', '黄伟', '修改[ 校芯通 ]客户账号信息', '成功', '2020-10-16 11:09:03');
+INSERT INTO `log` VALUES (344, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:09:03');
+INSERT INTO `log` VALUES (345, '超级管理员', 'hawile', '黄伟', '修改[ 校芯通 ]客户账号信息', '成功', '2020-10-16 11:09:08');
+INSERT INTO `log` VALUES (346, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:09:09');
+INSERT INTO `log` VALUES (347, '超级管理员', 'hawile', '黄伟', '修改[ 华润置地鞍山万象汇 ]客户账号信息', '成功', '2020-10-16 11:09:15');
+INSERT INTO `log` VALUES (348, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:09:16');
+INSERT INTO `log` VALUES (349, '超级管理员', 'hawile', '黄伟', '修改[ 四川省达州市人力资源和社会保障局 ]客户账号信息', '成功', '2020-10-16 11:09:20');
+INSERT INTO `log` VALUES (350, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:09:21');
+INSERT INTO `log` VALUES (351, '超级管理员', 'hawile', '黄伟', '修改[ 南京银行 ]客户账号信息', '成功', '2020-10-16 11:09:25');
+INSERT INTO `log` VALUES (352, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:09:26');
+INSERT INTO `log` VALUES (353, '超级管理员', 'hawile', '黄伟', '修改[ 宝能百货零售有限公司 ]客户账号信息', '成功', '2020-10-16 11:09:34');
+INSERT INTO `log` VALUES (354, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:09:35');
+INSERT INTO `log` VALUES (355, '超级管理员', 'hawile', '黄伟', '修改[ 缅甸公交 ]客户账号信息', '成功', '2020-10-16 11:09:40');
+INSERT INTO `log` VALUES (356, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-16 11:09:40');
+INSERT INTO `log` VALUES (357, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 11:12:33');
+INSERT INTO `log` VALUES (358, '超级管理员', 'hawile', '黄伟', '填写[ IT账号开通及变更申请表 ]表单', '成功', '2020-10-16 11:16:12');
+INSERT INTO `log` VALUES (359, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016111612.xlsx ]文件', '成功', '2020-10-16 11:16:12');
+INSERT INTO `log` VALUES (360, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 11:21:15');
+INSERT INTO `log` VALUES (361, '超级管理员', 'hawile', '黄伟', '填写[ IT设备安装及变更申请表 ]表单', '成功', '2020-10-16 11:23:33');
+INSERT INTO `log` VALUES (362, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016112332.xlsx ]文件', '成功', '2020-10-16 11:23:38');
+INSERT INTO `log` VALUES (363, '超级管理员', 'hawile', '黄伟', '下载 [IT设备安装及变更记录表 ]文件', '成功', '2020-10-16 11:24:59');
+INSERT INTO `log` VALUES (364, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 11:29:29');
+INSERT INTO `log` VALUES (365, '超级管理员', 'hawile', '黄伟', '填写[ IT账号开通及变更申请表 ]表单', '成功', '2020-10-16 11:30:50');
+INSERT INTO `log` VALUES (366, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016113050.xlsx ]文件', '成功', '2020-10-16 11:30:51');
+INSERT INTO `log` VALUES (367, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 11:32:30');
+INSERT INTO `log` VALUES (368, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 11:39:04');
+INSERT INTO `log` VALUES (369, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:39:29');
+INSERT INTO `log` VALUES (370, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016113927.xlsx ]文件', '成功', '2020-10-16 11:39:29');
+INSERT INTO `log` VALUES (371, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-16 11:39:46');
+INSERT INTO `log` VALUES (372, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:40:22');
+INSERT INTO `log` VALUES (373, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114021.xlsx ]文件', '成功', '2020-10-16 11:40:25');
+INSERT INTO `log` VALUES (374, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:40:57');
+INSERT INTO `log` VALUES (375, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114056.xlsx ]文件', '成功', '2020-10-16 11:40:57');
+INSERT INTO `log` VALUES (376, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:41:30');
+INSERT INTO `log` VALUES (377, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114130.xlsx ]文件', '成功', '2020-10-16 11:41:31');
+INSERT INTO `log` VALUES (378, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:41:53');
+INSERT INTO `log` VALUES (379, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114152.xlsx ]文件', '成功', '2020-10-16 11:41:53');
+INSERT INTO `log` VALUES (380, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:42:30');
+INSERT INTO `log` VALUES (381, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114229.xlsx ]文件', '成功', '2020-10-16 11:42:30');
+INSERT INTO `log` VALUES (382, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:42:54');
+INSERT INTO `log` VALUES (383, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114254.xlsx ]文件', '成功', '2020-10-16 11:42:55');
+INSERT INTO `log` VALUES (384, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:43:19');
+INSERT INTO `log` VALUES (385, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114318.xlsx ]文件', '成功', '2020-10-16 11:43:19');
+INSERT INTO `log` VALUES (386, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:43:49');
+INSERT INTO `log` VALUES (387, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114348.xlsx ]文件', '成功', '2020-10-16 11:43:49');
+INSERT INTO `log` VALUES (388, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:44:11');
+INSERT INTO `log` VALUES (389, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114411.xlsx ]文件', '成功', '2020-10-16 11:44:12');
+INSERT INTO `log` VALUES (390, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:45:05');
+INSERT INTO `log` VALUES (391, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114505.xlsx ]文件', '成功', '2020-10-16 11:45:06');
+INSERT INTO `log` VALUES (392, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:45:27');
+INSERT INTO `log` VALUES (393, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114526.xlsx ]文件', '成功', '2020-10-16 11:45:27');
+INSERT INTO `log` VALUES (394, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:45:50');
+INSERT INTO `log` VALUES (395, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114549.xlsx ]文件', '成功', '2020-10-16 11:45:50');
+INSERT INTO `log` VALUES (396, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:46:07');
+INSERT INTO `log` VALUES (397, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114606.xlsx ]文件', '成功', '2020-10-16 11:46:07');
+INSERT INTO `log` VALUES (398, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:46:37');
+INSERT INTO `log` VALUES (399, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114636.xlsx ]文件', '成功', '2020-10-16 11:46:37');
+INSERT INTO `log` VALUES (400, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:47:59');
+INSERT INTO `log` VALUES (401, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114758.xlsx ]文件', '成功', '2020-10-16 11:47:59');
+INSERT INTO `log` VALUES (402, '超级管理员', 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-16 11:48:40');
+INSERT INTO `log` VALUES (403, '超级管理员', 'hawile', '黄伟', '下载 [Form20201016114839.xlsx ]文件', '成功', '2020-10-16 11:48:40');
+INSERT INTO `log` VALUES (404, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-10-19 12:07:52');
+INSERT INTO `log` VALUES (405, '超级管理员', 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-10-19 12:07:53');
+INSERT INTO `log` VALUES (406, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-19 12:07:56');
+INSERT INTO `log` VALUES (407, '超级管理员', 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-19 12:07:59');
+INSERT INTO `log` VALUES (408, '超级管理员', 'hawile', '黄伟', '查看[ 工作报表 ]', '成功', '2020-10-19 12:08:01');
+INSERT INTO `log` VALUES (409, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-19 12:08:16');
+INSERT INTO `log` VALUES (410, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-19 12:08:17');
+INSERT INTO `log` VALUES (411, '超级管理员', 'hawile', '黄伟', '查看[ 系统下载 ]列表', '成功', '2020-10-19 12:08:17');
+INSERT INTO `log` VALUES (412, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-19 17:28:17');
+INSERT INTO `log` VALUES (413, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-19 17:30:12');
+INSERT INTO `log` VALUES (414, '超级管理员', 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-10-19 17:30:14');
+INSERT INTO `log` VALUES (415, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-19 17:30:15');
+INSERT INTO `log` VALUES (416, '超级管理员', 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-10-20 08:38:14');
+INSERT INTO `log` VALUES (417, '超级管理员', 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-10-20 08:38:15');
+INSERT INTO `log` VALUES (418, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-20 08:38:18');
+INSERT INTO `log` VALUES (419, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-20 11:40:27');
+INSERT INTO `log` VALUES (420, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 11:42:24');
+INSERT INTO `log` VALUES (421, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020114223.xlsx ]文件', '成功', '2020-10-20 11:42:36');
+INSERT INTO `log` VALUES (422, '超级管理员', 'hawile', '黄伟', '查看[ 文件信息 ] 列表', '成功', '2020-10-20 14:06:16');
+INSERT INTO `log` VALUES (423, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-20 14:06:22');
+INSERT INTO `log` VALUES (424, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 14:08:02');
+INSERT INTO `log` VALUES (425, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020140801.xlsx ]文件', '成功', '2020-10-20 14:08:06');
+INSERT INTO `log` VALUES (426, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-20 14:19:24');
+INSERT INTO `log` VALUES (427, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 14:21:44');
+INSERT INTO `log` VALUES (428, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020142143.xlsx ]文件', '成功', '2020-10-20 14:21:44');
+INSERT INTO `log` VALUES (429, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-20 14:28:34');
+INSERT INTO `log` VALUES (430, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-20 14:30:08');
+INSERT INTO `log` VALUES (431, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-20 14:31:39');
+INSERT INTO `log` VALUES (432, '超级管理员', 'hawile', '黄伟', '查看[ 部门列表 ]', '成功', '2020-10-20 14:31:47');
+INSERT INTO `log` VALUES (433, '超级管理员', 'hawile', '黄伟', '修改[ 综合人力部 ]部门信息', '成功', '2020-10-20 14:31:58');
+INSERT INTO `log` VALUES (434, '超级管理员', 'hawile', '黄伟', '查看[ 部门列表 ]', '成功', '2020-10-20 14:31:59');
+INSERT INTO `log` VALUES (435, '超级管理员', 'hawile', '黄伟', '查看[ 部门列表 ]', '成功', '2020-10-20 14:32:42');
+INSERT INTO `log` VALUES (436, '超级管理员', 'hawile', '黄伟', '添加[ 仓库管理部 ]部门信息', '成功', '2020-10-20 14:32:52');
+INSERT INTO `log` VALUES (437, '超级管理员', 'hawile', '黄伟', '查看[ 部门列表 ]', '成功', '2020-10-20 14:32:53');
+INSERT INTO `log` VALUES (438, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-20 14:33:10');
+INSERT INTO `log` VALUES (439, '超级管理员', 'hawile', '黄伟', '更新[ 库管员 ]职位信息', '成功', '2020-10-20 14:33:25');
+INSERT INTO `log` VALUES (440, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-20 14:33:26');
+INSERT INTO `log` VALUES (441, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 14:35:33');
+INSERT INTO `log` VALUES (442, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020143532.xlsx ]文件', '成功', '2020-10-20 14:35:41');
+INSERT INTO `log` VALUES (443, '超级管理员', 'hawile', '黄伟', '添加[ 计划主管 ]职位信息', '成功', '2020-10-20 14:36:59');
+INSERT INTO `log` VALUES (444, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-20 14:37:00');
+INSERT INTO `log` VALUES (445, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 14:38:54');
+INSERT INTO `log` VALUES (446, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020143853.xlsx ]文件', '成功', '2020-10-20 14:38:54');
+INSERT INTO `log` VALUES (447, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 14:40:48');
+INSERT INTO `log` VALUES (448, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020144048.xlsx ]文件', '成功', '2020-10-20 14:40:49');
+INSERT INTO `log` VALUES (449, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 14:43:18');
+INSERT INTO `log` VALUES (450, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020144317.xlsx ]文件', '成功', '2020-10-20 14:43:18');
+INSERT INTO `log` VALUES (451, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-20 15:47:47');
+INSERT INTO `log` VALUES (452, '超级管理员', 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-20 15:48:41');
+INSERT INTO `log` VALUES (453, '超级管理员', 'hawile', '黄伟', '查看[ 部门列表 ]', '成功', '2020-10-20 15:48:43');
+INSERT INTO `log` VALUES (454, '超级管理员', 'hawile', '黄伟', '查看[ 部门列表 ]', '成功', '2020-10-20 15:49:06');
+INSERT INTO `log` VALUES (455, '超级管理员', 'hawile', '黄伟', '修改[ 生产订单交付部 ]部门信息', '成功', '2020-10-20 15:49:17');
+INSERT INTO `log` VALUES (456, '超级管理员', 'hawile', '黄伟', '查看[ 部门列表 ]', '成功', '2020-10-20 15:49:18');
+INSERT INTO `log` VALUES (457, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 15:51:08');
+INSERT INTO `log` VALUES (458, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020155106.xlsx ]文件', '成功', '2020-10-20 15:51:08');
+INSERT INTO `log` VALUES (459, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-20 16:27:06');
+INSERT INTO `log` VALUES (460, '超级管理员', 'hawile', '黄伟', '下载 [Keygen ]文件', '成功', '2020-10-20 16:27:16');
+INSERT INTO `log` VALUES (461, '超级管理员', 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-20 16:34:43');
+INSERT INTO `log` VALUES (462, '超级管理员', 'hawile', '黄伟', '下载 [TOSHIBA e-STUDIO2830C XPS ]文件', '成功', '2020-10-20 16:34:50');
+INSERT INTO `log` VALUES (463, '超级管理员', 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-20 16:39:16');
+INSERT INTO `log` VALUES (464, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 16:42:32');
+INSERT INTO `log` VALUES (465, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020164232.xlsx ]文件', '成功', '2020-10-20 16:42:32');
+INSERT INTO `log` VALUES (466, '超级管理员', 'hawile', '黄伟', '填写[ 密钥人员任命终止表 ]表单', '成功', '2020-10-20 16:44:55');
+INSERT INTO `log` VALUES (467, '超级管理员', 'hawile', '黄伟', '下载 [Form20201020164454.xlsx ]文件', '成功', '2020-10-20 16:44:55');
+INSERT INTO `log` VALUES (468, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-21 10:51:21');
+INSERT INTO `log` VALUES (469, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-21 11:12:59');
+INSERT INTO `log` VALUES (470, '超级管理员', 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-10-26 16:07:20');
+INSERT INTO `log` VALUES (471, '超级管理员', 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-26 16:07:28');
+INSERT INTO `log` VALUES (472, '超级管理员', 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-10-26 16:07:38');
+INSERT INTO `log` VALUES (473, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-26 16:07:39');
+INSERT INTO `log` VALUES (474, '超级管理员', 'hawile', '黄伟', '修改[ SAS数据接收 ]客户账号信息', '成功', '2020-10-26 16:08:42');
+INSERT INTO `log` VALUES (475, '超级管理员', 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-26 16:08:43');
+INSERT INTO `log` VALUES (476, NULL, 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-10-26 16:26:27');
+INSERT INTO `log` VALUES (477, NULL, 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-26 16:26:33');
+INSERT INTO `log` VALUES (478, NULL, 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-10-26 16:26:34');
+INSERT INTO `log` VALUES (479, NULL, 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-26 16:28:55');
+INSERT INTO `log` VALUES (480, NULL, 'hawile', '黄伟', '添加 [Canon DR-3010C ]驱动', '成功', '2020-10-26 16:29:37');
+INSERT INTO `log` VALUES (481, NULL, 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-26 16:29:40');
+INSERT INTO `log` VALUES (482, NULL, 'hawile', '黄伟', '查看[ 驱动下载 ]列表', '成功', '2020-10-26 16:30:54');
+INSERT INTO `log` VALUES (483, NULL, 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-27 09:25:48');
+INSERT INTO `log` VALUES (484, NULL, 'hawile', '黄伟', '下载 [Keygen ]文件', '成功', '2020-10-27 09:26:06');
+INSERT INTO `log` VALUES (485, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 08:38:24');
+INSERT INTO `log` VALUES (486, NULL, 'hawile', '黄伟', '查看[ 文件信息 ] 列表', '成功', '2020-10-29 08:38:25');
+INSERT INTO `log` VALUES (487, NULL, 'hawile', '黄伟', '下载 [网络配置授权书 ]文件', '成功', '2020-10-29 08:38:41');
+INSERT INTO `log` VALUES (488, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 09:21:36');
+INSERT INTO `log` VALUES (489, NULL, 'hawile', '黄伟', '修改[ 关键设备审查记录 ]表单', '失败', '2020-10-29 09:22:09');
+INSERT INTO `log` VALUES (490, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 09:22:13');
+INSERT INTO `log` VALUES (491, NULL, 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-29 09:22:28');
+INSERT INTO `log` VALUES (492, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 09:33:15');
+INSERT INTO `log` VALUES (493, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 09:33:47');
+INSERT INTO `log` VALUES (494, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 09:33:55');
+INSERT INTO `log` VALUES (495, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 09:37:26');
+INSERT INTO `log` VALUES (496, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 09:37:26');
+INSERT INTO `log` VALUES (497, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 09:38:20');
+INSERT INTO `log` VALUES (498, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:36:00');
+INSERT INTO `log` VALUES (499, NULL, 'hawile', '黄伟', '修改[ 关键设备审查记录 ]表单', '成功', '2020-10-29 10:36:18');
+INSERT INTO `log` VALUES (500, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:36:19');
+INSERT INTO `log` VALUES (501, NULL, 'hawile', '黄伟', '查看 [null ]文件', '成功', '2020-10-29 10:36:23');
+INSERT INTO `log` VALUES (502, NULL, 'hawile', '黄伟', '修改[ 关键设备审查记录 ]表单', '成功', '2020-10-29 10:37:14');
+INSERT INTO `log` VALUES (503, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:37:15');
+INSERT INTO `log` VALUES (504, NULL, 'hawile', '黄伟', '查看 [null ]文件', '成功', '2020-10-29 10:37:18');
+INSERT INTO `log` VALUES (505, NULL, 'hawile', '黄伟', '下载 [关键设备审查记录 ]文件', '成功', '2020-10-29 10:37:25');
+INSERT INTO `log` VALUES (506, NULL, 'hawile', '黄伟', '查看[ 文件信息 ] 列表', '成功', '2020-10-29 10:37:43');
+INSERT INTO `log` VALUES (507, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:40:17');
+INSERT INTO `log` VALUES (508, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:40:27');
+INSERT INTO `log` VALUES (509, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:40:43');
+INSERT INTO `log` VALUES (510, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:42:22');
+INSERT INTO `log` VALUES (511, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:42:32');
+INSERT INTO `log` VALUES (512, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:42:35');
+INSERT INTO `log` VALUES (513, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:42:36');
+INSERT INTO `log` VALUES (514, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:42:36');
+INSERT INTO `log` VALUES (515, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-29 10:42:45');
+INSERT INTO `log` VALUES (516, NULL, 'hawile', '黄伟', '查看[ 应用软件 ]列表', '成功', '2020-10-30 08:37:02');
+INSERT INTO `log` VALUES (517, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-30 09:32:32');
+INSERT INTO `log` VALUES (518, NULL, 'hawile', '黄伟', '下载 [Form20201016114839.xlsx ]文件', '成功', '2020-10-30 09:32:44');
+INSERT INTO `log` VALUES (519, NULL, 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-30 09:33:24');
+INSERT INTO `log` VALUES (520, NULL, 'hawile', '黄伟', '下载 [Form20201030093322.xlsx ]文件', '成功', '2020-10-30 09:33:24');
+INSERT INTO `log` VALUES (521, NULL, 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-30 09:33:54');
+INSERT INTO `log` VALUES (522, NULL, 'hawile', '黄伟', '下载 [Form20201030093354.xlsx ]文件', '成功', '2020-10-30 09:33:54');
+INSERT INTO `log` VALUES (523, NULL, 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-30 09:34:05');
+INSERT INTO `log` VALUES (524, NULL, 'hawile', '黄伟', '下载 [Form20201030093404.xlsx ]文件', '成功', '2020-10-30 09:34:05');
+INSERT INTO `log` VALUES (525, NULL, 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-30 09:34:18');
+INSERT INTO `log` VALUES (526, NULL, 'hawile', '黄伟', '下载 [Form20201030093417.xlsx ]文件', '成功', '2020-10-30 09:34:18');
+INSERT INTO `log` VALUES (527, NULL, 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-30 09:34:28');
+INSERT INTO `log` VALUES (528, NULL, 'hawile', '黄伟', '下载 [Form20201030093427.xlsx ]文件', '成功', '2020-10-30 09:34:28');
+INSERT INTO `log` VALUES (529, NULL, 'hawile', '黄伟', '填写[ 逻辑安全内部审计、审查报告 ]表单', '成功', '2020-10-30 09:34:38');
+INSERT INTO `log` VALUES (530, NULL, 'hawile', '黄伟', '下载 [Form20201030093437.xlsx ]文件', '成功', '2020-10-30 09:34:38');
+INSERT INTO `log` VALUES (531, NULL, 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-30 09:49:04');
+INSERT INTO `log` VALUES (532, NULL, 'hawile', '黄伟', '添加[ 客户服务部主管 ]职位信息', '成功', '2020-10-30 09:49:29');
+INSERT INTO `log` VALUES (533, NULL, 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-30 09:49:29');
+INSERT INTO `log` VALUES (534, NULL, 'hawile', '黄伟', '填写[ IT账号开通及变更申请表 ]表单', '成功', '2020-10-30 09:50:01');
+INSERT INTO `log` VALUES (535, NULL, 'hawile', '黄伟', '下载 [Form20201030095001.xlsx ]文件', '成功', '2020-10-30 09:50:01');
+INSERT INTO `log` VALUES (536, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-30 09:53:57');
+INSERT INTO `log` VALUES (537, NULL, 'hawile', '黄伟', '查看[ 申请列表 ]', '成功', '2020-10-30 09:55:35');
+INSERT INTO `log` VALUES (538, NULL, 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-10-30 09:55:40');
+INSERT INTO `log` VALUES (539, NULL, 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-10-30 09:55:43');
+INSERT INTO `log` VALUES (540, NULL, 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-10-30 09:55:46');
+INSERT INTO `log` VALUES (541, NULL, 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-10-30 09:56:00');
+INSERT INTO `log` VALUES (542, NULL, 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-30 10:03:03');
+INSERT INTO `log` VALUES (543, NULL, 'hawile', '黄伟', '修改[ SAS数据接收 ]客户账号信息', '成功', '2020-10-30 10:04:07');
+INSERT INTO `log` VALUES (544, NULL, 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-30 10:04:08');
+INSERT INTO `log` VALUES (545, NULL, 'hawile', '黄伟', '添加[ sas数据传输 ]客户账号信息', '成功', '2020-10-30 10:05:11');
+INSERT INTO `log` VALUES (546, NULL, 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-30 10:05:12');
+INSERT INTO `log` VALUES (547, NULL, 'hawile', '黄伟', '修改[ SAS数据接收 ]客户账号信息', '成功', '2020-10-30 10:05:44');
+INSERT INTO `log` VALUES (548, NULL, 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-30 10:05:44');
+INSERT INTO `log` VALUES (549, NULL, 'hawile', '黄伟', '添加[ 中国电信 ]客户账号信息', '成功', '2020-10-30 10:06:11');
+INSERT INTO `log` VALUES (550, NULL, 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-10-30 10:06:12');
+INSERT INTO `log` VALUES (551, NULL, 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-30 10:08:40');
+INSERT INTO `log` VALUES (552, NULL, 'hawile', '黄伟', '添加 [进货单 ]订单信息', '成功', '2020-10-30 10:11:39');
+INSERT INTO `log` VALUES (553, NULL, 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-30 10:11:40');
+INSERT INTO `log` VALUES (554, NULL, 'hawile', '黄伟', '查看[ 售货机商品信息列表 ]', '成功', '2020-10-30 10:13:05');
+INSERT INTO `log` VALUES (555, NULL, 'hawile', '黄伟', '添加[ 百事可乐（极度） ]商品', '成功', '2020-10-30 10:13:57');
+INSERT INTO `log` VALUES (556, NULL, 'hawile', '黄伟', '查看[ 售货机商品信息列表 ]', '成功', '2020-10-30 10:13:58');
+INSERT INTO `log` VALUES (557, NULL, 'hawile', '黄伟', '删除 [进货单 ]订单信息', '成功', '2020-10-30 10:14:09');
+INSERT INTO `log` VALUES (558, NULL, 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-30 10:14:18');
+INSERT INTO `log` VALUES (559, NULL, 'hawile', '黄伟', '删除 [进货单 ]订单信息', '成功', '2020-10-30 10:14:56');
+INSERT INTO `log` VALUES (560, NULL, 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-30 10:14:59');
+INSERT INTO `log` VALUES (561, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-10-30 10:15:27');
+INSERT INTO `log` VALUES (562, NULL, 'hawile', '黄伟', '查看 [null ]文件', '成功', '2020-10-30 10:15:36');
+INSERT INTO `log` VALUES (563, NULL, 'hawile', '黄伟', '添加 [进货单 ]订单信息', '成功', '2020-10-30 10:17:51');
+INSERT INTO `log` VALUES (564, NULL, 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-30 10:17:52');
+INSERT INTO `log` VALUES (565, NULL, 'hawile', '黄伟', '添加 [上货单 ]订单信息', '成功', '2020-10-30 10:18:36');
+INSERT INTO `log` VALUES (566, NULL, 'hawile', '黄伟', '查看[ 售货机订单信息列表 ]', '成功', '2020-10-30 10:18:37');
+INSERT INTO `log` VALUES (567, NULL, 'hawile', '黄伟', '查看[ 售货机商品信息列表 ]', '成功', '2020-10-30 10:18:50');
+INSERT INTO `log` VALUES (568, NULL, 'hawile', '黄伟', '修改[ 百事可乐（极度） ]商品', '成功', '2020-10-30 10:18:56');
+INSERT INTO `log` VALUES (569, NULL, 'hawile', '黄伟', '查看[ 售货机商品信息列表 ]', '成功', '2020-10-30 10:18:57');
+INSERT INTO `log` VALUES (570, NULL, 'hawile', '黄伟', '查看[ 厂商信息 ]', '成功', '2020-11-04 09:56:16');
+INSERT INTO `log` VALUES (571, NULL, 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-11-04 09:56:21');
+INSERT INTO `log` VALUES (572, NULL, 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-11-04 09:56:25');
+INSERT INTO `log` VALUES (573, NULL, 'hawile', '黄伟', '查看[ 申请列表 ]', '成功', '2020-11-04 09:57:21');
+INSERT INTO `log` VALUES (574, NULL, 'hawile', '黄伟', '查看[ 用户列表 ]', '成功', '2020-11-04 09:57:24');
+INSERT INTO `log` VALUES (575, NULL, 'hawile', '黄伟', '查看[ 权限列表 ]', '成功', '2020-11-04 09:57:26');
+INSERT INTO `log` VALUES (576, NULL, 'hawile', '黄伟', '查看[ 职位列表 ]', '成功', '2020-11-04 09:57:28');
+INSERT INTO `log` VALUES (577, NULL, 'hawile', '黄伟', '查看[ 客户账号信息列表 ]', '成功', '2020-11-04 09:57:31');
+INSERT INTO `log` VALUES (578, NULL, 'wangjx', '王建勋', '查看[ 账号信息列表 ]', '成功', '2020-11-04 14:55:42');
+INSERT INTO `log` VALUES (579, NULL, 'hawile', '黄伟', '查看[ 账号信息列表 ]', '成功', '2020-11-04 15:33:59');
+INSERT INTO `log` VALUES (580, NULL, 'hawile', '黄伟', '查看[ 表单信息 ] 列表', '成功', '2020-11-05 10:09:03');
+INSERT INTO `log` VALUES (581, NULL, 'hawile', '黄伟', '查看[ 文件信息 ] 列表', '成功', '2020-11-05 10:09:04');
+INSERT INTO `log` VALUES (582, NULL, 'hawile', '黄伟', '查看 [null ]文件', '成功', '2020-11-05 10:09:07');
 COMMIT;
 
 -- ----------------------------
@@ -1578,237 +2197,99 @@ CREATE TABLE `log_login` (
   `ip` varchar(255) DEFAULT NULL,
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of log_login
 -- ----------------------------
 BEGIN;
-INSERT INTO `log_login` VALUES (1, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 09:24:22');
-INSERT INTO `log_login` VALUES (2, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 09:58:45');
-INSERT INTO `log_login` VALUES (3, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 09:59:32');
-INSERT INTO `log_login` VALUES (4, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 10:01:43');
-INSERT INTO `log_login` VALUES (5, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 10:03:39');
-INSERT INTO `log_login` VALUES (6, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 10:06:27');
-INSERT INTO `log_login` VALUES (7, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 10:07:12');
-INSERT INTO `log_login` VALUES (8, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 10:53:36');
-INSERT INTO `log_login` VALUES (9, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 10:54:56');
-INSERT INTO `log_login` VALUES (10, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 10:56:03');
-INSERT INTO `log_login` VALUES (11, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 11:09:18');
-INSERT INTO `log_login` VALUES (12, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 11:16:31');
-INSERT INTO `log_login` VALUES (13, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 11:18:09');
-INSERT INTO `log_login` VALUES (14, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 12:06:59');
-INSERT INTO `log_login` VALUES (15, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 14:34:21');
-INSERT INTO `log_login` VALUES (16, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 16:25:09');
-INSERT INTO `log_login` VALUES (17, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 17:10:54');
-INSERT INTO `log_login` VALUES (18, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 17:13:32');
-INSERT INTO `log_login` VALUES (19, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 17:15:07');
-INSERT INTO `log_login` VALUES (20, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 17:16:33');
-INSERT INTO `log_login` VALUES (21, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 17:17:16');
-INSERT INTO `log_login` VALUES (22, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 17:18:53');
-INSERT INTO `log_login` VALUES (23, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 17:27:23');
-INSERT INTO `log_login` VALUES (24, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-03 17:31:48');
-INSERT INTO `log_login` VALUES (25, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 09:41:15');
-INSERT INTO `log_login` VALUES (26, 'hawil', '空', '用户不存在', '失败', '0:0:0:0:0:0:0:1', '2020-09-04 09:41:22');
-INSERT INTO `log_login` VALUES (27, 'hawile', '空', '密码验证失败', '失败', '0:0:0:0:0:0:0:1', '2020-09-04 09:41:27');
-INSERT INTO `log_login` VALUES (28, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 09:41:31');
-INSERT INTO `log_login` VALUES (29, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 09:47:18');
-INSERT INTO `log_login` VALUES (30, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 10:11:57');
-INSERT INTO `log_login` VALUES (31, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 10:12:56');
-INSERT INTO `log_login` VALUES (32, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 10:16:20');
-INSERT INTO `log_login` VALUES (33, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 10:23:58');
-INSERT INTO `log_login` VALUES (34, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 10:27:13');
-INSERT INTO `log_login` VALUES (35, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 11:28:44');
-INSERT INTO `log_login` VALUES (36, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 11:35:32');
-INSERT INTO `log_login` VALUES (37, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 11:41:08');
-INSERT INTO `log_login` VALUES (38, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 12:18:03');
-INSERT INTO `log_login` VALUES (39, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 12:18:24');
-INSERT INTO `log_login` VALUES (40, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 12:21:27');
-INSERT INTO `log_login` VALUES (41, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 14:23:17');
-INSERT INTO `log_login` VALUES (42, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 14:36:20');
-INSERT INTO `log_login` VALUES (43, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 14:38:36');
-INSERT INTO `log_login` VALUES (44, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:16:59');
-INSERT INTO `log_login` VALUES (45, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:21:40');
-INSERT INTO `log_login` VALUES (46, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:28:48');
-INSERT INTO `log_login` VALUES (47, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:38:26');
-INSERT INTO `log_login` VALUES (48, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:45:22');
-INSERT INTO `log_login` VALUES (49, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:48:21');
-INSERT INTO `log_login` VALUES (50, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:50:34');
-INSERT INTO `log_login` VALUES (51, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:52:04');
-INSERT INTO `log_login` VALUES (52, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:52:51');
-INSERT INTO `log_login` VALUES (53, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 15:55:44');
-INSERT INTO `log_login` VALUES (54, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 16:06:24');
-INSERT INTO `log_login` VALUES (55, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 16:06:56');
-INSERT INTO `log_login` VALUES (56, 'test11', 'test', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 16:29:34');
-INSERT INTO `log_login` VALUES (57, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 16:33:10');
-INSERT INTO `log_login` VALUES (58, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 16:58:19');
-INSERT INTO `log_login` VALUES (59, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 17:07:57');
-INSERT INTO `log_login` VALUES (60, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 17:20:56');
-INSERT INTO `log_login` VALUES (61, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-04 17:38:09');
-INSERT INTO `log_login` VALUES (62, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 08:54:43');
-INSERT INTO `log_login` VALUES (63, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 09:12:17');
-INSERT INTO `log_login` VALUES (64, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 09:13:57');
-INSERT INTO `log_login` VALUES (65, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 09:23:42');
-INSERT INTO `log_login` VALUES (66, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 09:33:24');
-INSERT INTO `log_login` VALUES (67, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 10:51:19');
-INSERT INTO `log_login` VALUES (68, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 14:11:18');
-INSERT INTO `log_login` VALUES (69, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 15:10:44');
-INSERT INTO `log_login` VALUES (70, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 15:17:46');
-INSERT INTO `log_login` VALUES (71, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 15:22:27');
-INSERT INTO `log_login` VALUES (72, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-07 15:48:00');
-INSERT INTO `log_login` VALUES (73, 'hawile', '黄伟', '密码验证通过', '成功', '127.0.0.1', '2020-09-08 08:54:47');
-INSERT INTO `log_login` VALUES (74, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-08 08:59:33');
-INSERT INTO `log_login` VALUES (75, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-08 09:02:59');
-INSERT INTO `log_login` VALUES (76, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-08 09:10:29');
-INSERT INTO `log_login` VALUES (77, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-08 09:19:58');
-INSERT INTO `log_login` VALUES (78, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-08 09:37:34');
-INSERT INTO `log_login` VALUES (79, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-08 14:38:27');
-INSERT INTO `log_login` VALUES (80, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-08 14:43:43');
-INSERT INTO `log_login` VALUES (81, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-08 15:49:03');
-INSERT INTO `log_login` VALUES (82, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-09 08:58:05');
-INSERT INTO `log_login` VALUES (83, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-29 15:44:39');
-INSERT INTO `log_login` VALUES (84, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-29 16:22:35');
-INSERT INTO `log_login` VALUES (85, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-29 17:05:49');
-INSERT INTO `log_login` VALUES (86, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-29 17:07:47');
-INSERT INTO `log_login` VALUES (87, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-29 17:56:44');
-INSERT INTO `log_login` VALUES (88, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 10:54:21');
-INSERT INTO `log_login` VALUES (89, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 11:19:16');
-INSERT INTO `log_login` VALUES (90, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 14:59:06');
-INSERT INTO `log_login` VALUES (91, 'guest', '空', '密码未填写', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 15:29:30');
-INSERT INTO `log_login` VALUES (92, 'guest', '空', '密码未填写', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 15:29:33');
-INSERT INTO `log_login` VALUES (93, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 15:29:33');
-INSERT INTO `log_login` VALUES (94, 'guest', '空', '密码未填写', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 15:32:26');
-INSERT INTO `log_login` VALUES (95, 'guest', '空', '密码未填写', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 15:32:27');
-INSERT INTO `log_login` VALUES (96, 'guest', '空', '密码验证失败', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 15:35:30');
-INSERT INTO `log_login` VALUES (97, 'guest', '空', '密码验证失败', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 15:35:31');
-INSERT INTO `log_login` VALUES (98, 'guest', '空', '密码未填写', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 15:36:13');
-INSERT INTO `log_login` VALUES (99, 'guest', '空', '密码未填写', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 15:36:39');
-INSERT INTO `log_login` VALUES (100, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:00:28');
-INSERT INTO `log_login` VALUES (101, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:02:38');
-INSERT INTO `log_login` VALUES (102, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:04:26');
-INSERT INTO `log_login` VALUES (103, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:23:38');
-INSERT INTO `log_login` VALUES (104, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:39:46');
-INSERT INTO `log_login` VALUES (105, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:39:51');
-INSERT INTO `log_login` VALUES (106, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:40:21');
-INSERT INTO `log_login` VALUES (107, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:41:32');
-INSERT INTO `log_login` VALUES (108, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:41:54');
-INSERT INTO `log_login` VALUES (109, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:42:25');
-INSERT INTO `log_login` VALUES (110, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:42:41');
-INSERT INTO `log_login` VALUES (111, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:49:17');
-INSERT INTO `log_login` VALUES (112, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:49:25');
-INSERT INTO `log_login` VALUES (113, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:50:34');
-INSERT INTO `log_login` VALUES (114, 'hawil', '空', '用户不存在', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 16:51:05');
-INSERT INTO `log_login` VALUES (115, 'hawile', '空', '密码验证失败', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 16:51:41');
-INSERT INTO `log_login` VALUES (116, 'hawil', '空', '用户不存在', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 16:57:41');
-INSERT INTO `log_login` VALUES (117, 'hawil', '空', '用户不存在', '失败', '0:0:0:0:0:0:0:1', '2020-09-30 16:57:46');
-INSERT INTO `log_login` VALUES (118, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:58:35');
-INSERT INTO `log_login` VALUES (119, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 16:59:00');
-INSERT INTO `log_login` VALUES (120, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 17:00:18');
-INSERT INTO `log_login` VALUES (121, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 17:15:15');
-INSERT INTO `log_login` VALUES (122, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-09-30 17:28:56');
-INSERT INTO `log_login` VALUES (123, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 09:24:59');
-INSERT INTO `log_login` VALUES (124, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 09:54:24');
-INSERT INTO `log_login` VALUES (125, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 10:23:49');
-INSERT INTO `log_login` VALUES (126, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 10:38:30');
-INSERT INTO `log_login` VALUES (127, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 11:15:22');
-INSERT INTO `log_login` VALUES (128, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 11:16:07');
-INSERT INTO `log_login` VALUES (129, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 11:17:09');
-INSERT INTO `log_login` VALUES (130, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 11:19:01');
-INSERT INTO `log_login` VALUES (131, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 11:38:38');
-INSERT INTO `log_login` VALUES (132, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 14:40:43');
-INSERT INTO `log_login` VALUES (133, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 14:45:57');
-INSERT INTO `log_login` VALUES (134, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 16:15:54');
-INSERT INTO `log_login` VALUES (135, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 16:16:23');
-INSERT INTO `log_login` VALUES (136, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 16:47:18');
-INSERT INTO `log_login` VALUES (137, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 21:31:47');
-INSERT INTO `log_login` VALUES (138, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:05:45');
-INSERT INTO `log_login` VALUES (139, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:08:20');
-INSERT INTO `log_login` VALUES (140, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:08:39');
-INSERT INTO `log_login` VALUES (141, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:10:01');
-INSERT INTO `log_login` VALUES (142, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:10:33');
-INSERT INTO `log_login` VALUES (143, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:13:09');
-INSERT INTO `log_login` VALUES (144, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:13:30');
-INSERT INTO `log_login` VALUES (145, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:42:59');
-INSERT INTO `log_login` VALUES (146, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:43:34');
-INSERT INTO `log_login` VALUES (147, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:49:51');
-INSERT INTO `log_login` VALUES (148, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:55:19');
-INSERT INTO `log_login` VALUES (149, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:55:45');
-INSERT INTO `log_login` VALUES (150, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:55:56');
-INSERT INTO `log_login` VALUES (151, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-12 23:56:44');
-INSERT INTO `log_login` VALUES (152, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 00:04:50');
-INSERT INTO `log_login` VALUES (153, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 00:05:47');
-INSERT INTO `log_login` VALUES (154, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 00:11:05');
-INSERT INTO `log_login` VALUES (155, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 00:56:16');
-INSERT INTO `log_login` VALUES (156, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 09:01:11');
-INSERT INTO `log_login` VALUES (157, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 09:01:25');
-INSERT INTO `log_login` VALUES (158, 'test', '空', '密码验证失败', '失败', '0:0:0:0:0:0:0:1', '2020-10-13 10:04:24');
-INSERT INTO `log_login` VALUES (159, 'test', 'test', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:04:38');
-INSERT INTO `log_login` VALUES (160, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:05:03');
-INSERT INTO `log_login` VALUES (161, 'test', 'test', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:08:43');
-INSERT INTO `log_login` VALUES (162, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:08:48');
-INSERT INTO `log_login` VALUES (163, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:10:29');
-INSERT INTO `log_login` VALUES (164, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:13:58');
-INSERT INTO `log_login` VALUES (165, 'test', 'test', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:14:15');
-INSERT INTO `log_login` VALUES (166, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:14:19');
-INSERT INTO `log_login` VALUES (167, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:15:33');
-INSERT INTO `log_login` VALUES (168, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:21:40');
-INSERT INTO `log_login` VALUES (169, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:38:02');
-INSERT INTO `log_login` VALUES (170, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 10:40:10');
-INSERT INTO `log_login` VALUES (171, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 11:03:19');
-INSERT INTO `log_login` VALUES (172, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 11:32:28');
-INSERT INTO `log_login` VALUES (173, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 12:15:40');
-INSERT INTO `log_login` VALUES (174, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 14:23:51');
-INSERT INTO `log_login` VALUES (175, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 16:50:24');
-INSERT INTO `log_login` VALUES (176, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-13 16:56:04');
-INSERT INTO `log_login` VALUES (177, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-14 08:52:01');
-INSERT INTO `log_login` VALUES (178, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-16 08:54:38');
-INSERT INTO `log_login` VALUES (179, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-16 08:55:15');
-INSERT INTO `log_login` VALUES (180, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-16 10:52:50');
-INSERT INTO `log_login` VALUES (181, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-16 15:33:59');
-INSERT INTO `log_login` VALUES (182, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-16 16:40:18');
-INSERT INTO `log_login` VALUES (183, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-16 16:53:59');
-INSERT INTO `log_login` VALUES (184, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 08:51:58');
-INSERT INTO `log_login` VALUES (185, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 08:52:00');
-INSERT INTO `log_login` VALUES (186, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 08:52:05');
-INSERT INTO `log_login` VALUES (187, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 08:52:06');
-INSERT INTO `log_login` VALUES (188, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 08:53:02');
-INSERT INTO `log_login` VALUES (189, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 08:53:54');
-INSERT INTO `log_login` VALUES (190, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 09:16:19');
-INSERT INTO `log_login` VALUES (191, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 09:49:10');
-INSERT INTO `log_login` VALUES (192, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 11:20:18');
-INSERT INTO `log_login` VALUES (193, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 12:10:52');
-INSERT INTO `log_login` VALUES (194, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 12:12:55');
-INSERT INTO `log_login` VALUES (195, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 12:13:37');
-INSERT INTO `log_login` VALUES (196, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 12:19:28');
-INSERT INTO `log_login` VALUES (197, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 12:21:27');
-INSERT INTO `log_login` VALUES (198, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 12:23:05');
-INSERT INTO `log_login` VALUES (199, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-19 12:25:32');
-INSERT INTO `log_login` VALUES (200, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-20 08:35:52');
-INSERT INTO `log_login` VALUES (201, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-20 14:13:22');
-INSERT INTO `log_login` VALUES (202, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-20 14:26:05');
-INSERT INTO `log_login` VALUES (203, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-21 11:10:29');
-INSERT INTO `log_login` VALUES (204, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-21 11:12:15');
-INSERT INTO `log_login` VALUES (205, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-21 13:43:03');
-INSERT INTO `log_login` VALUES (206, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-21 13:58:25');
-INSERT INTO `log_login` VALUES (207, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-21 15:47:13');
-INSERT INTO `log_login` VALUES (208, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-21 16:18:29');
-INSERT INTO `log_login` VALUES (209, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-21 16:41:36');
-INSERT INTO `log_login` VALUES (210, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 09:27:48');
-INSERT INTO `log_login` VALUES (211, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 09:29:58');
-INSERT INTO `log_login` VALUES (212, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 09:37:31');
-INSERT INTO `log_login` VALUES (213, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 09:39:07');
-INSERT INTO `log_login` VALUES (214, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 09:45:32');
-INSERT INTO `log_login` VALUES (215, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 09:46:32');
-INSERT INTO `log_login` VALUES (216, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 09:46:52');
-INSERT INTO `log_login` VALUES (217, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 09:50:50');
-INSERT INTO `log_login` VALUES (218, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 10:35:12');
-INSERT INTO `log_login` VALUES (219, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 10:38:15');
-INSERT INTO `log_login` VALUES (220, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 10:38:38');
-INSERT INTO `log_login` VALUES (221, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 11:01:10');
-INSERT INTO `log_login` VALUES (222, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-22 19:33:12');
-INSERT INTO `log_login` VALUES (223, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-26 09:14:50');
-INSERT INTO `log_login` VALUES (224, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-26 09:17:25');
-INSERT INTO `log_login` VALUES (225, 'hawile', '黄伟', '密码验证通过', '成功', '0:0:0:0:0:0:0:1', '2020-10-26 09:19:33');
+INSERT INTO `log_login` VALUES (1, 'hawile', '空', '密码未填写', '失败', '192.168.11.95', '2020-09-07 17:27:39');
+INSERT INTO `log_login` VALUES (2, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-07 17:27:47');
+INSERT INTO `log_login` VALUES (3, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-07 17:32:45');
+INSERT INTO `log_login` VALUES (4, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 08:47:28');
+INSERT INTO `log_login` VALUES (5, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 08:48:21');
+INSERT INTO `log_login` VALUES (6, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 08:48:31');
+INSERT INTO `log_login` VALUES (7, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 08:48:55');
+INSERT INTO `log_login` VALUES (8, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 08:49:37');
+INSERT INTO `log_login` VALUES (9, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 08:54:03');
+INSERT INTO `log_login` VALUES (10, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 08:55:51');
+INSERT INTO `log_login` VALUES (11, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 09:04:14');
+INSERT INTO `log_login` VALUES (12, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 09:19:40');
+INSERT INTO `log_login` VALUES (13, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 15:29:16');
+INSERT INTO `log_login` VALUES (14, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 15:34:59');
+INSERT INTO `log_login` VALUES (15, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 15:51:07');
+INSERT INTO `log_login` VALUES (16, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 16:17:01');
+INSERT INTO `log_login` VALUES (17, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 17:21:56');
+INSERT INTO `log_login` VALUES (18, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-08 17:22:15');
+INSERT INTO `log_login` VALUES (19, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-10 10:01:19');
+INSERT INTO `log_login` VALUES (20, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-10 10:09:29');
+INSERT INTO `log_login` VALUES (21, 'wangjx', '王建勋', '密码验证通过', '成功', '192.168.11.55', '2020-09-10 10:10:32');
+INSERT INTO `log_login` VALUES (22, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-14 16:51:15');
+INSERT INTO `log_login` VALUES (23, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-14 17:19:43');
+INSERT INTO `log_login` VALUES (24, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-14 17:20:05');
+INSERT INTO `log_login` VALUES (25, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-14 17:21:14');
+INSERT INTO `log_login` VALUES (26, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-16 15:12:39');
+INSERT INTO `log_login` VALUES (27, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-16 17:56:13');
+INSERT INTO `log_login` VALUES (28, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-17 10:56:21');
+INSERT INTO `log_login` VALUES (29, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.55', '2020-09-25 11:17:55');
+INSERT INTO `log_login` VALUES (30, 'wangjx', '王建勋', '密码验证通过', '成功', '192.168.4.141', '2020-09-25 14:41:36');
+INSERT INTO `log_login` VALUES (31, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-09-27 09:36:44');
+INSERT INTO `log_login` VALUES (32, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-13 11:28:38');
+INSERT INTO `log_login` VALUES (33, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-13 11:30:12');
+INSERT INTO `log_login` VALUES (34, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.4.248', '2020-10-13 11:37:49');
+INSERT INTO `log_login` VALUES (35, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-14 14:50:15');
+INSERT INTO `log_login` VALUES (36, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.4.248', '2020-10-14 15:04:24');
+INSERT INTO `log_login` VALUES (37, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.4.248', '2020-10-14 16:00:17');
+INSERT INTO `log_login` VALUES (38, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-14 16:05:50');
+INSERT INTO `log_login` VALUES (39, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-15 10:14:17');
+INSERT INTO `log_login` VALUES (40, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 08:45:48');
+INSERT INTO `log_login` VALUES (41, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 08:50:16');
+INSERT INTO `log_login` VALUES (42, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 08:52:43');
+INSERT INTO `log_login` VALUES (43, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 08:52:48');
+INSERT INTO `log_login` VALUES (44, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 08:53:05');
+INSERT INTO `log_login` VALUES (45, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 08:57:31');
+INSERT INTO `log_login` VALUES (46, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 10:05:25');
+INSERT INTO `log_login` VALUES (47, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 11:08:05');
+INSERT INTO `log_login` VALUES (48, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 11:12:30');
+INSERT INTO `log_login` VALUES (49, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 11:39:01');
+INSERT INTO `log_login` VALUES (50, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-16 11:39:44');
+INSERT INTO `log_login` VALUES (51, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-19 12:07:44');
+INSERT INTO `log_login` VALUES (52, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-19 12:08:53');
+INSERT INTO `log_login` VALUES (53, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-19 17:28:13');
+INSERT INTO `log_login` VALUES (54, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-20 08:38:10');
+INSERT INTO `log_login` VALUES (55, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-20 11:40:23');
+INSERT INTO `log_login` VALUES (56, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-20 11:46:45');
+INSERT INTO `log_login` VALUES (57, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-20 14:06:14');
+INSERT INTO `log_login` VALUES (58, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-20 14:19:21');
+INSERT INTO `log_login` VALUES (59, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-20 14:30:05');
+INSERT INTO `log_login` VALUES (60, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-20 15:47:44');
+INSERT INTO `log_login` VALUES (61, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.4.173', '2020-10-20 16:27:02');
+INSERT INTO `log_login` VALUES (62, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.4.173', '2020-10-20 16:34:38');
+INSERT INTO `log_login` VALUES (63, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-20 16:39:12');
+INSERT INTO `log_login` VALUES (64, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-21 10:51:17');
+INSERT INTO `log_login` VALUES (65, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-21 11:04:51');
+INSERT INTO `log_login` VALUES (66, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-21 11:07:58');
+INSERT INTO `log_login` VALUES (67, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-21 11:09:31');
+INSERT INTO `log_login` VALUES (68, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-21 11:12:52');
+INSERT INTO `log_login` VALUES (69, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-26 16:07:15');
+INSERT INTO `log_login` VALUES (70, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-26 16:26:17');
+INSERT INTO `log_login` VALUES (71, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-26 16:28:51');
+INSERT INTO `log_login` VALUES (72, 'wangjx', '王建勋', '密码验证通过', '成功', '192.168.11.95', '2020-10-26 16:30:14');
+INSERT INTO `log_login` VALUES (73, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-26 16:30:22');
+INSERT INTO `log_login` VALUES (74, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.4.152', '2020-10-27 09:25:37');
+INSERT INTO `log_login` VALUES (75, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.95', '2020-10-29 08:38:02');
+INSERT INTO `log_login` VALUES (76, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-10-29 09:21:20');
+INSERT INTO `log_login` VALUES (77, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-10-29 09:33:43');
+INSERT INTO `log_login` VALUES (78, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-10-29 10:35:54');
+INSERT INTO `log_login` VALUES (79, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-10-30 08:36:57');
+INSERT INTO `log_login` VALUES (80, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-10-30 09:32:28');
+INSERT INTO `log_login` VALUES (81, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-10-30 09:53:50');
+INSERT INTO `log_login` VALUES (82, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-10-30 10:08:06');
+INSERT INTO `log_login` VALUES (83, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-10-30 10:15:18');
+INSERT INTO `log_login` VALUES (84, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-11-04 09:56:06');
+INSERT INTO `log_login` VALUES (85, 'wangjx', '王建勋', '密码验证通过', '成功', '192.168.11.55', '2020-11-04 14:55:34');
+INSERT INTO `log_login` VALUES (86, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.55', '2020-11-04 15:33:55');
+INSERT INTO `log_login` VALUES (87, 'hawile', '黄伟', '密码验证通过', '成功', '192.168.11.5', '2020-11-05 10:08:59');
 COMMIT;
 
 -- ----------------------------
@@ -2032,164 +2513,240 @@ CREATE TABLE `role_to_user` (
   KEY `group_id` (`user_id`),
   CONSTRAINT `fk_auth_id` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role_to_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `role_to_user` VALUES (1, 1, 1, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (2, 1, 7, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (3, 1, 10, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (4, 1, 14, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (5, 1, 16, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (6, 1, 2, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (7, 1, 3, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (8, 1, 4, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (9, 1, 5, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (10, 1, 6, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (11, 1, 22, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (12, 1, 23, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (13, 1, 24, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (14, 1, 25, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (15, 1, 26, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (16, 1, 27, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (17, 1, 28, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (18, 1, 29, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (19, 1, 30, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (20, 1, 31, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (21, 1, 32, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (22, 1, 33, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (23, 1, 34, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (24, 1, 35, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (25, 1, 36, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (26, 1, 37, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (27, 1, 38, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (28, 1, 39, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (29, 1, 40, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (30, 1, 41, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (31, 1, 8, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (32, 1, 9, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (33, 1, 42, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (34, 1, 43, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (35, 1, 44, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (36, 1, 45, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (37, 1, 46, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (38, 1, 47, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (39, 1, 48, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (40, 1, 49, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (41, 1, 50, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (42, 1, 11, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (43, 1, 12, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (44, 1, 13, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (45, 1, 51, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (46, 1, 52, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (47, 1, 53, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (48, 1, 54, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (49, 1, 55, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (50, 1, 56, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (51, 1, 57, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (52, 1, 58, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (53, 1, 59, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (54, 1, 60, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (55, 1, 61, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (56, 1, 62, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (57, 1, 15, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (58, 1, 17, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (59, 1, 18, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (60, 1, 19, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (61, 1, 20, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (62, 1, 21, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (63, 1, 63, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (64, 1, 64, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (65, 1, 65, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (66, 1, 66, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (67, 1, 67, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (68, 1, 68, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (69, 1, 69, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (70, 1, 70, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (71, 1, 71, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (72, 1, 72, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (73, 1, 73, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (74, 1, 74, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (75, 1, 75, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (76, 1, 76, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (77, 3, 1, 1, '2020-10-22 09:46:45');
-INSERT INTO `role_to_user` VALUES (78, 3, 7, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (79, 3, 10, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (80, 3, 14, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (81, 3, 16, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (82, 3, 2, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (83, 3, 3, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (84, 3, 4, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (85, 3, 5, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (86, 3, 6, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (87, 3, 22, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (88, 3, 23, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (89, 3, 24, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (90, 3, 25, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (91, 3, 26, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (92, 3, 27, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (93, 3, 28, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (94, 3, 29, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (95, 3, 30, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (96, 3, 31, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (97, 3, 32, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (98, 3, 33, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (99, 3, 34, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (100, 3, 35, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (101, 3, 36, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (102, 3, 37, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (103, 3, 38, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (104, 3, 39, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (105, 3, 40, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (106, 3, 41, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (107, 3, 8, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (108, 3, 9, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (109, 3, 42, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (110, 3, 43, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (111, 3, 44, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (112, 3, 45, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (113, 3, 46, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (114, 3, 47, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (115, 3, 48, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (116, 3, 49, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (117, 3, 50, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (118, 3, 11, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (119, 3, 12, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (120, 3, 13, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (121, 3, 51, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (122, 3, 52, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (123, 3, 53, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (124, 3, 54, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (125, 3, 55, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (126, 3, 56, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (127, 3, 57, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (128, 3, 58, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (129, 3, 59, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (130, 3, 60, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (131, 3, 61, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (132, 3, 62, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (133, 3, 15, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (134, 3, 17, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (135, 3, 18, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (136, 3, 19, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (137, 3, 20, 1, '2020-10-22 09:53:58');
-INSERT INTO `role_to_user` VALUES (138, 3, 21, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (139, 3, 63, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (140, 3, 64, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (141, 3, 65, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (142, 3, 66, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (143, 3, 67, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (144, 3, 68, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (145, 3, 69, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (146, 3, 70, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (147, 3, 71, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (148, 3, 72, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (149, 3, 73, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (150, 3, 74, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (151, 3, 75, 1, '2020-10-22 09:29:50');
-INSERT INTO `role_to_user` VALUES (152, 3, 76, 1, '2020-10-22 09:29:50');
+INSERT INTO `role_to_user` VALUES (1, 1, 1, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (2, 1, 7, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (3, 1, 10, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (4, 1, 14, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (5, 1, 16, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (6, 1, 2, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (7, 1, 3, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (8, 1, 4, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (9, 1, 5, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (10, 1, 6, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (11, 1, 22, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (12, 1, 23, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (13, 1, 24, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (14, 1, 25, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (15, 1, 26, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (16, 1, 27, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (17, 1, 28, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (18, 1, 29, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (19, 1, 30, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (20, 1, 31, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (21, 1, 32, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (22, 1, 33, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (23, 1, 34, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (24, 1, 35, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (25, 1, 36, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (26, 1, 37, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (27, 1, 38, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (28, 1, 39, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (29, 1, 40, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (30, 1, 41, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (31, 1, 8, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (32, 1, 9, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (33, 1, 42, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (34, 1, 43, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (35, 1, 44, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (36, 1, 45, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (37, 1, 46, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (38, 1, 47, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (39, 1, 48, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (40, 1, 49, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (41, 1, 50, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (42, 1, 11, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (43, 1, 12, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (44, 1, 13, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (45, 1, 51, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (46, 1, 52, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (47, 1, 53, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (48, 1, 54, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (49, 1, 55, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (50, 1, 56, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (51, 1, 57, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (52, 1, 58, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (53, 1, 59, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (54, 1, 60, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (55, 1, 61, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (56, 1, 62, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (57, 1, 15, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (58, 1, 17, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (59, 1, 18, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (60, 1, 19, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (61, 1, 20, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (62, 1, 21, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (63, 1, 63, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (64, 1, 64, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (65, 1, 65, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (66, 1, 66, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (67, 1, 67, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (68, 1, 68, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (69, 1, 69, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (70, 1, 70, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (71, 1, 71, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (72, 1, 72, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (73, 1, 73, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (74, 1, 74, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (75, 1, 75, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (76, 1, 76, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (77, 3, 1, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (78, 3, 7, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (79, 3, 10, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (80, 3, 14, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (81, 3, 16, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (82, 3, 2, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (83, 3, 3, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (84, 3, 4, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (85, 3, 5, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (86, 3, 6, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (87, 3, 22, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (88, 3, 23, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (89, 3, 24, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (90, 3, 25, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (91, 3, 26, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (92, 3, 27, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (93, 3, 28, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (94, 3, 29, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (95, 3, 30, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (96, 3, 31, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (97, 3, 32, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (98, 3, 33, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (99, 3, 34, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (100, 3, 35, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (101, 3, 36, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (102, 3, 37, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (103, 3, 38, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (104, 3, 39, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (105, 3, 40, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (106, 3, 41, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (107, 3, 8, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (108, 3, 9, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (109, 3, 42, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (110, 3, 43, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (111, 3, 44, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (112, 3, 45, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (113, 3, 46, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (114, 3, 47, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (115, 3, 48, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (116, 3, 49, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (117, 3, 50, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (118, 3, 11, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (119, 3, 12, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (120, 3, 13, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (121, 3, 51, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (122, 3, 52, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (123, 3, 53, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (124, 3, 54, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (125, 3, 55, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (126, 3, 56, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (127, 3, 57, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (128, 3, 58, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (129, 3, 59, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (130, 3, 60, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (131, 3, 61, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (132, 3, 62, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (133, 3, 15, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (134, 3, 17, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (135, 3, 18, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (136, 3, 19, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (137, 3, 20, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (138, 3, 21, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (139, 3, 63, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (140, 3, 64, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (141, 3, 65, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (142, 3, 66, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (143, 3, 67, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (144, 3, 68, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (145, 3, 69, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (146, 3, 70, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (147, 3, 71, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (148, 3, 72, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (149, 3, 73, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (150, 3, 74, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (151, 3, 75, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (152, 3, 76, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (153, 4, 1, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (154, 4, 7, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (155, 4, 10, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (156, 4, 14, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (157, 4, 16, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (158, 4, 2, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (159, 4, 3, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (160, 4, 4, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (161, 4, 5, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (162, 4, 6, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (163, 4, 22, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (164, 4, 23, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (165, 4, 24, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (166, 4, 25, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (167, 4, 26, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (168, 4, 27, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (169, 4, 28, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (170, 4, 29, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (171, 4, 30, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (172, 4, 31, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (173, 4, 32, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (174, 4, 33, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (175, 4, 34, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (176, 4, 35, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (177, 4, 36, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (178, 4, 37, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (179, 4, 38, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (180, 4, 39, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (181, 4, 40, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (182, 4, 41, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (183, 4, 8, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (184, 4, 9, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (185, 4, 42, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (186, 4, 43, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (187, 4, 44, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (188, 4, 45, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (189, 4, 46, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (190, 4, 47, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (191, 4, 48, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (192, 4, 49, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (193, 4, 50, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (194, 4, 11, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (195, 4, 12, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (196, 4, 13, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (197, 4, 51, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (198, 4, 52, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (199, 4, 53, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (200, 4, 54, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (201, 4, 55, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (202, 4, 56, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (203, 4, 57, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (204, 4, 58, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (205, 4, 59, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (206, 4, 60, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (207, 4, 61, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (208, 4, 62, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (209, 4, 15, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (210, 4, 17, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (211, 4, 18, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (212, 4, 19, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (213, 4, 20, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (214, 4, 21, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (215, 4, 63, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (216, 4, 64, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (217, 4, 65, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (218, 4, 66, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (219, 4, 67, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (220, 4, 68, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (221, 4, 69, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (222, 4, 70, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (223, 4, 71, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (224, 4, 72, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (225, 4, 73, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (226, 4, 74, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (227, 4, 75, 1, '2020-10-26 16:25:47');
+INSERT INTO `role_to_user` VALUES (228, 4, 76, 1, '2020-10-26 16:25:47');
 COMMIT;
 
 -- ----------------------------
@@ -2211,44 +2768,39 @@ CREATE TABLE `soft_app` (
 -- Records of soft_app
 -- ----------------------------
 BEGIN;
-INSERT INTO `soft_app` VALUES (1, 'PGP加密软件', '1.0', '加密软件', '063B229CEDD44DD3.zip', 85797, '2020-10-13 16:56:14');
-INSERT INTO `soft_app` VALUES (2, 'Serv-U', '15.2.0', 'FTP服务端', 'Serv-U_15.2.0.zip', 16868, '2020-06-29 11:11:44');
-INSERT INTO `soft_app` VALUES (3, 'TortoiseSVN', '1.8.1', 'SVN客户端', 'TortoiseSVN v1.8.1.zip', 24224, '2019-04-24 14:48:36');
-INSERT INTO `soft_app` VALUES (4, 'TortoiseSVN', '1.9.4', 'SVN客户端', 'TortoiseSVN v1.9.4.zip', 42670, '2019-04-24 14:48:49');
-INSERT INTO `soft_app` VALUES (5, 'FlashFXP', '4.4.2', 'FTP浏览器', 'FlashFXP v4.4.2.zip', 3395, '2019-04-24 14:47:37');
-INSERT INTO `soft_app` VALUES (6, 'SafeShare', '10.2', '文件系统', 'SafeShare v10.2.zip', 56802, '2019-04-24 14:49:08');
-INSERT INTO `soft_app` VALUES (7, 'Navicat Premium', '12.0', '数据库连接软件', 'Navicat v12.0.zip', 52445, '2019-06-12 10:53:10');
-INSERT INTO `soft_app` VALUES (8, 'KMSAuto Net', '1.3.7', '系统及Office激活软件', 'KMSAuto Net.zip', 4232, '2019-04-24 14:50:02');
-INSERT INTO `soft_app` VALUES (9, 'Microsoft  Visual C++运行库', '1.0', '运行某些软件必须组件', 'Microsoft  Visual C++.zip', 59697, '2019-06-12 15:21:47');
-INSERT INTO `soft_app` VALUES (10, '.Net运行库', '1.0', '运行某些软件必须组件', 'donetRepair.zip', 453252, '2019-04-24 14:51:23');
-INSERT INTO `soft_app` VALUES (11, 'DiskGenius', '5.1.1', '磁盘处理工具', 'DiskGenius v5.1.1.zip', 65429, '2019-06-12 16:17:34');
-INSERT INTO `soft_app` VALUES (12, 'Microsoft Office Pro', '2013', 'Office办公软件', 'Microsoft Office 2013.zip', 1675460, '2019-04-24 15:10:50');
-INSERT INTO `soft_app` VALUES (13, 'Adobe Photoshop', 'CC 2014', '图像处理软件', 'Adobe Photoshop CC 2014.zip', 787366, '2019-04-24 16:27:26');
-INSERT INTO `soft_app` VALUES (14, 'Adobe Photoshop', 'CS6', '图像处理软件', 'Adobe Photoshop CS6.zip', 114605, '2019-04-24 14:52:21');
-INSERT INTO `soft_app` VALUES (15, 'Adobe Acrobat Pro', '9', 'PDF处理软件', 'Adobe Acrobat 9 Pro.zip', 633150, '2019-04-24 15:16:34');
-INSERT INTO `soft_app` VALUES (16, 'Adobe Acrobat Pro DC', '2019 SP', 'PDF阅读软件', 'Adobe Acrobat Pro DC 2019 SP.zip', 709634, '2019-06-13 09:31:30');
-INSERT INTO `soft_app` VALUES (17, 'CorelDRAW Graphics Suite', 'X6', '图像处理软件', 'CorelDRAW Graphics Suite X6.zip', 466090, '2019-04-24 16:36:35');
-INSERT INTO `soft_app` VALUES (18, 'AutoCad', '2017', '图像处理软件', 'AutoCad 2017 x64.zip', 2353769, '2019-04-24 16:43:18');
-INSERT INTO `soft_app` VALUES (19, 'PDF转换器', '1.0', 'PDF转换格式软件', 'PDF Convert.zip', 20305, '2019-06-12 15:22:39');
-INSERT INTO `soft_app` VALUES (20, '用友U8+', '12.0', '管理与电子商务平台', 'YongyouU8+ v12.0.zip', 6346330, '2019-06-12 15:23:51');
-INSERT INTO `soft_app` VALUES (21, 'iNode', '5.2', '网络管理智能客户端', 'iNode v5.2.zip', 50332, '2019-04-24 14:53:15');
-INSERT INTO `soft_app` VALUES (22, '飞鸽传书', '5.1', '局域网即时沟通聊天软件', 'Feige v5.1.zip', 6538, '2019-06-12 15:24:52');
-INSERT INTO `soft_app` VALUES (23, 'Adobe Illustrator', 'CS6', '矢量图形设计软件', 'Adobe Illustrator CS6.zip', 1993885, '2019-04-24 16:49:03');
-INSERT INTO `soft_app` VALUES (24, '360极速浏览器', '9.5', '网络浏览器', '360cse v9.5.zip', 44852, '2019-04-24 16:49:05');
-INSERT INTO `soft_app` VALUES (25, '搜狗拼音输入法', '9.0', '输入法', 'Sogou pinyin v9.0.zip', 43121, '2019-04-24 16:49:07');
-INSERT INTO `soft_app` VALUES (26, 'WinRAR', '5.6', '压缩解压软件', 'WinRAR v5.6.zip', 5814, '2019-04-24 16:49:08');
-INSERT INTO `soft_app` VALUES (27, 'XShell', '6.0', 'SSH连接工具', 'Xshell6.zip', 36549, '2019-04-24 16:49:10');
-INSERT INTO `soft_app` VALUES (28, 'XFtp', '6.0', 'FTP浏览器', 'XFtp6.zip', 25229, '2019-04-24 16:49:12');
-INSERT INTO `soft_app` VALUES (29, 'MySQL', '5.7.25', '数据库软件', 'mysql-installer-community-5.7.25.0.msi', 396968, '2019-06-11 15:07:57');
-INSERT INTO `soft_app` VALUES (30, 'MySQL', '5.7.26', 'Linux64位', 'mysql-5.7.26-linux-glibc2.12-x86_64.tar', 660340, '2019-06-11 15:03:19');
-INSERT INTO `soft_app` VALUES (31, 'SecureCRT', '8.5', 'SSH连接软件 64位', 'SecureCRT_x64_v8.5.zip', 29631, '2019-06-12 15:11:14');
-INSERT INTO `soft_app` VALUES (32, 'Corel VideoStudio Pro', 'X8', '会声会影 视频编辑软件 ', 'Corel VideoStudio Pro X8.zip', 1271698, '2019-06-12 15:17:38');
-INSERT INTO `soft_app` VALUES (33, 'PotPlayer', '1.7', '本地视频播放软件', 'PotPlayer v1.7.zip', 54395, '2019-06-12 16:01:39');
-INSERT INTO `soft_app` VALUES (34, 'FileZilla', '4.2', 'FTP访问工具', 'FileZilla_v3.42.zip', 42333, '2019-06-12 16:24:49');
-INSERT INTO `soft_app` VALUES (35, 'CPU-Z', '1.87', 'CPU信息查看工具', 'CPU-Z_v1.87.zip', 2747, '2019-06-12 16:35:03');
-INSERT INTO `soft_app` VALUES (36, 'AIDA64', '6.0', '系统工具', 'AIDA64 v6.0.zip', 155141, '2019-06-13 15:54:10');
-INSERT INTO `soft_app` VALUES (37, 'System Spec', '3.07', '系统信息查看工具', 'SysSpec.zip', 909, '2019-11-07 15:27:59');
-INSERT INTO `soft_app` VALUES (38, '注册机', '1.0', '各类注册机', 'Keygen.zip', 44306, '2020-06-19 09:55:44');
+INSERT INTO `soft_app` VALUES (1, 'PGP加密软件', '1.0', '加密软件', 'A44AC4E54ADB5966.zip', 85797, '2020-10-14 14:52:20');
+INSERT INTO `soft_app` VALUES (2, 'Serv-U', '15.2.0', 'FTP服务端', 'A1CBF79B65405882.zip', 16869, '2020-10-14 14:52:05');
+INSERT INTO `soft_app` VALUES (3, 'TortoiseSVN', '1.8.1', 'SVN客户端', '4A6F673BDB26F795.zip', 24225, '2020-10-14 15:04:49');
+INSERT INTO `soft_app` VALUES (4, 'TortoiseSVN', '1.9.4', 'SVN客户端', '6E37BB8E2B813F87.zip', 42671, '2020-10-14 15:05:06');
+INSERT INTO `soft_app` VALUES (5, 'FlashFXP', '4.4.2', 'FTP浏览器', '7677DEF7C1ECFC62.zip', 3396, '2020-10-14 15:05:23');
+INSERT INTO `soft_app` VALUES (6, 'SafeShare', '10.2', '文件系统', '0C6DA5B241C966AC.zip', 56803, '2020-10-14 15:05:38');
+INSERT INTO `soft_app` VALUES (7, 'Navicat Premium', '12.0', '数据库连接软件', '512CA1FBA80AC056.zip', 52445, '2020-10-14 15:06:25');
+INSERT INTO `soft_app` VALUES (9, 'Microsoft  Visual C++运行库', '1.0', '运行某些软件必须组件', '8BD41B3032D08CDA.zip', 59694, '2020-10-14 15:06:45');
+INSERT INTO `soft_app` VALUES (11, 'DiskGenius', '5.1.1', '磁盘处理工具', 'AB8EE690FBB984FD.zip', 65429, '2020-10-14 15:07:07');
+INSERT INTO `soft_app` VALUES (12, 'Microsoft Office Pro', '2013', 'Office办公软件', 'DDF435DAA24E0750.zip', 1675460, '2020-10-14 15:07:58');
+INSERT INTO `soft_app` VALUES (13, 'Adobe Photoshop（精简版）', 'CC 2020', '图像处理软件', '', 787366, '2020-10-14 15:11:13');
+INSERT INTO `soft_app` VALUES (14, 'Adobe Photoshop', 'CS6', '图像处理软件', '', 114605, '2020-10-14 15:14:13');
+INSERT INTO `soft_app` VALUES (15, 'Adobe Acrobat Pro', '9', 'PDF处理软件', '', 633150, '2020-10-14 15:14:36');
+INSERT INTO `soft_app` VALUES (16, 'Adobe Acrobat Pro DC', '2019 SP', 'PDF阅读软件', '', 709634, '2020-10-14 15:16:04');
+INSERT INTO `soft_app` VALUES (17, 'CorelDRAW Graphics Suite', 'X6', '图像处理软件', '', 466090, '2020-10-14 15:15:50');
+INSERT INTO `soft_app` VALUES (18, 'AutoCad', '2017', '图像处理软件', '106220A058DF9ABA.zip', 10738, '2020-10-14 16:16:04');
+INSERT INTO `soft_app` VALUES (19, 'PDF转换器', '1.0', 'PDF转换格式软件', '64FD61BAB9EC6C51.zip', 20306, '2020-10-14 15:20:46');
+INSERT INTO `soft_app` VALUES (20, '用友U8+', '12.0', '管理与电子商务平台', 'F2664A0F4BA9B26B.zip', 737, '2020-10-14 16:25:38');
+INSERT INTO `soft_app` VALUES (21, 'iNode', '5.2', '网络管理智能客户端', '76C4FD18BD907585.zip', 50333, '2020-10-14 16:13:22');
+INSERT INTO `soft_app` VALUES (22, '飞鸽传书', '5.1', '局域网即时沟通聊天软件', '95A469D87638B9AD.zip', 6538, '2020-10-14 16:15:18');
+INSERT INTO `soft_app` VALUES (23, 'Adobe Illustrator', 'CS6', '矢量图形设计软件', '18F1BCDD666DADD6.zip', 737, '2020-10-14 16:25:56');
+INSERT INTO `soft_app` VALUES (24, '360极速浏览器', '9.5', '网络浏览器', '43DFB7B7CDC6BFBA.zip', 44853, '2020-10-14 16:10:19');
+INSERT INTO `soft_app` VALUES (25, '搜狗拼音输入法', '9.0', '输入法', '915D9513490C4629.zip', 43121, '2020-10-14 16:11:55');
+INSERT INTO `soft_app` VALUES (26, 'WinRAR', '多版本', '压缩解压软件', '883FED474EC99B1E.zip', 16168, '2020-10-14 15:39:32');
+INSERT INTO `soft_app` VALUES (29, 'MySQL', '5.7.26', '数据库软件', '', 396968, '2020-10-14 15:40:16');
+INSERT INTO `soft_app` VALUES (31, 'SecureCRT', '8.5', 'SSH连接软件 64位', 'C5E80B9EB79AA3AC.zip', 29631, '2020-10-14 15:41:41');
+INSERT INTO `soft_app` VALUES (32, 'Corel VideoStudio Pro', 'X8', '会声会影 视频编辑软件', '6DBFB47E9731EC0C.zip', 737, '2020-10-14 16:24:11');
+INSERT INTO `soft_app` VALUES (33, 'PotPlayer', '1.7', '本地视频播放软件', '675FC4484E2B3E92.zip', 54396, '2020-10-14 15:52:43');
+INSERT INTO `soft_app` VALUES (34, 'FileZilla', '4.2', 'FTP访问工具', 'BCAE92D12C028FD4.zip', 42334, '2020-10-14 15:52:59');
+INSERT INTO `soft_app` VALUES (35, 'CPU-Z', '1.87', 'CPU信息查看工具', '57BFD262C9F3D05F.zip', 2747, '2020-10-14 15:53:15');
+INSERT INTO `soft_app` VALUES (36, 'AIDA64', '6.0', '系统工具', '7D804DDFA865C0AC.zip', 155141, '2020-10-14 16:29:56');
+INSERT INTO `soft_app` VALUES (37, 'System Spec', '3.07', '系统信息查看工具', 'A01AC8CF6C2F675E.zip', 910, '2020-10-14 15:53:53');
+INSERT INTO `soft_app` VALUES (38, 'Keygen', '1.0', '各类注册机', 'CDC17D2892C48B65.zip', 44306, '2020-10-14 15:54:23');
 COMMIT;
 
 -- ----------------------------
@@ -2264,21 +2816,22 @@ CREATE TABLE `soft_drive` (
   `size` int(11) DEFAULT '0' COMMENT '软件大小',
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of soft_drive
 -- ----------------------------
 BEGIN;
-INSERT INTO `soft_drive` VALUES (1, 'DocuCentre_S1810_Driver', '1.0', 'S1810打印机驱动', 'DocuCentre_S1810_Driver.zip', 10738, '2019-04-24 16:45:25');
-INSERT INTO `soft_drive` VALUES (2, 'L565', '1.0', 'L565打印机驱动32位', 'L565_Win32.zip', 52256, '2019-04-24 16:45:43');
-INSERT INTO `soft_drive` VALUES (3, 'L565', '1.0', 'L565打印机驱动64位', 'L565_Win64.zip', 55744, '2019-04-24 16:46:01');
-INSERT INTO `soft_drive` VALUES (4, 'R330', '1.0', 'R330打印机驱动', 'R330.zip', 27488, '2019-04-24 16:46:16');
-INSERT INTO `soft_drive` VALUES (5, 'S1810', '1.0', 'S1810打印机驱动', 'S1810 Driver.zip', 8074, '2019-06-12 15:28:57');
-INSERT INTO `soft_drive` VALUES (6, 'TOSHIBA e-STUDIO2830C XPS', '1.0', '2830C打印机驱动', 'TOSHIBA e-STUDIO2830C XPS.zip', 41546, '2019-04-24 16:46:42');
-INSERT INTO `soft_drive` VALUES (7, '固网1008_2008标准版', '1.0', '固网1008_2008标准版', '1008_2008Stand.zip', 12372, '2019-06-12 15:29:29');
-INSERT INTO `soft_drive` VALUES (8, '驱动人生网卡版', '7.1', '驱动人生版', 'dtl7_net_7.1.21.68.zip', 211356, '2019-06-12 15:34:01');
-INSERT INTO `soft_drive` VALUES (9, 'Xerox_DocuCentre_S2220_S2420', '1.0', '前台打印机', 'Xerox_DocuCentre_S2220_S2420.exe', 27319, '2020-05-12 15:34:37');
+INSERT INTO `soft_drive` VALUES (1, 'DocuCentre_S1810_Driver', '1.0', 'S1810打印机驱动', '2CBB32DDB03D7C7B.zip', 10738, '2020-10-14 16:01:54');
+INSERT INTO `soft_drive` VALUES (2, 'L565', '1.0', 'L565打印机驱动32位', '0DC520049DA5158A.zip', 52257, '2020-10-14 16:02:13');
+INSERT INTO `soft_drive` VALUES (3, 'L565', '1.0', 'L565打印机驱动64位', '', 55744, '2020-10-14 16:02:30');
+INSERT INTO `soft_drive` VALUES (4, 'R330', '1.0', 'R330打印机驱动', 'E3736B1780212990.zip', 27488, '2020-10-14 16:02:47');
+INSERT INTO `soft_drive` VALUES (5, 'S1810', '1.0', 'S1810打印机驱动', '897A0C5BD529D09C.zip', 8075, '2020-10-14 16:03:02');
+INSERT INTO `soft_drive` VALUES (6, 'TOSHIBA e-STUDIO2830C XPS', '1.0', '2830C打印机驱动', '0024C518211398D1.zip', 41547, '2020-10-14 16:03:14');
+INSERT INTO `soft_drive` VALUES (7, '固网1008_2008标准版', '1.0', '固网1008_2008标准版', 'C2ABE00A179A7511.zip', 12373, '2020-10-14 16:03:29');
+INSERT INTO `soft_drive` VALUES (8, '驱动人生网卡版', '7.1', '驱动人生版', '', 211356, '2020-10-14 16:03:41');
+INSERT INTO `soft_drive` VALUES (9, 'DocuCentre_S2220_S2420', '1.0', '前台打印机', 'DEC684C98B5E2D73.zip', 7226, '2020-10-14 16:06:16');
+INSERT INTO `soft_drive` VALUES (10, 'Canon DR-3010C', '1.0', '佳能DR3010C扫描仪驱动', '39AD77E78EEB2043.zip', 16733, '2020-10-26 16:29:37');
 COMMIT;
 
 -- ----------------------------
@@ -2294,34 +2847,12 @@ CREATE TABLE `soft_os` (
   `size` int(11) DEFAULT '0' COMMENT '软件大小',
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of soft_os
 -- ----------------------------
 BEGIN;
-INSERT INTO `soft_os` VALUES (1, 'Windows 7', 'SP1', '多版本64位', 'Win7_SP1_x64.iso', -853916, '2019-06-18 15:55:51');
-INSERT INTO `soft_os` VALUES (2, 'Windows 10', '1903', '多版本64位', 'Win10_Consumer_1903_x64.iso', 596200, '2019-06-18 16:35:46');
-INSERT INTO `soft_os` VALUES (3, 'Windows 10', '1903', '多版本32位', 'Win10_Consumer_1903_x86.iso', -720216, '2019-06-18 16:48:11');
-COMMIT;
-
--- ----------------------------
--- Table structure for state
--- ----------------------------
-DROP TABLE IF EXISTS `state`;
-CREATE TABLE `state` (
-  `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '序号',
-  `state_name` varchar(255) DEFAULT NULL COMMENT '名称',
-  `state_num` int(10) DEFAULT '0' COMMENT '数量',
-  `state_string` varchar(255) DEFAULT NULL COMMENT '其他',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
--- ----------------------------
--- Records of state
--- ----------------------------
-BEGIN;
-INSERT INTO `state` VALUES (1, 'orderPageNum', 2, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -2349,7 +2880,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '序号',
   `user_name` varchar(50) NOT NULL COMMENT '用户名',
-  `name` varchar(50) NOT NULL COMMENT '姓名',
+  `name` varchar(50) DEFAULT NULL COMMENT '姓名',
   `password` varchar(255) DEFAULT NULL COMMENT '密码',
   `sex` varchar(2) DEFAULT '保密' COMMENT '性别',
   `age` int(3) DEFAULT '0' COMMENT '年龄',
@@ -2360,27 +2891,27 @@ CREATE TABLE `user` (
   `auth_id` int(10) NOT NULL DEFAULT '0' COMMENT '权限',
   `enabled` int(1) DEFAULT '1' COMMENT '登陆权限',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
-  `first_pwd` int(1) DEFAULT NULL,
+  `first_pwd` int(11) NOT NULL,
   `file_query` varchar(255) DEFAULT NULL,
   `form_query` varchar(255) DEFAULT NULL,
   `session_id` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`,`user_name`) USING BTREE,
+  PRIMARY KEY (`id`) USING BTREE,
   KEY `username` (`user_name`,`name`) USING BTREE,
   KEY `name` (`name`) USING BTREE,
   KEY `authority` (`auth_id`) USING BTREE,
   KEY `username_2` (`user_name`) USING BTREE,
   KEY `FKq56a50t77h2iagd5uf8xmlivo` (`job_id`) USING BTREE,
-  KEY `id` (`id`),
   CONSTRAINT `FKm50himjxgwfku8dwxm3dxybhd` FOREIGN KEY (`auth_id`) REFERENCES `authority` (`auth_id`) ON UPDATE CASCADE,
   CONSTRAINT `FKq56a50t77h2iagd5uf8xmlivo` FOREIGN KEY (`job_id`) REFERENCES `job` (`job_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES (1, 'admin', '系统管理员', 'C5A9114446E82A28D895ADD6BC7FD5B3', '保密', 0, 2, '028-81529555', 'keydom@keydom.com.cn', '0', 1, 1, '2018-10-25 09:11:27', 0, '1,2,3,4,5,6,7,8,9,10', '1,2,3,4,5,6,7,8,9,10', NULL);
-INSERT INTO `user` VALUES (3, 'hawile', '黄伟', '55323CFE12CB3791C447435E1216A9DF', '男', 25, 18, '17608039481', 'huangw@keydom.com.cn', '228642660', 1, 1, '2019-04-29 08:57:52', 0, '1,2,3,4,5,6,7,8,9,10', '1,2,3,4,5,6,7,8,9,10', '6DB011839D390D4CC3F4C844687C0B81');
+INSERT INTO `user` VALUES (1, 'admin', 'Administrator', 'C5A9114446E82A28D895ADD6BC7FD5B3', '保密', 0, 2, '028-81529555', '', '0', 1, 1, '2018-10-25 09:11:27', 0, NULL, NULL, NULL);
+INSERT INTO `user` VALUES (3, 'hawile', '黄伟', '55323CFE12CB3791C447435E1216A9DF', '男', 25, 18, '17608039481', 'huangw@keydom.com.cn', '228642660', 1, 1, '2019-04-29 08:57:52', 0, '1,2,3,4,5,6,7,8,9,10', '1,2,3,4,5,6,7,8,9,10', 'C5ED8B1054EDF011553A344F7528CF44');
+INSERT INTO `user` VALUES (4, 'wangjx', '王建勋', 'C5A9114446E82A28D895ADD6BC7FD5B3', '男', 0, 17, '', '', '', 5, 1, '2020-09-07 17:31:31', 0, '1,2,3,4,5,6,7,8,9,10', '1,2,3,4,5,6,7,8,9,10', '2F11162C8D578A6E9C4DD50E5C2B174C');
 COMMIT;
 
 -- ----------------------------
@@ -2406,13 +2937,12 @@ CREATE TABLE `user_sign` (
   KEY `name` (`name`) USING BTREE,
   KEY `username_2` (`user_name`) USING BTREE,
   KEY `FKq56a50t77h2iagd5uf8xmlivo` (`job_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of user_sign
 -- ----------------------------
 BEGIN;
-INSERT INTO `user_sign` VALUES (9, '1', '1', '8B09E961C26D72F3CE01574EE1A602F2', '男', 1, 15, '17608039481', 'hawile@outlook.com', '', '2020-10-13 10:37:57', 0, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -2428,13 +2958,28 @@ CREATE TABLE `work` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   KEY `FK_user_id` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of work
 -- ----------------------------
 BEGIN;
-INSERT INTO `work` VALUES (5, '黄伟', '安全策略部', '三楼小会议室网络连接', '2020-10-12', '2020-10-12 11:38:34');
+INSERT INTO `work` VALUES (1, '黄伟', '质量安全部', '月度内部渗透测试扫描', '2020-08-26', '2020-08-26 17:33:37');
+INSERT INTO `work` VALUES (2, '黄伟', '质量安全部', '郑培丽电脑Office问题处理', '2020-08-26', '2020-08-26 17:33:42');
+INSERT INTO `work` VALUES (3, '黄伟', '质量安全部', '月度内部渗透测试扫描', '2020-08-25', '2020-08-26 04:49:03');
+INSERT INTO `work` VALUES (4, '黄伟', '质量安全部', '周继萱电脑连接打印机问题处理', '2020-08-25', '2020-08-26 04:49:03');
+INSERT INTO `work` VALUES (5, '黄伟', '质量安全部', '月度内部渗透测试扫描', '2020-08-27', '2020-08-26 21:47:18');
+INSERT INTO `work` VALUES (6, '黄伟', '质量安全部', '三楼车间电脑问题处理', '2020-09-07', '2020-09-07 17:26:28');
+INSERT INTO `work` VALUES (7, '黄伟', '质量安全部', '何英工作账号开通', '2020-09-08', '2020-09-08 16:16:49');
+INSERT INTO `work` VALUES (8, '黄伟', '质量安全部', '三楼电脑VGA问题处理', '2020-09-08', '2020-09-08 16:16:49');
+INSERT INTO `work` VALUES (9, '黄伟', '质量安全部', '何英电脑U8问题处理', '2020-09-09', '2020-09-08 16:16:49');
+INSERT INTO `work` VALUES (10, '黄伟', '质量安全部', '熊磊账号被锁定，解锁', '2020-09-10', '2020-09-08 16:16:49');
+INSERT INTO `work` VALUES (11, '黄伟', '质量安全部', '时间校准', '2020-09-14', '2020-09-14 17:18:17');
+INSERT INTO `work` VALUES (12, '黄伟', '质量安全部', '无线热点扫描', '2020-09-14', '2020-09-14 17:18:17');
+INSERT INTO `work` VALUES (13, '黄伟', '质量安全部', '何英电脑U8问题处理', '2020-09-14', '2020-09-14 17:18:17');
+INSERT INTO `work` VALUES (14, '黄伟', '质量安全部', '何贞电脑显卡问题处理', '2020-09-16', '2020-09-14 17:18:17');
+INSERT INTO `work` VALUES (15, '黄伟', '质量安全部', '何英笔记本电脑VPN安装问题处理', '2020-09-16', '2020-09-14 17:18:17');
+INSERT INTO `work` VALUES (16, '黄伟', '质量安全部', '何英笔记本电脑连接打印机问题处理', '2020-09-16', '2020-09-14 17:18:17');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
