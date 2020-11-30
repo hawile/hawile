@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/css/my.css" />
+	<link rel="stylesheet" href="/css/ace.min.css" />
+	<script src="/layui/layui.js" type="text/javascript"></script>
+	<script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="/js/page/form.js" type="text/javascript"></script>
+	<title>表单列表</title>
+</head>
+<body>
+	<script type="text/html" id="toolbarDemo">
+		<div class="layui-btn-container">
+			<button th:if="${role['form-add']}" class="layui-btn layui-btn-warm"
+					lay-event="insert">添加文件</button>
+			<button th:if="${role['form-input']}" class="layui-btn layui-btn-danger"
+					lay-event="input">填写表单</button>
+		</div>
+	</script>
+	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+		<a class="layui-btn layui-btn-xs"
+		   th:if="${role['form-edit']}" lay-event="edit" >编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs"
+		   th:if="${role['form-delete']}" lay-event="delete">删除</a>
+		<a class="layui-btn layui-btn-normal layui-btn-xs"
+		   th:if="${role['form-download']}" lay-event="download">下载</a>
+	</script>
+	<table class="layui-hide" id="table" lay-filter="table"></table>
+
+<!--添加表单-->
+<div id="add_file_style" class="display-0">
+	<form id="FormAdd" class="layui-form" method="post" action="">
+		<input type="hidden" id="exts" name="exts"/>
+		<input type="hidden" id="size" name="size"/>
+		<div class="layui-form-item width-80" style="padding-top: 10px">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>表单编号:
+			</label>
+			<div class="float-left width-50">
+				<input type="text" class="layui-input" id="serial" name="serial" lay-verify="required"/>
+			</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>表单名称:
+			</label>
+			<div class="float-left width-50">
+				<input type="text" class="layui-input" id="name" name="name" lay-verify="required"/>
+			</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>版本号:
+			</label>
+			<div class="float-left width-50">
+				<input type="text" class="layui-input" id="version" name="version" lay-verify="required"/>
+			</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">
+				<span style="color: red; ">*</span>所属部门:
+			</label>
+			<div class="float-left width-50">
+				<select id="deptId" class="dept" lay-filter="dept" name="deptId" size="1" lay-verify="required">
+					<option value=""></option>
+					<option th:each="dept:${deptList}" th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item width-80">
+			<label class="layui-form-label width-40">备注:</label>
+			<div class="float-left width-50">
+				<input type="text" class="layui-input" id="remark" name="remark"/>
+			</div>
+		</div>
+		<div class="submit_btn">
+			<button id="upload" type="button" class="layui-btn layui-btn-normal">
+				<i class="layui-icon"></i>上传文件</button>
+			<div id="fileListDiv" class="submit_btn width-80 display-0">
+				<table class="layui-table">
+					<thead>
+					<tr><th>文件名</th>
+						<th>大小</th>
+						<th>操作</th>
+					</tr></thead>
+					<tbody id="fileList"></tbody>
+				</table>
+			</div>
+		</div>
+		<div class="submit_btn width-80">
+			<div class="layui-progress layui-progress-big submit_btn" lay-showpercent="true" lay-filter="fileProcess">
+				<div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
+			</div>
+		</div>
+		<div class="submit_btn">
+			<button type="button" lay-submit="" lay-filter="subInsert" id="submit"
+					class="layui-btn layui-btn-normal">提交</button>
+			<button type="button" onclick="layer.closeAll();"
+					class="layui-btn layui-btn-danger">关闭</button>
+		</div>
+	</form>
+</div>
+
+
+<!--修改表单-->
+	<div id="up_file_style" class="display-0">
+		<form id="FormUp" class="layui-form" method="post" action="">
+			<input type="hidden" name="exts"/>
+			<input type="hidden" name="size"/>
+			<input type="hidden" id="id" name="id"/>
+			<div class="layui-form-item width-80" style="padding-top: 10px">
+				<label class="layui-form-label width-40">
+					<span style="color: red; ">*</span>表单编号:
+				</label>
+				<div class="float-left width-50">
+					<input type="text" class="layui-input" id="up_serial" readonly name="serial"/>
+				</div>
+			</div>
+			<div class="layui-form-item width-80">
+				<label class="layui-form-label width-40">
+					<span style="color: red; ">*</span>表单名称:
+				</label>
+				<div class="float-left width-50">
+					<input type="text" class="layui-input" id="up_name" name="name" lay-verify="required"/>
+				</div>
+			</div>
+			<div class="layui-form-item width-80">
+				<label class="layui-form-label width-40">
+					<span style="color: red; ">*</span>版本号:
+				</label>
+				<div class="float-left width-50">
+					<input type="text" class="layui-input" id="up_version" name="version" lay-verify="required"/>
+				</div>
+			</div>
+			<div class="layui-form-item width-80">
+				<label class="layui-form-label width-40">
+					<span style="color: red; ">*</span>所属部门:
+				</label>
+				<div class="float-left width-50">
+					<select id="up_deptId" class="dept"  name="deptId" size="1" lay-verify="required">
+						<option value=""></option>
+						<option th:each="dept:${deptList}" th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item width-80">
+				<label class="layui-form-label width-40">备注:</label>
+				<div class="float-left width-50">
+					<input type="text" class="layui-input" id="up_remark" name="remark"/>
+				</div>
+			</div>
+			<div class="submit_btn">
+				<button id="upload2" type="button" class="layui-btn layui-btn-normal">
+					<i class="layui-icon"></i>上传文件</button>
+				<div id="fileListDiv2" class="submit_btn width-80 display-0">
+					<table class="layui-table">
+						<thead>
+						<tr><th>文件名</th>
+							<th>大小</th>
+							<th>操作</th>
+						</tr></thead>
+						<tbody id="fileList2"></tbody>
+					</table>
+				</div>
+			</div>
+			<div class="submit_btn width-80">
+				<div class="layui-progress layui-progress-big submit_btn" lay-showpercent="true" lay-filter="fileProcess2">
+					<div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
+				</div>
+			</div>
+			<div class="submit_btn">
+				<button type="button" lay-submit="" lay-filter="subUpdate" id="submit2"
+						class="layui-btn layui-btn-normal">提交</button>
+				<button type="button" onclick="layer.closeAll();"
+						class="layui-btn layui-btn-danger">关闭</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

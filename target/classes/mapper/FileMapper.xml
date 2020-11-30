@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.hawile.mapper.FileMapper">
+  <resultMap id="BaseResultMap" type="top.hawile.entity.FileEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="serial" jdbcType="VARCHAR" property="serial" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="download" jdbcType="VARCHAR" property="download" />
+    <result column="file_size" jdbcType="INTEGER" property="fileSize" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="img_number" jdbcType="INTEGER" property="imgNumber" />
+  </resultMap>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+      id, serial, `name`, `path`, download, file_size, version, dept_id, remark, update_time,
+      img_number
+    from file
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from file
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.hawile.entity.FileEntity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into file (serial, `name`, `path`,
+      download, file_size, version, 
+      dept_id, remark, update_time, 
+      img_number)
+    values (#{serial,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{download,jdbcType=VARCHAR}, #{fileSize,jdbcType=INTEGER}, #{version,jdbcType=VARCHAR}, 
+      #{deptId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{imgNumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="top.hawile.entity.FileEntity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into file
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serial != null">
+        serial,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="path != null">
+        `path`,
+      </if>
+      <if test="download != null">
+        download,
+      </if>
+      <if test="fileSize != null">
+        file_size,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="imgNumber != null">
+        img_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serial != null">
+        #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="download != null">
+        #{download,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgNumber != null">
+        #{imgNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.hawile.entity.FileEntity">
+    update file
+    <set>
+      <if test="serial != null">
+        serial = #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        `path` = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="download != null">
+        download = #{download,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgNumber != null">
+        img_number = #{imgNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.hawile.entity.FileEntity">
+    update file
+    set serial = #{serial,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `path` = #{path,jdbcType=VARCHAR},
+      download = #{download,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=INTEGER},
+      version = #{version,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      img_number = #{imgNumber,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+      id, serial, `name`, `path`, download, file_size, version, f.dept_id, remark, update_time,
+      img_number,d.dept_name
+    from file f left join department d on d.dept_id = f.dept_id
+  </select>
+  <select id="selectSerial" resultMap="BaseResultMap">
+    select
+      id, serial, `name`, `path`, download, file_size, version, dept_id, remark, update_time,
+      img_number
+    from file
+    where serial = #{serial,jdbcType=VARCHAR}
+  </select>
+</mapper>

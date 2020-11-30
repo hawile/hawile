@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.w3.org/1999/xhtml" lang="">
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
+    <link rel="stylesheet" href="/css/welcome.css" media="all">
+    <script src="/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <script src="/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+    <script src="/js/page/welcome.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-warning icon"></i>数据统计</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-xs6" style="width: 100%">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-cyan">实时</span>
+                                                        <h5>浏览统计</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins" th:text="${visits}"></h1>
+                                                        <small>统计全部用户访问次数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6" style="width: 100%">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-blue">实时</span>
+                                                        <h5>用户申请</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">
+                                                            <a th:if="${role['userSign']}" href="user_sign" style="color: #1e88e5"
+                                                               th:text="${userSignCount}"></a>
+                                                            <span th:if="${role['userSign'] == 0}" th:text="${userSignCount}"></span>
+                                                        </h1>
+                                                        <small>当前用户申请请求处理数量</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>快捷入口</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10">
+                                        <div th:if="${role['userSign']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="user_sign"
+                                               data-title="用户申请管理" data-icon="fa fa-window-maximize">
+                                                <i class="fa fa-user-plus"></i>
+                                                <cite>用户申请管理</cite>
+                                            </a>
+                                        </div>
+                                        <div th:if="${role['user']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="user"
+                                               data-title="用户管理" data-icon="fa fa-gears">
+                                                <i class="fa fa-users"></i>
+                                                <cite>用户管理</cite>
+                                            </a>
+                                        </div>
+                                        <div th:if="${role['role']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="auth"
+                                               data-title="权限管理" data-icon="fa fa-file-text">
+                                                <i class="fa fa-sun-o"></i>
+                                                <cite>权限管理</cite>
+                                            </a>
+                                        </div>
+                                        <div th:if="${role['post']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="job"
+                                               data-title="职位管理" data-icon="fa fa-dot-circle-o">
+                                                <i class="fa fa-user"></i>
+                                                <cite>职位管理</cite>
+                                            </a>
+                                        </div>
+                                        <div th:if="${role['csr']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="csr"
+                                               data-title="客户账号信息" data-icon="fa fa-calendar">
+                                                <i class="fa fa-envelope-square"></i>
+                                                <cite>客户账号信息</cite>
+                                            </a>
+                                        </div>
+                                        <div th:if="${role['work']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="work"
+                                               data-title="工作报表" data-icon="fa fa-calendar">
+                                                <i class="fa fa-file-word-o"></i>
+                                                <cite>工作报表</cite>
+                                            </a>
+                                        </div>
+                                        <div th:if="${role['atm']}" class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="atm"
+                                               data-title="售货机订单信息" data-icon="fa fa-calendar">
+                                                <i class="fa fa-bar-chart"></i>
+                                                <cite>售货机订单信息</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-quick-module">
+                                            <a href="" layuimini-content-href="form_input"
+                                               data-title="填写表单" data-icon="fa fa-calendar">
+                                                <i class="fa fa-edit"></i>
+                                                <cite>填写表单</cite>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统公告</div>
+                    <div class="layui-card-body layui-text">
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">测试</div>
+                            <div class="layuimini-notice-extra">2019-07-11 23:06</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                测试
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

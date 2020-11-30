@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/css/my.css" />
+	<link rel="stylesheet" href="/css/ace.min.css" />
+	<script src="/layui/layui.js" type="text/javascript"></script>
+	<script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="/js/page/atm.js" type="text/javascript"></script>
+	<title>订单账号清单</title>
+</head>
+<body>
+	<script type="text/html" id="toolbarDemo">
+		<div class="layui-btn-container">
+			<button th:if="${role['atm-add']}" class="layui-btn layui-btn-warm"
+					lay-event="insert">添加订单</button>
+			<button th:if="${role['goods-edit']}" class="layui-btn layui-btn-danger"
+					lay-event="goods">商品编辑</button>
+		</div>
+	</script>
+	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="export" >导出</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs"
+		   th:if="${role['atm-delete']}" lay-event="delete">删除</a>
+	</script>
+	<table class="layui-hide" id="table" lay-filter="table"></table>
+
+<!--添加订单-->
+	<div id="add_ATM_style" class="display-0">
+		<form id="FormAdd" class="layui-form" method="post" action="">
+			<div class="layui-form-item width-80" style="padding-top: 10px">
+				<label class="layui-form-label width-40"><span style="color: red; ">*</span>日期:</label>
+				<div class="float-left width-50">
+					<input id="date" type="text" class="layui-input" name="date"
+						   placeholder="yyyy-MM-dd" lay-verify="required" />
+				</div>
+			</div>
+			<div class="layui-form-item width-80">
+				<label class="layui-form-label width-40"><span style="color: red; ">*</span>订单名称:</label>
+				<div class="float-left width-50">
+					<input class="layui-input" type="text" id="name" name="name" lay-verify="required" />
+				</div>
+			</div>
+			<div class="layui-form-item width-80">
+				<label class="layui-form-label width-40"><span style="color: red; ">*</span>订单状态:</label>
+				<div class="float-left width-50">
+					<select name="state" id="state">
+						<option value="进货">进货</option>
+						<option value="调货">调货</option>
+						<option value="上货">上货</option>
+						<option value="退货">退货</option>
+						<option value="统计">统计</option>
+						<option value="其他">其他</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item width-80">
+				<label class="layui-form-label width-40">备注:</label>
+				<div class="float-left width-50">
+					<textarea class="layui-textarea" id="remark" name="remark"
+							  rows="3" cols="20" wrap="soft" ></textarea>
+				</div>
+			</div>
+			<div class="submit_btn"><h5>商品列表</h5></div>
+			<div class="layui-form-item width-80">
+				<div class="layui-input-block">
+					<div class="float-left width-40 align-center">生产中心</div>
+					<div class="float-right width-40 align-center">总部</div>
+
+				</div>
+			</div>
+			<div class="layui-form-item width-80" th:each="goods:${goodsList}">
+				<label class="layui-form-label width-40">[[${goods.name}]]:</label>
+				<div class="layui-input-block">
+					<div class="float-left width-40">
+						<input class="layui-input float-right" type="text" name="goodsNum"
+							   lay-verify="number"/>
+					</div>
+					<div class="float-right width-40">
+						<input class="layui-input" type="text" name="goodsNum2"
+							   lay-verify="number"/>
+					</div>
+
+				</div>
+			</div>
+			<div class="submit_btn">
+				<button type="button" lay-submit="" lay-filter="subInsert"
+						class="layui-btn layui-btn-normal">提交</button>
+				<button type="button" onclick="layer.closeAll();"
+						class="layui-btn layui-btn-danger">关闭</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
