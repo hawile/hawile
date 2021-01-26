@@ -106,7 +106,7 @@ public class AtmServiceImpl implements AtmService {
         //循环执行将总部商品数量写入数据库操作
         for (int i = 0; i<goodsNum2List.length; i++) {
             //判断该订单商品是否有填写数量
-            if (goodsNum2List[i].equals("0")||goodsNumList[i].equals("")){
+            if (goodsNum2List[i].equals("0")||goodsNum2List[i].equals("")){
                 continue;
             }
             //新建总部订单商品对象
@@ -128,7 +128,7 @@ public class AtmServiceImpl implements AtmService {
             //执行添加订单商品信息到数据库操作
             atmGoodsService.insert(atmGoods);
             //将总部商品数量添加进订单信息
-            atm.setHeadofficeNumber(atm.getHeadofficeNumber()+Integer.parseInt(goodsNumList[i]));
+            atm.setHeadofficeNumber(atm.getHeadofficeNumber()+Integer.parseInt(goodsNum2List[i]));
             //将总部商品总额添加进订单信息
             atm.setHeadofficeTotal(atm.getHeadofficeTotal()+atmGoods.getPrice()*atmGoods.getNumber());
             //将总部商品利润添加进订单信息

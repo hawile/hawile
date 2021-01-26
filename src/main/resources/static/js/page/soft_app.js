@@ -176,18 +176,18 @@ layui.use(['form','table','upload','element'],function(){
                 ,success: function(data){
                     if(data == 1){
                         let int = setInterval(function (){
-                            if(uploadState == 1){
-                                layer.alert('添加成功！',{
+                            if(uploadState == 2){
+                                layer.alert('文件上传失败,请重新上传！',{
                                     title: '提示框',
-                                    icon:1,
+                                    icon:2,
                                 },function(){
                                     location.reload();
                                 });
                                 clearInterval(int);
-                            }else if(uploadState == 2){
-                                layer.alert('文件上传失败,请重新上传！',{
+                            }else {
+                                layer.alert('添加成功！',{
                                     title: '提示框',
-                                    icon:2,
+                                    icon:1,
                                 },function(){
                                     location.reload();
                                 });
@@ -219,18 +219,18 @@ layui.use(['form','table','upload','element'],function(){
                 ,success: function(data){
                     if(data == 1){
                         let int = setInterval(function (){
-                            if(uploadState == 1){
-                                layer.alert('修改成功！',{
+                            if(uploadState == 2){
+                                layer.alert('文件上传失败,请重新上传！',{
                                     title: '提示框',
-                                    icon:1,
+                                    icon:2,
                                 },function(){
                                     location.reload();
                                 });
                                 clearInterval(int);
-                            }else if(uploadState == 2){
-                                layer.alert('文件上传失败,请重新上传！',{
+                            }else {
+                                layer.alert('修改成功！',{
                                     title: '提示框',
-                                    icon:2,
+                                    icon:1,
                                 },function(){
                                     location.reload();
                                 });
