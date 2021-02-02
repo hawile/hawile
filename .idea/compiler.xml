@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Keydom" />
         <module name="Keydom-Test" />
         <module name="keydom" />
       </profile>
@@ -14,7 +13,6 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Keydom" options="-parameters" />
       <module name="Keydom-Test" options="-parameters" />
       <module name="keydom" options="-parameters" />
     </option>
