@@ -78,7 +78,7 @@
             <div class="float-left width-50">
                 <select id="parentId" class="layui-input" name="parentId">
                     <option value=""></option>
-                    <option value="0">新管理模块</option>
+                    <option value="0">顶级</option>
                     <option th:each="role:${menuList}" th:value="${role.id}" th:text="${role.name}"></option>
                 </select>
             </div>
@@ -148,7 +148,7 @@
             <div class="float-left width-50">
                 <select id="parentId2" class="layui-input" name="parentId">
                     <option value=""></option>
-                    <option value="0">新管理模块</option>
+                    <option value="0">顶级</option>
                     <option th:each="role:${menuList}" th:value="${role.id}" th:text="${role.name}"></option>
                 </select>
             </div>
