@@ -19,9 +19,10 @@ layui.use(['form','table'],function(){
             ,{field: 'ip', title: '登陆IP', align:'center', width:200, sort: true}
             ,{field: 'user', title: '用户名', align:'center', width:150}
             ,{field: 'password', title: '密码', align:'center', width:150, sort: true}
-            ,{field: 'remark', title: '备注', align:'center', width:100, sort: true}
+            ,{field: 'remark', title: '备注', align:'center', width:200, sort: true}
             ,{field: 'updateTime', title: '修改时间', align:'center',templet :
-                    "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                    "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                    , width:200, sort: true}
             ,{fixed: 'right',title: '操作', width:130, align:'center', toolbar: '#barDemo'}
         ]]
     });

@@ -1,71 +1,50 @@
-let checkboxVal;
-//渲染表格
-layui.use(['form','laydate','table'],function(){
+layui.use(['form','table'],function(){
     let form = layui.form;
-    let laydate = layui.laydate;
     let table = layui.table;
-    laydate.render({
-        elem: '#date',
-        trigger: 'click',
-        format: 'yyyy-MM-dd'
-    });
-    laydate.render({
-        elem: '#update',
-        trigger: 'click',
-        format: 'yyyy-MM-dd'
-    });
-
     //渲染数据表格
     table.render({
         elem: '#table'
         ,height: 550
-        ,url: '/work/list' //数据接口
+        ,url: '/it_assets/list' //数据接口
         ,page: true
         ,limits: [10,20,30,50,100,200,500]
         ,limit: 10
         ,toolbar: '#toolbarDemo'
         ,cols: [[ //表头
-            {type: 'checkbox', width:40}
-            ,{type: 'numbers', title: '序号',align: "center" , width:50}
-            ,{field: 'date', title: '日期',align: "center" , width:150, sort: true}
-            ,{field: 'name', title: '工作人',align: "center" , width:150, sort: true}
-            ,{field: 'dept', title: '部门',align: "center" , width:200}
-            ,{field: 'content', title: '工作内容',align: "center" , width:500, sort: true}
-            ,{field: 'updateTime', title: '更新时间',align: "center" ,templet :
+            {type: 'checkbox', align:'center', width:40}
+            ,{type: 'numbers', title: '序号', align:'center', width:50}
+            ,{field: 'number', title: '设备编号', align:'center', width:200, sort: true}
+            ,{field: 'type', title: '设备类型', align:'center', width:150, sort: true}
+            ,{field: 'name', title: '设备名称', align:'center', width:200, sort: true}
+            ,{field: 'brand', title: '设备品牌', align:'center', width:200, sort: true}
+            ,{field: 'model', title: '设备型号', align:'center', width:200, sort: true}
+            ,{field: 'serial', title: '序列号', align:'center', width:200, sort: true}
+            ,{field: 'position', title: '存放位置', align:'center', width:200, sort: true}
+            ,{field: 'user', title: '使用人', align:'center', width:200, sort: true}
+            ,{field: 'use', title: '用途', align:'center', width:200, sort: true}
+            ,{field: 'ip', title: 'IP地址', align:'center', width:200, sort: true}
+            ,{field: 'network', title: '使用网络', align:'center', width:200, sort: true}
+            ,{field: 'use', title: '用途', align:'center', width:200, sort: true}
+            ,{field: 'remark', title: '备注', align:'center', width:100, sort: true}
+            ,{field: 'updateTime', title: '修改时间', align:'center',templet :
                     "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
-                , width:200, sort: true}
+                    , width:200, sort: true}
             ,{fixed: 'right',title: '操作', width:130, align:'center', toolbar: '#barDemo'}
         ]]
     });
 
     //监听头部工具栏事件
     table.on('toolbar(table)',function (obj){
-        //工作报表-添加
+        //IT固定资产-添加
         if(obj.event == 'insert'){
-            $('input').val('');
+            $('.layui-input').val('');
             $('textarea').val('');
-            //获取当前系统时间
-            let date = new Date();
-            //格式化当前时间
-            let myDate = date.getFullYear();
-            if(date.getMonth() < 9){
-                myDate =myDate+"-0"+(date.getMonth()+1);
-            }
-            else {
-                myDate = myDate+"-"+(date.getMonth()+1);
-            }
-            if(date.getDate()<10){
-                myDate = myDate =myDate+"-0"+date.getDate();
-            }else{
-                myDate = myDate =myDate+"-"+date.getDate();
-            }
-            $('input[id=date]').val(myDate);
             layer.open({
                 type: 1,
-                title:'添加工作报表',
-                area: ['380px','80%'],
+                title:'添加资产',
+                area: ['600px','90%'],
                 shadeClose: false,
-                content: $('#workInsert'),
+                content: $('#add_assets_style'),
             });
         }
     });
@@ -75,27 +54,35 @@ layui.use(['form','laydate','table'],function(){
         //获取当前行的数据
         let data = obj.data;
         switch (obj.event){
-            //工作报表-编辑
+            //IT固定资产-编辑
             case 'edit':
-                $('#id').val(data.id);
-                $('#date_2').val(data.date);
-                $('#name_2').val(data.name);
-                $('#dept_2').val(data.dept);
-                $('#content_2').val(data.content);
+                $('input[id=id]').val(data.id);
+                $('input[id=up_number]').val(data.number);
+                $('input[id=up_type]').val(data.type);
+                $('input[id=up_name]').val(data.name);
+                $('input[id=up_brand]').val(data.brand);
+                $('input[id=up_model]').val(data.model);
+                $('input[id=up_serial]').val(data.serial);
+                $('input[id=up_position]').val(data.position);
+                $('input[id=up_user]').val(data.user);
+                $('input[id=up_use]').val(data.use);
+                $('input[id=up_ip]').val(data.ip);
+                $('input[id=up_network]').val(data.network);
+                $('textarea[id=up_remark]').val(data.remark);
                 layer.open({
                     type: 1,
-                    title:'编辑工作报表',
-                    area: ['380px','80%'],
+                    title:'编辑资产',
+                    area: ['600px','90%'],
                     shadeClose: false,
-                    content: $('#workUpdate'),
+                    content: $('#up_assets_style'),
                 });
             break;
-            //工作报表-删除
+            //IT固定资产-删除
             case 'delete':
                 layer.confirm('确认要删除吗？',function(){
                     $.ajax({
-                        async: true,
-                        url: '/work/delete',
+                        async: 'true',
+                        url: '/it_assets/delete',
                         type: 'post',
                         data: {'id':data.id,'name':data.name},
                         dataType: 'text',
@@ -122,13 +109,14 @@ layui.use(['form','laydate','table'],function(){
         }
     });
 
-    // 工作报表添加-提交
-    form.on('submit(subInsert)',function () {
+
+    //添加-提交
+    form.on('submit(subInsert)',function (){
         $.ajax({
-            async: true,
-            url: '/work/insert',
+            async: false,
+            url: '/it_assets/insert',
             type: 'post',
-            data: $('#workFormInsert').serialize(),
+            data: $('#FormAdd').serialize(),
             dataType: 'text',
             success: function(data){
                 if(data == 1){
@@ -137,6 +125,11 @@ layui.use(['form','laydate','table'],function(){
                         icon:1,
                     },function(){
                         location.reload();
+                    });
+                }else if (data == 100){
+                    layer.alert('该设备编号已存在，请重新输入！',{
+                        title: '提示框',
+                        icon:2,
                     });
                 }else{
                     layer.alert('添加失败！',{
@@ -150,13 +143,13 @@ layui.use(['form','laydate','table'],function(){
         });
     });
 
-    //工作报表更新-提交
-    form.on('submit(subUpdate)',function () {
+    //修改-提交
+    form.on('submit(subUpdate)',function (){
         $.ajax({
-            async: true,
-            url: '/work/update',
+            async: false,
+            url: '/it_assets/update',
             type: 'post',
-            data: $('#workFormUpdate').serialize(),
+            data: $('#FormUp').serialize(),
             dataType: 'text',
             success: function(data){
                 if(data == 1){
@@ -165,6 +158,11 @@ layui.use(['form','laydate','table'],function(){
                         icon:1,
                     },function(){
                         location.reload();
+                    });
+                }else if (data == 100){
+                    layer.alert('该设备编号已存在，请重新输入！',{
+                        title: '提示框',
+                        icon:2,
                     });
                 }else{
                     layer.alert('修改失败！',{
@@ -177,11 +175,5 @@ layui.use(['form','laydate','table'],function(){
             }
         });
     });
-    //工作报表导出-提交
-    form.on('submit(subExport)',function (){
-        let beginDate = $('input[id=beginDate]').val();
-        let endDate = $('input[id=endDate]').val();
-        window.location="/work/export?beginDate="+beginDate+"&endDate="+endDate;
-    })
     form.render();
 });

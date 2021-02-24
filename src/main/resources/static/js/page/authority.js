@@ -23,7 +23,8 @@ $(function (){
                 ,{field: 'xtgl', title: '系统管理', align:'center', width:120,templet: '#xtglState'}
                 ,{field: 'yhgl', title: '用户管理', align:'center', width:120,templet: '#yhglState'}
                 ,{field: 'authUpdateTime', title: '更新时间', align:'center', templet :
-                        "<div>{{layui.util.toDateString(d.authUpdateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                        "<div>{{layui.util.toDateString(d.authUpdateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                    , width:200, sort: true}
                 ,{fixed: 'right',title: '操作', align:'center', toolbar: '#barDemo', width:250}
             ]]
         });

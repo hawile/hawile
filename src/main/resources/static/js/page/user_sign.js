@@ -35,7 +35,7 @@ $(function() {
                 ,{field: 'state', title: '状态', align:'center', width:80,templet: '#state'}
                 ,{field: 'cause', title: '原因', align:'center', width:100}
                 ,{field: 'createTime', title: '申请时间', align:'center', templet :
-                        "<div>{{layui.util.toDateString(d.createTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"}
+                        "<div>{{layui.util.toDateString(d.createTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", width:200}
                 ,{fixed: 'right',title: '操作', align:'center', width:130, toolbar: '#barDemo'}
             ]]
         });

@@ -27,7 +27,8 @@ $(function() {
                 ,{field: 'content', title: '操作内容', align:'center', minWidth:200, sort: true}
                 ,{field: 'state', title: '操作状态', align:'center', width:120,templet:'#state', sort: true}
                 ,{field: 'createTime', title: '操作时间', align:'center', width:200,templet :
-                        "<div>{{layui.util.toDateString(d.createTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                        "<div>{{layui.util.toDateString(d.createTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                        , width:200, sort: true}
             ]]
         });
         layui.form.render();

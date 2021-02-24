@@ -18,7 +18,8 @@ layui.use(['form','table'],function(){
             ,{field: 'jobName', title: '职务名称',align: "center" , width:250, sort: true}
             ,{field: 'remark', title: '备注',align: "center" , width:250, sort: true}
             ,{field: 'updateTime', title: '更新时间',align: "center" ,templet :
-                    "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                    "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                    , width:200, sort: true}
             ,{fixed: 'right',title: '操作', width:150, align:'center', toolbar: '#barDemo'}
         ]]
     });

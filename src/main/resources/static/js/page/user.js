@@ -36,7 +36,8 @@ $(function() {
                 ,{field: 'authName', title: '权限组', align:'center', width:100, sort: true}
                 ,{field: 'enabled', title: '状态', align:'center', width:100,templet: '#state', sort: true}
                 ,{field: 'createTime', title: '加入时间', align:'center', templet :
-                        "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                        "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                    , width:200, sort: true}
                 ,{fixed: 'right',title: '操作', align:'center', toolbar: '#barDemo', width:180}
             ]]
         });
