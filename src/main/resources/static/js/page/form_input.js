@@ -38,7 +38,7 @@ layui.use(['form', 'table'], function () {
                     , {field: 'formName', title: '表单名称', width: 200, sort: true}
                     , {field: 'formPath', title: '表单文件', width: 200, sort: true}
                     , {field: 'createTime', title: '填写时间', sort: true, templet :
-                            "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"}
+                            "<div>{{layui.util.toDateString(d.createTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"}
                     , {fixed: 'right', title: '操作', width: 100, align: 'center', toolbar: '#record'}]]
             });
         }
