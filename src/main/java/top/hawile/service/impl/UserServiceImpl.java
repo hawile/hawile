@@ -167,19 +167,6 @@ public class UserServiceImpl implements UserService {
     @Override
     //更新用户
     public int update(User user) {
-        /*//获取权限列表
-        List<Role> roleList = roleService.list();
-        //新建对象
-        RoleToUser roleToUser = new RoleToUser();
-        //遍历循环权限列表
-        for (Role role:roleList){
-            //设置权限ID值
-            roleToUser.setRoleId(role.getId());
-            //设置用户ID值
-            roleToUser.setUserId(user.getId());
-            //保存对象到数据库
-            roleToUserService.insert(roleToUser);
-        }*/
         return userMapper.updateByPrimaryKeySelective(user);
     }
 

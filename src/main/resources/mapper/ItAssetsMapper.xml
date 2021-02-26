@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.hawile.mapper.ItAssetsMapper">
+  <resultMap id="BaseResultMap" type="top.hawile.entity.ItAssets">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="number" jdbcType="VARCHAR" property="number" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="serial" jdbcType="VARCHAR" property="serial" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="use" jdbcType="VARCHAR" property="use" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="network" jdbcType="VARCHAR" property="network" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select
+      id, `number`, `type`, `name`, brand, model, serial, `position`, `user`, `use`, ip,
+      network, remark, update_time
+    from it_assets
+    where id = #{id,jdbcType=INTEGER}
+      and `number` = #{number,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from it_assets
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.hawile.entity.ItAssets">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into it_assets (`number`, `type`, `name`, 
+      brand, model, serial, 
+      `position`, `user`, `use`, 
+      ip, network, remark, 
+      update_time)
+    values (#{number,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{serial,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{user,jdbcType=VARCHAR}, #{use,jdbcType=VARCHAR}, 
+      #{ip,jdbcType=VARCHAR}, #{network,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.hawile.entity.ItAssets">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into it_assets
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="number != null">
+        `number`,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="serial != null">
+        serial,
+      </if>
+      <if test="position != null">
+        `position`,
+      </if>
+      <if test="user != null">
+        `user`,
+      </if>
+      <if test="use != null">
+        `use`,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="network != null">
+        network,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="serial != null">
+        #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="use != null">
+        #{use,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="network != null">
+        #{network,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.hawile.entity.ItAssets">
+    update it_assets
+    <set>
+      <if test="number != null">
+        `number` = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="serial != null">
+        serial = #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        `position` = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        `user` = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="use != null">
+        `use` = #{use,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="network != null">
+        network = #{network,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.hawile.entity.ItAssets">
+    update it_assets
+    set `type` = #{type,jdbcType=VARCHAR},
+      `number` = #{number,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      serial = #{serial,jdbcType=VARCHAR},
+      `position` = #{position,jdbcType=VARCHAR},
+      `user` = #{user,jdbcType=VARCHAR},
+      `use` = #{use,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      network = #{network,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+      id, `number`, `type`, `name`, brand, model, serial, `position`, `user`, `use`, ip,
+      network, remark, update_time
+    from it_assets
+  </select>
+  <select id="selectId" resultMap="BaseResultMap">
+    select
+    id, `number`, `type`, `name`, brand, model, serial, `position`, `user`, `use`, ip,
+    network, remark, update_time
+    from it_assets
+    where id in
+    <foreach collection="array" item="id" open="(" close=")" separator=",">#{id}</foreach>
+  </select>
+  <select id="selectNumber" resultMap="BaseResultMap">
+    select
+      id, `number`, `type`, `name`, brand, model, serial, `position`, `user`, `use`, ip,
+      network, remark, update_time
+    from it_assets where number = #{number,jdbcType=VARCHAR}
+  </select>
+</mapper>

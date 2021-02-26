@@ -61,13 +61,27 @@ layui.use(['table', 'treetable', 'form'], function () {
                 $('#icon2').val(data.icon);
                 $('#href2').val(data.href);
                 $('#parentId2').val(data.parentId);
-                $('#name2').val(data.name);
+                //渲染数据表格
+                table.render({
+                    elem: '#userTable2'  //绑定table标签
+                    ,height: 300    //高度
+                    ,url: '/user/list' //数据接口
+                    ,page: false //是否启用分页
+                    ,toolbar: false
+                    ,cols: [[ //表头
+                        {type: 'checkbox', align:'center', width:40}
+                        ,{type: 'numbers', title: '序号', align:'center', width:40}
+                        ,{field: 'userName', title: '用户名', width:100, align:'center'}
+                        ,{field: 'name', title: '姓名', align:'center', width:115}
+                    ]]
+                });
+                form.render();
                 layer.open({
                     type: 1,
                     title:'添加权限',
                     area: ['400px','90%'],
                     shadeClose: false,
-                    content: $('#add_role_style'),
+                    content: $('#up_role_style'),
                 });
             break;
             //权限-删除

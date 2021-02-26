@@ -82,10 +82,10 @@ public class UserController {
     @RequestMapping("/user_info")
     //设置个人信息列表所需内容
     public String userInfo(Model model, HttpSession session) {
-        //获取当前登录用户对象
-        User user = (User) session.getAttribute("user");
         //将登录用户信息传入model
-        model.addAttribute("user",userService.findByUserName(user.getUserName()));
+        model.addAttribute("user",session.getAttribute("user"));
+        //将权限信息存入model
+        model.addAttribute("role", session.getAttribute("role"));
         //将部门列表传入model
         model.addAttribute("deptList",deptService.list());
         //将操作写入日志

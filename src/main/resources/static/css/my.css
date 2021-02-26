@@ -239,3 +239,11 @@
 	color: red;
 	font-size: 10px
 }
+.user_info_style {
+	padding: 10px 10px;
+	float: left;
+	width: 25%;
+}
+.user_info_table td {
+	height: 40px;
+}

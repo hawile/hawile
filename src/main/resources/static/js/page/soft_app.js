@@ -22,7 +22,8 @@ layui.use(['form','table','upload','element'],function(){
             ,{field: 'reason', title: '注释',align: "center" , width:400}
             ,{field: 'size', title: '软件大小（KB）',align: "center" , width:150, sort: true}
             ,{field: 'updateTime', title: '更新时间',align: "center" ,templet :
-                    "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                    "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                , width:200, sort: true}
             ,{fixed: 'right',title: '操作', width:180, align:'center', toolbar: '#barDemo'}
         ]]
     });
@@ -176,18 +177,18 @@ layui.use(['form','table','upload','element'],function(){
                 ,success: function(data){
                     if(data == 1){
                         let int = setInterval(function (){
-                            if(uploadState == 1){
-                                layer.alert('添加成功！',{
+                            if(uploadState == 2){
+                                layer.alert('文件上传失败,请重新上传！',{
                                     title: '提示框',
-                                    icon:1,
+                                    icon:2,
                                 },function(){
                                     location.reload();
                                 });
                                 clearInterval(int);
-                            }else if(uploadState == 2){
-                                layer.alert('文件上传失败,请重新上传！',{
+                            }else {
+                                layer.alert('添加成功！',{
                                     title: '提示框',
-                                    icon:2,
+                                    icon:1,
                                 },function(){
                                     location.reload();
                                 });
@@ -219,18 +220,18 @@ layui.use(['form','table','upload','element'],function(){
                 ,success: function(data){
                     if(data == 1){
                         let int = setInterval(function (){
-                            if(uploadState == 1){
-                                layer.alert('修改成功！',{
+                            if(uploadState == 2){
+                                layer.alert('文件上传失败,请重新上传！',{
                                     title: '提示框',
-                                    icon:1,
+                                    icon:2,
                                 },function(){
                                     location.reload();
                                 });
                                 clearInterval(int);
-                            }else if(uploadState == 2){
-                                layer.alert('文件上传失败,请重新上传！',{
+                            }else {
+                                layer.alert('修改成功！',{
                                     title: '提示框',
-                                    icon:2,
+                                    icon:1,
                                 },function(){
                                     location.reload();
                                 });

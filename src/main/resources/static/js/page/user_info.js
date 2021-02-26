@@ -11,10 +11,17 @@ $(function() {
             format: 'yyyy-MM'
         });
 
+        form.on('select(dept)', function (obj) {
+            if(obj.value != ""){
+                getJob(obj.value);
+            }
+            form.render();
+        });
+
         //渲染数据表格
         table.render({
             elem: '#table'
-            ,height: 550
+            ,height: 470
             ,url: '/user/login_log' //数据接口
             ,page: true
             ,limits: [10,20,30,50,100,200,500]
@@ -22,18 +29,15 @@ $(function() {
             ,toolbar: false
             ,cols: [[ //表头
                 {type: 'numbers', title: '序号', align:'center', width:60, sort: true}
-                ,{field: 'userName', title: '用户', align:'center', width:120, sort: true}
-                ,{field: 'name', title: '姓名', align:'center', width:120, sort: true}
-                ,{field: 'ip', title: '客户端IP', align:'center', width:150, sort: true}
-                ,{field: 'content', title: '操作内容', align:'center', width:200, sort: true}
-                ,{field: 'state', title: '操作状态', align:'center', width:120,templet:'#state', sort: true}
+                ,{field: 'userName', title: '用户', align:'center', width:100, sort: true}
+                ,{field: 'name', title: '姓名', align:'center', width:100, sort: true}
+                ,{field: 'ip', title: '客户端IP', align:'center', width:120, sort: true}
+                ,{field: 'content', title: '操作内容', align:'center', width:150, sort: true}
+                ,{field: 'state', title: '操作状态', align:'center', width:100,templet:'#state', sort: true}
                 ,{field: 'createTime', title: '操作时间', align:'center',templet :
-                        "<div>{{layui.util.toDateString(d.createTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                        "<div>{{layui.util.toDateString(d.createTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                    , width:200, sort: true}
             ]]
-        });
-
-        form.on('select()',function () {
-            getJob();
         });
         form.render();
         form.verify({
@@ -106,20 +110,21 @@ function update(sex,deptId,jobId){
     if (sex == '男') $('input[id=sex1]').prop("checked", 'checked');
     if (sex == '女') $('input[id=sex2]').prop("checked", 'checked');
     $('select[id=deptSelect]').val(deptId);
-    this.getJob(deptId,'jobSelect');
+    this.getJob(deptId);
     $('select[id=jobSelect]').val(jobId);
-    $('.text_info').attr('type', 'text');
-    $('span[class=user_info]').addClass('display-0');
-    $('.input_info').removeClass('display-0');
-    $('#changeInfoButton').css('display','none')
-    $('#saveInfoButton').css('display','inline')
+    $('.info_td_0').addClass('display-0');
+    $('.info_td_1').removeClass('display-0');
+    $('#changeInfoButton').css('display','none');
+    $('#changePwdButton').css('display','none');
+    $('#saveInfoButton').css('display','inline');
+    $('#quitInfoButton').css('display','inline');
     layui.form.render();
 }
 
 //部门职务级联下拉列表
-function getJob(deptId,selectId){
+function getJob(deptId){
     //清空职务下拉菜单
-    $('select[id='+selectId+']').empty();
+    $('select[id=jobSelect]').empty();
     //ajax查询返回特定部门ID的职务列表
     $.ajax({
         async: false,
@@ -132,7 +137,7 @@ function getJob(deptId,selectId){
             //循环取出职务列表
             for(let i=0;i<data.length;i++){
                 //向职务下来菜单中添加菜单项
-                $('select[id='+selectId+']').append(new Option(data[i].jobName,data[i].jobId));
+                $('select[id=jobSelect]').append(new Option(data[i].jobName,data[i].jobId));
             }
         }
     });
@@ -148,8 +153,17 @@ function changePwd() {
     layer.open({
         type: 1,
         title:'密码修改',
-        area: ['300px','300px'],
+        area: ['500px','300px'],
         shadeClose: false,
         content: $('#changePwdStyle')
     });
+}
+//退出修改方法
+function quitChangeInfo(){
+    $('.info_td_0').removeClass('display-0');
+    $('.info_td_1').addClass('display-0');
+    $('#changeInfoButton').css('display','inline');
+    $('#changePwdButton').css('display','inline');
+    $('#saveInfoButton').css('display','none');
+    $('#quitInfoButton').css('display','none');
 }

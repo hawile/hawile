@@ -24,7 +24,8 @@ $(function($) {
                 ,{field: 'remark', title: '备注', align:'center', width:150}
                 ,{field: 'fileSize', title: '存储(Kb)', align:'center', width:100, sort: true}
                 ,{field: 'updateTime', title: '更新时间', align:'center',templet :
-                        "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                        "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                    , width:200, sort: true}
                 ,{fixed: 'right',title:'操作', align:'center', toolbar: '#barDemo', width: 250}
             ]]
         });

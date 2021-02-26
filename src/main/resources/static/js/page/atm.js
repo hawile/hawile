@@ -29,7 +29,8 @@ $(function($) {
                 ,{field: 'state', title: '订单状态', align:'center', width:110, sort: true}
                 ,{field: 'remark', title: '备注', align:'center', width:300}
                 ,{field: 'updateTime', title: '更新时间', align:'center',templet :
-                        "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>", sort: true}
+                        "<div>{{layui.util.toDateString(d.updateTime, 'yyyy年MM月dd日 HH:mm:ss')}}</div>"
+                        , width:200, sort: true}
                 ,{fixed: 'right',title: '操作', width:170, align:'center', toolbar: '#barDemo'}
             ]]
         });

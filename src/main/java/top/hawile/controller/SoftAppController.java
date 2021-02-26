@@ -71,6 +71,7 @@ public class SoftAppController {
     @RequestMapping("/upload")
     public int upload(MultipartFile file, String fileName){
         try {
+            if(file.isEmpty())return 1;
             fileService.upload(file,fileName,path);
         }catch (Exception e){
             e.printStackTrace();
