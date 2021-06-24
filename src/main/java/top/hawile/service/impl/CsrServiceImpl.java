@@ -53,7 +53,7 @@ public class CsrServiceImpl implements CsrService {
 
     @Override
     //打印客户账号列表
-    public String print(String filePath) throws Exception {
+    public String print(String filePath, int state) throws Exception {
         List<Csr> CsrList=csrMapper.selectAll();
         Date date = new Date();	//实例化当前时间
         Csr Csr;
@@ -69,10 +69,14 @@ public class CsrServiceImpl implements CsrService {
         cellStyle.setBorderLeft(BorderStyle.THIN);	//左边框
         cellStyle.setBorderRight(BorderStyle.THIN);	//右边框
         cellStyle.setBorderTop(BorderStyle.THIN);	//上边框
-        for(int i=0;i<CsrList.size();i++) {
-            row = sheet.createRow(i+4);
-            Csr = CsrList.get(i);
-            row.createCell(0).setCellValue(i+1);
+        int line = 0;   //初始化行号；
+        for (Csr csr : CsrList) {
+            Csr = csr;
+            //如果账号状态为注销状态并且不需要导出注销的账号就跳过这个账号
+            if (Csr.getState().equals("注销")&&state == 0) continue;
+            line++;
+            row = sheet.createRow(line + 3);
+            row.createCell(0).setCellValue(line);
             row.getCell(0).setCellStyle(cellStyle);
             row.createCell(1).setCellValue(Csr.getVpnName());
             row.getCell(1).setCellStyle(cellStyle);
@@ -80,10 +84,9 @@ public class CsrServiceImpl implements CsrService {
             row.getCell(2).setCellStyle(cellStyle);
             row.createCell(3).setCellValue(Csr.getName());
             row.getCell(3).setCellStyle(cellStyle);
-            if(Csr.getCreateDate()!=null) {
+            if (Csr.getCreateDate() != null) {
                 //转换日期类型为字符串类型
-                SimpleDateFormat cTime = new SimpleDateFormat("yyyy-MM-dd");
-                String createDate=Csr.getCreateDate();
+                String createDate = Csr.getCreateDate();
                 row.createCell(4).setCellValue(createDate);
                 row.getCell(4).setCellStyle(cellStyle);
             }
@@ -91,10 +94,10 @@ public class CsrServiceImpl implements CsrService {
             row.getCell(5).setCellStyle(cellStyle);
             row.createCell(6).setCellValue(Csr.getState());
             row.getCell(6).setCellStyle(cellStyle);
-            if(Csr.getUpdateTime()!=null) {
+            if (Csr.getUpdateTime() != null) {
                 //转换日期类型为字符串类型
                 SimpleDateFormat uTime = new SimpleDateFormat("yyyy-MM-dd");
-                String updateTime=uTime.format(date);
+                String updateTime = uTime.format(date);
                 row.createCell(7).setCellValue(updateTime);
                 row.getCell(7).setCellStyle(cellStyle);
             }

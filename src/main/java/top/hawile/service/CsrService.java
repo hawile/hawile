@@ -19,7 +19,7 @@ public interface CsrService {
     int delete(Integer id);
 
     //打印客户账号列表
-    String print(String filePath) throws Exception;
+    String print(String filePath, int state) throws Exception;
 
     //批量修改状态
     int updateManyState(String state, List<String> ids, String remark);

@@ -20,7 +20,7 @@
 		<button th:if="${role['csr-delete']}" class="layui-btn layui-btn-danger"
 				lay-event="delete">批量删除</button>
 		<button th:if="${role['csr-print']}" class="layui-btn layui-btn-warm"
-				onclick="window.location='/csr/print'">打印列表</button>
+				lay-event="export">导出列表</button>
 	</div>
 </script>
 <script type="text/html" id="state">
@@ -188,7 +188,7 @@
 </div>
 </body>
 
-<!--修改客户-->
+<!--批量修改客户状态-->
 <div id="state_csr_style" class="display-0">
 	<form id="FormState" class="layui-form" method="post" action="">
 		<input type="hidden" id="ids" name="ids"/>

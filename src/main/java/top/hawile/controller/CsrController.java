@@ -108,22 +108,20 @@ public class CsrController {
     }
 
     @ResponseBody
-    @RequestMapping("/print")
-    public int print(HttpServletResponse response) throws Exception {
+    @RequestMapping("/export")
+    public void print(HttpServletResponse response, int state) throws Exception {
         //获取当前工作根目录
         String root = System.getProperty("user.dir");
         //填写客户账号信息模版
-        String fileName = csrService.print(root+"/Excel/CSRPrint.xlsx");
+        String fileName = csrService.print(root+"/Excel/CSRPrint.xlsx",state);
         if (fileName == null){
             logService.log("打印客户账号信息列表", "失败");	//将操作写入日志
-            return 0;
         }
         //设置下载客户账号信息列表路径
         String csrPath = root+"/FormInput/"+fileName;
         //下载客户账号信息列表
         fileService.download(csrPath,"客户账号信息列表",response);
         logService.log("打印客户账号信息列表", "成功");	//将操作写入日志
-        return 1;
     }
 
     @ResponseBody

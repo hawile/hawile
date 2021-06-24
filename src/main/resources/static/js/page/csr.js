@@ -129,6 +129,17 @@ layui.use(['form','laydate','table'],function(){
                     });
                 });
                 break;
+            case  'export':
+                layer.confirm('是否导出已注销的客户账号',{btn:['是','否']}
+                    , function (){
+                        window.location='/csr/export?state=1';
+                        parent.layer.msg('导出中，请稍后......', {icon: 7,time:2000});
+                        layer.closeAll();
+                    },function (){
+                        window.location='/csr/export?state=0';
+                        parent.layer.msg('导出中，请稍后......', {icon: 7,time:2000});
+                    });
+                break;
         }
 
     });
