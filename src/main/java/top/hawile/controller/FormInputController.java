@@ -148,7 +148,7 @@ public class FormInputController {
 
     @ResponseBody
     @RequestMapping("/00018")
-    //填写<<IT账号开通及变更申请表>>
+    //填写<<逻辑安全内部审查审计报告>>
     public Map<String,Object> form00018(Form00018 form, HttpSession session) throws Exception {
         //获取当前user对象
         User user = (User) session.getAttribute("user");

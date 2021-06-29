@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml" lang="">
+<html lang="">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
@@ -49,6 +49,7 @@
 					,data: {type:obj.value}
 					,dataType: 'json'
 					,success: function (data){
+						$('input[name="title"]').val(data.BT);
 						$('input[name="SJBM"]').val(data.SJBM);
 						$('input[name="JCSQF"]').val(data.JCSQF);
 						$('input[name="BTZRXM"]').val(data.BTZRXM);
@@ -110,7 +111,7 @@
 <body>
 	<div>
 		<form id="form00018" action="" method="post" class="layui-form">
-			<input type="hidden" name="title" th:value="逻辑安全内部审计、审查报告"/>
+			<input type="hidden" name="title"/>
 			<div class="layui-form-item width-90" style="padding-top: 10px">
 				<label class="layui-form-label width-40">
 					<span style="color: red; ">*</span>检查类型:

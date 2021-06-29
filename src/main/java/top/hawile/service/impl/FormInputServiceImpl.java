@@ -216,8 +216,6 @@ public class FormInputServiceImpl implements FormInputService {
     @Override
     //逻辑安全内部审计、审查报告
     public String form00018(Form00018 form) throws Exception {
-        //获取部门信息
-        Department dept = deptService.selectId(4);
         //获取当前系统时间
         Date dt=new Date();
         //格式化文件名时间
@@ -233,7 +231,8 @@ public class FormInputServiceImpl implements FormInputService {
         //获取创建的工作簿第一页
         XSSFSheet sheet=wb.getSheetAt(0);
         //给指定的sheet命名
-        wb.setSheetName(0,"逻辑安全内部审计、审查报告");
+        wb.setSheetName(0,"逻辑安全内部审查审计报告");           //设置Sheet名称
+        CellIn(sheet,0,0,form.getTitle());			//设置表单标题
         CellIn(sheet,1,0,formNo(4));			//设置表单编码
         CellIn(sheet,1,9,form.getBGH());		//设置报告号
         CellIn(sheet,1,11,form.getRQ());		//设置报告日期
@@ -394,8 +393,6 @@ public class FormInputServiceImpl implements FormInputService {
         Department dept = deptService.selectId(form.getDeptId());
         //获取当前系统时间
         Date dt=new Date();
-        //格式化报告填写时间
-        SimpleDateFormat fm = new SimpleDateFormat("yyyy 年 MM 月 dd 日");
         //格式化文件名时间
         SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");
         //格式化当前系统时间
@@ -587,6 +584,10 @@ public class FormInputServiceImpl implements FormInputService {
                     line=br.readLine();
                     while(!line.equals("[End:访问控制]")) {
                         switch (line) {
+                            case "[标题]":
+                                line = br.readLine();
+                                map.put("BT", line);
+                                break;
                             case "[受检部门]":
                                 line = br.readLine();
                                 map.put("SJBM", line);
@@ -630,6 +631,10 @@ public class FormInputServiceImpl implements FormInputService {
                     line=br.readLine();
                     while(!line.equals("[End:远程访问]")) {
                         switch (line) {
+                            case "[标题]":
+                                line = br.readLine();
+                                map.put("BT", line);
+                                break;
                             case "[受检部门]":
                                 line = br.readLine();
                                 map.put("SJBM", line);
@@ -673,6 +678,10 @@ public class FormInputServiceImpl implements FormInputService {
                     line=br.readLine();
                     while(!line.equals("[End:个人化软件及动态链接库]")) {
                         switch (line) {
+                            case "[标题]":
+                                line = br.readLine();
+                                map.put("BT", line);
+                                break;
                             case "[受检部门]":
                                 line = br.readLine();
                                 map.put("SJBM", line);
@@ -716,6 +725,10 @@ public class FormInputServiceImpl implements FormInputService {
                     line=br.readLine();
                     while(!line.equals("[End:机房保险箱]")) {
                         switch (line) {
+                            case "[标题]":
+                                line = br.readLine();
+                                map.put("BT", line);
+                                break;
                             case "[受检部门]":
                                 line = br.readLine();
                                 map.put("SJBM", line);
@@ -759,6 +772,10 @@ public class FormInputServiceImpl implements FormInputService {
                     line=br.readLine();
                     while(!line.equals("[End:数据访问、删除审查]")) {
                         switch (line) {
+                            case "[标题]":
+                                line = br.readLine();
+                                map.put("BT", line);
+                                break;
                             case "[受检部门]":
                                 line = br.readLine();
                                 map.put("SJBM", line);
