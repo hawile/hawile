@@ -1,6 +1,6 @@
 package top.hawile.config;
 
-/*import org.apache.catalina.Context;
+import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.coyote.http11.Http11NioProtocol;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
@@ -38,4 +38,4 @@ public class ConnectorConfig {
         connector.setRedirectPort(443);
         return connector;
     }
-}*/
+}
