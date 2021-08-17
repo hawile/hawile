@@ -10,7 +10,7 @@
     </parent>
     <groupId>top.hawile</groupId>
     <artifactId>keydom</artifactId>
-    <version>3.0</version>
+    <version>4.1</version>
     <name>keydom</name>
     <!--<packaging>war</packaging>-->
     <description>Keydom project for Spring Boot</description>
