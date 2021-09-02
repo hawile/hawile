@@ -174,30 +174,29 @@ public class FormInputServiceImpl implements FormInputService {
         if(form.getApplyType5()==1)CellIn(sheet,5,1,"R"); else CellIn(sheet,5,1,"T");
         if(form.getApplyType6()==1)CellIn(sheet,5,3,"R"); else CellIn(sheet,5,3,"T");
         if(form.getApplyType7()==1)CellIn(sheet,5,5,"R"); else CellIn(sheet,5,5,"T");
-        if(form.getApplyType8()==1)CellIn(sheet,5,7,"R"); else CellIn(sheet,5,7,"T");
-        if(form.getApplyType9()!=null&& !form.getApplyType9().equals("")) {
-            CellIn(sheet,6,1,"R");
-            CellIn(sheet,6,2,"其他："+form.getApplyType9());
-        }else CellIn(sheet,6,1,"T");
+        if(form.getApplyType8()!=null&& !form.getApplyType8().equals("")) {
+            CellIn(sheet,5,7,"R");
+            CellIn(sheet,5,8,"其他："+form.getApplyType8());
+        }else CellIn(sheet,5,7,"T");
         //设置账号类型
-        if(form.getAccountType1()==1)CellIn(sheet,7,1,"R"); else CellIn(sheet,7,1,"T");
-        if(form.getAccountType2()==1)CellIn(sheet,7,5,"R"); else CellIn(sheet,7,5,"T");
-        if(form.getAccountType3()==1)CellIn(sheet,8,1,"R"); else CellIn(sheet,8,1,"T");
-        if(form.getAccountType4()==1)CellIn(sheet,8,5,"R"); else CellIn(sheet,8,5,"T");
-        if(form.getAccountType5()==1)CellIn(sheet,9,1,"R"); else CellIn(sheet,9,1,"T");
-        if(form.getAccountType6()==1)CellIn(sheet,9,5,"R"); else CellIn(sheet,9,5,"T");
-        if(form.getAccountType7()==1)CellIn(sheet,10,1,"R"); else CellIn(sheet,10,1,"T");
-        if(form.getAccountType8()==1)CellIn(sheet,10,5,"R"); else CellIn(sheet,10,5,"T");
+        if(form.getAccountType1()==1)CellIn(sheet,6,1,"R"); else CellIn(sheet,6,1,"T");
+        if(form.getAccountType2()==1)CellIn(sheet,6,5,"R"); else CellIn(sheet,6,5,"T");
+        if(form.getAccountType3()==1)CellIn(sheet,7,1,"R"); else CellIn(sheet,7,1,"T");
+        if(form.getAccountType4()==1)CellIn(sheet,7,5,"R"); else CellIn(sheet,7,5,"T");
+        if(form.getAccountType5()==1)CellIn(sheet,8,1,"R"); else CellIn(sheet,8,1,"T");
+        if(form.getAccountType6()==1)CellIn(sheet,8,5,"R"); else CellIn(sheet,8,5,"T");
+        if(form.getAccountType7()==1)CellIn(sheet,9,1,"R"); else CellIn(sheet,9,1,"T");
+        if(form.getAccountType8()==1)CellIn(sheet,9,5,"R"); else CellIn(sheet,9,5,"T");
         if(form.getAccountType9()!=null&& !form.getAccountType9().equals("")) {
-            CellIn(sheet,11,1,"R");
-            CellIn(sheet,11,2,"其他："+form.getAccountType9());
-        }else CellIn(sheet,11,1,"T");
+            CellIn(sheet,10,1,"R");
+            CellIn(sheet,10,2,"其他："+form.getAccountType9());
+        }else CellIn(sheet,10,1,"T");
         //设置申请原因
-        CellIn(sheet,12,1,form.getCause());
+        CellIn(sheet,11,1,form.getCause());
         //设置变更内容
-        CellIn(sheet,13,1,form.getChangeContent());
+        CellIn(sheet,12,1,form.getChangeContent());
         //设置备注
-        CellIn(sheet,14,1,form.getRemark());
+        CellIn(sheet,13,1,form.getRemark());
         //定义下载表单文件名
         String fileName = "Form"+dateTime+".xlsx";
         //转换编码格式
@@ -358,20 +357,20 @@ public class FormInputServiceImpl implements FormInputService {
         CellIn(sheet,8,3,form.getNum5());
         CellIn(sheet,8,5,form.getTel5());
         //设置陪同人员一
-        CellIn(sheet,12,1,form.getName11());
-        CellIn(sheet,12,3,form.getDept11());
+        CellIn(sheet,15,1,form.getName11());
+        CellIn(sheet,15,3,form.getDept11());
         //设置陪同人员二
-        CellIn(sheet,13,1,form.getName12());
-        CellIn(sheet,13,3,form.getDept12());
+        CellIn(sheet,16,1,form.getName12());
+        CellIn(sheet,16,3,form.getDept12());
         //设置陪同人员三
-        CellIn(sheet,14,1,form.getName13());
-        CellIn(sheet,14,3,form.getDept13());
+        CellIn(sheet,17,1,form.getName13());
+        CellIn(sheet,17,3,form.getDept13());
         //设置进出物品
-        CellIn(sheet,15,1,form.getGoods());
+        CellIn(sheet,18,1,form.getGoods());
         //设置进出原因
-        CellIn(sheet,16,1,form.getCause());
+        CellIn(sheet,19,1,form.getCause());
         //设置备注
-        CellIn(sheet,17,1,form.getRemark());
+        CellIn(sheet,20,1,form.getRemark());
         //定义下载表单文件名
         String fileName = "Form"+dateTime+".xlsx";
         //输出Excel文件

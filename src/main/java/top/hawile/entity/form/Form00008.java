@@ -12,8 +12,7 @@ public class Form00008 {
     private int applyType5;
     private int applyType6;
     private int applyType7;
-    private int applyType8;
-    private String applyType9;
+    private String applyType8;
     private int accountType1;
     private int accountType2;
     private int accountType3;
@@ -115,20 +114,12 @@ public class Form00008 {
         this.applyType7 = applyType7;
     }
 
-    public int getApplyType8() {
+    public String getApplyType8() {
         return applyType8;
     }
 
-    public void setApplyType8(int applyType8) {
+    public void setApplyType8(String applyType8) {
         this.applyType8 = applyType8;
-    }
-
-    public String getApplyType9() {
-        return applyType9;
-    }
-
-    public void setApplyType9(String applyType9) {
-        this.applyType9 = applyType9;
     }
 
     public int getAccountType1() {
